@@ -28,8 +28,6 @@ import messageImg from "../../image/docks/message.png"
 import settingImg from "../../image/docks/setting.png"
 import storeImg from "../../image/docks/store.png"
 
-
-
 export const DOCKS_DATA = [
     {
         name: 'Rankings',

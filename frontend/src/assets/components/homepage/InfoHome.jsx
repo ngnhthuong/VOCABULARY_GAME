@@ -19,7 +19,6 @@ import { DOCKS_DATA } from "./dataHome.js";
 
 // NOTE CSS
 import "./InfoHome.css";
-
 // FUNCTION (PARENT SHOW)
 export default function InfoHome() {
     return <div>
@@ -28,7 +27,6 @@ export default function InfoHome() {
         <Docks />
     </div>
 }
-
 // FUNCTION INCLUDE HOME USER AND FINANCE <PARENT>
 function Head() {
     return (
