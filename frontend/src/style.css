@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;  
+    user-select: none;
+    cursor: url(./assets/image/cursor/cursor_now.png) 16 16, auto !important;
+}
+
+*:active{
+    cursor: url(./assets/image/cursor/cursor_active.png) 16 16, auto !important;
+}
+
+body{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./assets/image/background/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}

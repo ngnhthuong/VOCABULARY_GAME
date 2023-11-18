@@ -1,0 +1,390 @@
+.flex__center--row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex__center--column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shadow--box{
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+}
+
+.scale:hover{
+    transform: scale(1.05);
+}
+
+.scale:active{
+    transform: scale(1.1);
+}
+
+.icon{
+    position: relative;
+    color: #FFCC00;
+    margin-bottom: 1.5rem;
+}
+
+.icon> img{
+    width: 4rem;
+    height: auto;
+}
+
+.icon > p {
+    font-size: 0.8rem;
+    margin-top: 0.8rem;
+    background: linear-gradient(to right, yellow, orange); 
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.notification-number{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -0.3rem;
+    right: -0.1rem;
+    background-color: rgba(239, 0, 0, 0.9);
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 2rem;
+}
+
+.notification-number p{
+    font-size: 0.5rem;
+    color: rgb(255, 255, 255);
+    padding: 0.5rem 0.3rem 0.5rem 0.3rem;
+}
+
+
+/* FUNCTION Header */
+.header{
+    position: relative;
+    max-width: 100%; /* hoặc giá trị cụ thể */    
+    height: fit-content;
+    top: 1rem;
+}
+
+
+
+/* FUNCTION PLAYER INFOR */
+/* NOTE PLAYER IMAGE */
+.player__infor{
+    width: 24rem;
+    height: 7rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+}
+
+.player__img{
+    width: auto;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    background-image: url(../../image/information/background_user.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.player__img img{
+    width: auto;
+    height: 5rem;
+}
+
+/* NOTE PLAYER DETAILS */
+
+.player__details{
+    position: relative;
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.player__details > div{
+    margin-bottom: 1rem;
+}
+
+.player__details span{
+    font-size: 0.6rem;
+}
+
+.name{
+    color: white;
+    text-align: center;
+}
+
+/* NOTE EXP AND POWER */
+.exp > span{
+    color:#66CC33;
+}
+
+.power >span{
+    color: #FFCC00;
+}
+
+.exp, .power{
+    display: flex;
+    width: 100%;
+    height: 1rem;
+    justify-content: space-around;
+}
+
+.exp__current, .power__current{
+    position: relative;
+    width: 10rem;
+    height: 1rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+}
+
+.exp__real{
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    background-color: #66CC33;
+    border-radius: 1rem;
+}
+
+.power__real{
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    background-color: #FFCC00;
+    border-radius: 1rem;
+}
+
+
+/* NOTE PLAYER RANK */
+
+.inforhome__rank{
+    width: 8.5rem;
+    height: 7rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 0.2rem;
+    overflow: hidden;
+}
+
+.inforhome__rank img{
+    width: 5rem;
+    height: auto;
+}
+
+.inforhome__rank p{
+    font-size: 2rem;
+}
+
+
+
+/* FUNCTION finance */
+.finance{
+    position: absolute;
+    width: auto;
+    right: 1rem;
+    top: 0;
+}
+/* NOTE Put money */
+.putmoney{
+    background-color: rgba(239, 0, 0, 0.9);
+    color: #ffffff;
+    width: 10rem;
+    height: 100%;
+    font-size: 0.7rem;
+    border-radius: 1rem;
+    margin-right: 1.5rem;
+}
+.putmoney img{
+    height: 2rem;
+    width: auto;
+    margin-left: 0.2rem;
+    padding: 0.3rem;
+}
+
+.putmoney:hover{
+    transform: scale(1.01);
+}
+.putmoney:active{
+    transform: scale(1.03);
+}
+/* NOTE silver */
+.silver{
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    width: 12rem;
+    height: 100%;
+    font-size: 0.7rem;
+    border-radius: 1rem;
+    margin-right: 1.5rem;
+}
+.silver img{
+    height: 2rem;
+    width: auto;
+    margin-left: 0.2rem;
+    padding: 0.3rem;
+}
+
+.silver__add{
+    position: absolute;
+    width: 2.5rem;
+    height: 100%;
+    color: white;
+    background-color: #66CC33;
+    border-radius: 0 1rem 1rem 0;
+    border: none;
+    right: 0;
+}
+
+.silver__add:hover, .money__add:hover {
+    background-color: #77d74e;
+}
+
+.silver__add:active, .money__add:active{
+    background-color: #70cb49;
+}
+
+.silver > div{
+    font-size: 0.7rem;
+    width: 4.5rem;
+    overflow: hidden;
+    font-weight: bold;
+    color: #ffffff;
+}
+/* NOTE gold */
+.money{
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    width: 12rem;
+    height: 100%;
+    font-size: 0.7rem;
+    border-radius: 1rem;
+    margin-right: 1.5rem;
+}
+
+.money img{
+    height: 2rem;
+    width: auto;
+    margin-left: 0.2rem;
+    padding: 0.3rem;
+}
+
+.money > div{
+    font-size: 0.7rem;
+    width: 4.5rem;
+    overflow: hidden;
+    font-weight: bold;
+    color: yellow;
+}
+
+.money__add{
+    position: absolute;
+    width: 2.5rem;
+    height: 100%;
+    color: white;
+    background-color: #66CC33;
+    border-radius: 0 1rem 1rem 0;
+    border: none;
+    right: 0;
+}
+
+/* FUNCTION BODY GAME */
+.bodygame{
+    position: relative;
+    margin-top: 2rem;
+    height: 25rem;
+    width: 100%;
+    justify-content: center;
+}
+/* FUNCTION TASK DAILY */
+
+.taskdaily-left{
+    position: absolute;
+    left: 1rem;
+    width: 6rem;
+    height: 100%;
+}
+
+.taskdaily{
+    position: absolute;
+    top: 1rem;
+    list-style: none;
+}
+
+/* FUNCTION PLAY GAME */
+
+.cow{
+    width: 13rem;
+    height: auto;
+}
+
+.playcow{
+    margin-top: -2rem;
+    height: 3rem;
+    width: auto;
+}
+
+/* FUNCTION ACTIVITY */
+
+.activity-right{
+    position: absolute;
+    top: -6rem;
+    right: 1rem;
+    width: 6rem;
+    height: 100%;
+}
+
+.activity{
+    position: absolute;
+    top: 0;
+    list-style: none;
+}
+
+
+.dock-bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4rem 4rem 0 0;
+    justify-content: center;
+}
+
+.docks{
+    list-style: none;
+    padding: 0.5rem;
+}
+
+.dock{
+    position: relative;
+    justify-content: center;
+    color: #FFCC00;
+    margin: 0rem 2rem 0rem 2rem;
+}
+
+.dock> img{
+    width: 4rem;
+    height: 4rem;
+}
+
+.dock> p {
+    font-size: 0.8rem;
+    margin-top: 0.8rem;
+    background: linear-gradient(to right, yellow, orange); 
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
