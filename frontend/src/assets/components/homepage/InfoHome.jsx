@@ -14,16 +14,8 @@ import playcowImg from "../../image/cowcow-body/play_cow.png"
 // NOTE IMG ACTIVITY
 import fireImg from "../../image/activity/fire.gif"
 import giftImg from "../../image/activity/gift.png"
-// NOTE IMG DOCKS
-import backpackImg from "../../image/docks/backpack.png"
-import GuildImg from "../../image/docks/guild.png"
-import friendImg from "../../image/docks/friend.png"
-import heroChartImg from "../../image/docks/heroChart.png"
-import messageImg from "../../image/docks/message.png"
-import settingImg from "../../image/docks/setting.png"
-import storeImg from "../../image/docks/store.png"
-
-
+// NOTE IMPORT DATA
+import { DOCKS_DATA } from "./dataHome.js";
 
 // NOTE CSS
 import "./InfoHome.css";
@@ -172,47 +164,35 @@ function Activity() {
         </ul>
     </div>
 }
-
+// FUNCTION DOCKS
 function Docks() {
-    return <div className="dock-bottom shadow--box flex__center--row">
+    return (<div className="dock-bottom shadow--box flex__center--row">
         <ul className="docks flex__center--row">
-            <li className="dock scale flex__center--column">
-                <img src={heroChartImg} alt="error task" />
-                <p>Rankings</p>
-            </li>
-            <li className="dock scale flex__center--column">
-                <img src={storeImg} alt="error task" />
-                <p>Store</p>
-            </li>
-            <li className="dock scale flex__center--column">
-                <img src={backpackImg} alt="error task" />
-                <p>Backpack</p>
-            </li>
-            <li className="dock scale flex__center--column">
-                <img src={GuildImg} alt="error task" />
-                <p>Guild</p>
-            </li>
-            <li className="dock scale flex__center--column">
-                <Notification notification={22} />
-                <img src={friendImg} alt="error task" />
-                <p>Friends</p>
-            </li>
-            <li className="dock scale flex__center--column">
-                <Notification notification={12} />
-                <img src={messageImg} alt="error task" />
-                <p>Messages</p>
-            </li>
-            <li className="dock scale flex__center--column">
-                <img src={settingImg} alt="error task" />
-                <p>Setting</p>
-            </li>
+            {DOCKS_DATA.map((dockItem) => <Dock key={dockItem.name} {...dockItem} />)}
         </ul>
-    </div>
+    </div>)
 }
-
+// FUNCTION DOCKS
+function Dock({ name, image, notification}) {
+    return (
+        <li className="dock scale flex__center--column">
+            {notification === undefined ? (
+                <>
+                    <img src={image} alt="error task" />
+                    <p>{name}</p>
+                </>
+            ) : (
+                <>
+                    <Notification notification={notification} />
+                    <img src={image} alt="error task" />
+                    <p>{name}</p>
+                </>
+            )}
+        </li>)
+}
+// FUNCTION NOTIFICATION
 function Notification({ notification }) {
-    return <div className="notification-number shadow--box">
+    return (<div className="notification-number shadow--box">
         <p>{notification}</p>
-    </div>
+    </div>)
 }
-
