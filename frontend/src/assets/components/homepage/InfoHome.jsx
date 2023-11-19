@@ -16,7 +16,6 @@ import fireImg from "../../image/activity/fire.gif"
 import giftImg from "../../image/activity/gift.png"
 // NOTE IMPORT DATA
 import { DOCKS_DATA } from "./dataHome.js";
-
 // NOTE CSS
 import "./InfoHome.css";
 // FUNCTION (PARENT SHOW)
