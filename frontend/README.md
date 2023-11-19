@@ -1,6 +1,6 @@
 # GAME WEBSITE PROJECT - MSIS207.O12.CTTT
 
-**Đồ án:** Xây dựng trang Website về Game.  
+**Đồ án:** COW COW GAME 
 **Môn:** Phát triển ứng dụng web - **Mã lớp:** MSIS207.O12.CTTT
 
 ## Thành viên tham gia dự án:
