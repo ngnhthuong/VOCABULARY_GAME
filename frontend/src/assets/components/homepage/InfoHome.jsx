@@ -20,7 +20,7 @@ import { DOCKS_DATA } from "./dataHome.js";
 import "./InfoHome.css";
 // FUNCTION (PARENT SHOW)
 export default function InfoHome() {
-    return <div>
+    return <div className="none">
         <Head />
         <BodyGame />
         <Docks />

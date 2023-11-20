@@ -1,0 +1,99 @@
+#fatherzone{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.shadow--box{
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+}
+
+.boardzone{
+    position: relative;
+    height: 95vh;
+    width: 90vw;
+    background-image: url(../../../../public/background-match.jpg);
+    /* background-color: aquamarine; */
+    border-radius: 2rem;
+    background-size: cover;
+}
+
+/* HEADER BOARD */
+
+.header-board{
+    position: absolute;
+    top: 1.15rem;
+    width: 100%;
+    height: 3rem;
+    /* background-color: wheat; */
+}
+
+.header-board__lists{
+    position: relative;
+    display: flex;
+    list-style: none;
+}
+
+.header-board__setting img{
+    position: absolute;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Gameboard */
+.body-match{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+    top: 5rem;
+    /* background-color: beige; */
+}
+
+.col-match{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+/* .col-match > li{
+    padding: 10px;
+} */
+
+.row-match{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.button-style{
+    font-size: 0.7rem;
+    width: 10.4rem;
+    height: 3rem;
+    background-color: rgba(217, 217, 217, 0.5);
+    margin: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    color: rgb(6, 6, 6);
+}
+
+.button-style:hover{
+    border: 1px solid rgb(9, 7, 7);
+}
+
+.button-style:active{
+    background: linear-gradient(to right, #ff0000, #ff4500);
+}
+
+#active-user1{
+    background: linear-gradient(rgb(217, 175, 255), rgb(217, 175, 255));
+    pointer-events: none;
+}
