@@ -1,13 +1,19 @@
+import { useState } from "react"
+
 import avatarImg from "../../image/information/user.png"
 import "./user.css"
 export default function PlayerInfo() {
+    const [windowsStatus, setWindowsStatus] = useState(true);
+    let windowFlag = windowsStatus ? 'active' : 'close';
+    function handleChangeWindows() {
+        setWindowsStatus(!windowsStatus);
+    }
     return (
-        <div className="player-windows">
+        <div className={`player-windows ${windowFlag}`}>
             <ul className="player-infor shadow--box">
-
                 <li className="player-windows__header shadow--box">
                     <p>User Information</p>
-                    <button className="close-windows shadow--box">
+                    <button onClick={handleChangeWindows} className="close-windows shadow--box">
                         <i class="fas fa-times close-icon"></i>
                     </button>
                 </li>
@@ -26,6 +32,22 @@ export default function PlayerInfo() {
                         <li className="player-elo">
                             <p>Ranking: 1</p>
                         </li>
+                        {/* <li className="exp-user">
+                            <div>
+                                <p>EXP</p>
+                            </div>
+                            <div className="exp-cur shadow--box">
+                                <div className="exp-now shadow--box"></div>
+                            </div>
+                        </li>
+                        <li className="pow-user">
+                            <div>
+                                <p>POW</p>
+                            </div>
+                            <div className="pow-cur shadow--box">
+                                <div className="pow-now shadow--box"></div>
+                            </div>
+                        </li> */}
                     </ul>
                     <ul className="player-infor__game">
                         <li className="player-display">
@@ -58,153 +80,41 @@ export default function PlayerInfo() {
                                     <span>|</span>
                                     <span>Time: Cow Cow</span>
                                     <span>|</span>
-                                    <span>Bet: 15K</span>
+                                    <span>Bet: 1500K</span>
                                     <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
+                                    <span>Elo:</span>
+                                    <span>+10</span>
+                                    <span>Time: 1p30s</span>
+                                </li><li className="match">
                                     <span>Winner: Cow Cow</span>
                                     <span>|</span>
                                     <span>Time: Cow Cow</span>
                                     <span>|</span>
-                                    <span>Bet: 15K</span>
+                                    <span>Bet: 1500K</span>
                                     <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
+                                    <span>Elo:</span>
+                                    <span>+10</span>
+                                    <span>Time: 1p30s</span>
+                                </li><li className="match">
                                     <span>Winner: Cow Cow</span>
                                     <span>|</span>
                                     <span>Time: Cow Cow</span>
                                     <span>|</span>
-                                    <span>Bet: 15K</span>
+                                    <span>Bet: 1500K</span>
                                     <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
+                                    <span>Elo:</span>
+                                    <span>+10</span>
+                                    <span>Time: 1p30s</span>
+                                </li><li className="match">
                                     <span>Winner: Cow Cow</span>
                                     <span>|</span>
                                     <span>Time: Cow Cow</span>
                                     <span>|</span>
-                                    <span>Bet: 15K</span>
+                                    <span>Bet: 1500K</span>
                                     <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
-                                </li>
-                                <li className="match">
-                                    <span>Winner: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Time: Cow Cow</span>
-                                    <span>|</span>
-                                    <span>Bet: 15K</span>
-                                    <span>|</span>
-                                    <span>Elo: +10</span>
+                                    <span>Elo:</span>
+                                    <span>+10</span>
+                                    <span>Time: 1p30s</span>
                                 </li>
                             </ul>
                         </li>
