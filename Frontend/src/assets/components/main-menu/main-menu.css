@@ -39,8 +39,7 @@
     height: 9rem;
     background-color: var(--background-small);
     border-radius: 2rem;
-    overflow: hidden;
-    background: url(../../images/player/frame.png);
+    background: url(../../images/player/frame.png) center center no-repeat;
     background-size: cover;
     overflow: hidden;
 }
@@ -251,12 +250,12 @@
     list-style: none;
     justify-content: center;
     align-items: center;
-    transform: scale(0.95);
+    transform: scale(0.9);
     margin-top: -2rem;
 }
 
 .cow-start:hover{
-    transform: scale(1);
+    transform: scale(0.95);
 }
 
 .cow-start:active{

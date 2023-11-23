@@ -1,5 +1,5 @@
 
-export default function LobbyRoomList(){
+export default function LobbyRoomList({ roomData }) {
     return (
         <div className="lobby-room-list  box--shadow flex--col">
             <div className="room-list-header flex--row">
@@ -9,78 +9,17 @@ export default function LobbyRoomList(){
                 <p>FUNCTION</p>
             </div>
             <ul className="room-list flex--col">
-                <li className="room flex--row box--shadow-title">
-                    <p>102</p>
-                    <p>CowCow</p>
-                    <p>4/5</p>
-                    <p className="room-list-function">
-                        <button className="box--shadow">Join</button>
-                    </p>
-                </li>
-                <li className="room flex--row box--shadow">
-                    <p>102</p>
-                    <p>CowCow</p>
-                    <p>4/5</p>
-                    <p className="room-list-function">
-                        <button className="box--shadow">Join</button>
-                    </p>
-                </li>
-                <li className="room flex--row box--shadow">
-                    <p>102</p>
-                    <p>CowCow</p>
-                    <p>4/5</p>
-                    <p className="room-list-function">
-                        <button className="box--shadow">Join</button>
-                    </p>
-                </li>
-                <li className="room flex--row box--shadow">
-                    <p>102</p>
-                    <p>CowCow</p>
-                    <p>4/5</p>
-                    <p className="room-list-function">
-                        <button className="box--shadow">Join</button>
-                    </p>
-                </li>
-                <li className="room flex--row box--shadow">
-                    <p>102</p>
-                    <p>CowCow</p>
-                    <p>4/5</p>
-                    <p className="room-list-function">
-                        <button className="box--shadow">Join</button>
-                    </p>
-                </li>
-                <li className="room flex--row box--shadow">
-                    <p>102</p>
-                    <p>CowCow</p>
-                    <p>4/5</p>
-                    <p className="room-list-function">
-                        <button className="box--shadow">Join</button>
-                    </p>
-                </li>
-                <li className="room flex--row box--shadow">
-                    <p>102</p>
-                    <p>CowCow</p>
-                    <p>4/5</p>
-                    <p className="room-list-function">
-                        <button className="box--shadow">Join</button>
-                    </p>
-                </li>
-                <li className="room flex--row box--shadow">
-                    <p>102</p>
-                    <p>CowCow</p>
-                    <p>4/5</p>
-                    <p className="room-list-function">
-                        <button className="box--shadow">Join</button>
-                    </p>
-                </li>
-                <li className="room flex--row box--shadow">
-                    <p>102</p>
-                    <p>CowCow</p>
-                    <p>4/5</p>
-                    <p className="room-list-function">
-                        <button className="box--shadow">Join</button>
-                    </p>
-                </li>
+                {roomData.map((room, roomIndex) => (
+                    <li key={roomIndex} className="room flex--row box--shadow-title">
+                        <p>{room.id}</p>
+                        <p>{room.owner}</p>
+                        <p>{room.now_member} / {room.max_member}</p>
+                        <p className="room-list-function">
+                            <button className="box--shadow">Join</button>
+                        </p>
+                    </li>
+                )
+                )}
             </ul>
         </div>
     )
