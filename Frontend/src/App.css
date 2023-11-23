@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+:root {
+  --background-small: rgba(255, 255, 255, 0.3);
+  --background-windows: rgba(255, 255, 255, 0.4);
+  --background-black: rgba(210, 210, 210, 0.3);
+  --background-frame: #eaeaea;
+  --background-modal: #536f37;
+  --green: #66CC33;
+  --greenBlack: #41ac0b;
+  --orange: #FFCC00;
+  --red: #e40000;
+  --redLight: rgba(255, 0, 0);
+  --brown-fresh:#4e2b12;
+}
+
+.open{
+  display: hidden !important;
+}
+
+.close{
+  display: none !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;  
+  user-select: none;
+  cursor: url(../public/cursor_now.png) 16 16, auto !important;
+}
+
+*:active{
+  cursor: url(../public/cursor_active.png) 16 16, auto !important;
+}
+
+main{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url(../public/background.png);
+  background-size: cover;
+  overflow: hidden;
+  background-attachment: fixed;
+}
+
+.flex--col{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex--row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.box--shadow{
+  box-shadow:inset 
+  2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+}
+
+.box--shadow-title {
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+              7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+              4px 4px 5px 0px transparent; /* Màu transparent cho bottom */
+}
+
+.title-icon{
+  background: linear-gradient(to right, yellow, orange); 
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  padding-top: 0.5rem;
+}
+
+.title-icon-model {
+  color: white;
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+img {
+  pointer-events: none;
+}
+

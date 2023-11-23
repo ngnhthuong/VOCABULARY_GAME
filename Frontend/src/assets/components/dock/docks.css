@@ -1,0 +1,59 @@
+.docks{
+    position: absolute;
+    width: 100vw;
+    height: 16vh;
+    background-color: var(--background-small);
+    bottom: 0;
+    border-radius: 5rem 5rem 0 0;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    list-style: none;
+    overflow: hidden;
+}
+
+.dock img{
+    height: 4.5rem;
+    width: 4.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.dock:hover{
+    transform: scale(1.05);
+}
+
+.dock:active{
+    transform: scale(1.1);
+}
+
+
+/* Dock Model */
+.docks-model{
+    position: absolute;
+    width: 100%;
+    height: 13vh;
+    background-color: var(--background-modal);
+    bottom: 0;
+    border-radius: 3rem 3rem 3rem 3rem;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    overflow: hidden;
+}
+
+.dock-model img{
+    height: 3.5rem;
+    width: 3.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.dock-model:hover{
+    transform: scale(1.05);
+}
+
+.dock-model:active{
+    transform: scale(1.1);
+}
+
