@@ -8,9 +8,9 @@
 #header {
     position: relative;
     width: 100vw;
-    height: 10rem;
+    height: 9rem;
     padding: 0.5rem;
-    padding-left: 1.5rem;
+    padding-left: 1rem;
     justify-content: space-between;
     align-items: center;
 }
@@ -18,13 +18,13 @@
 /* main player */
 #player-rank__div {
     width: 37rem;
-    height: 9rem;
+    height: 8rem;
     gap: 1rem;
 }
 
 #main-player {
     width: 23rem;
-    height: 9rem;
+    height: 8rem;
     background-color: var(--background-small);
     justify-content: space-between;
     border-radius: 2rem;
@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: center;
     width: 15rem;
-    height: 9rem;
+    height: 8rem;
     background-color: var(--background-small);
     border-radius: 2rem;
     background: url(../../images/player/frame.png) center center no-repeat;
@@ -46,7 +46,7 @@
 
 #avatar img {
     height: auto;
-    width: 80%;
+    width: 75%;
     object-position: center center;
 }
 
@@ -117,8 +117,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 2rem;
-    width: 9rem;
-    height: 9rem;
+    width: 8rem;
+    height: 8rem;
     background-color: var(--background-small);
     padding: 1rem;
     overflow: hidden;
@@ -137,7 +137,7 @@
     width: 40rem;
     height: 2.6rem;
     /* background-color: aqua; */
-    right: 1.5rem;
+    right: 1rem;
     top: 0.5rem;
     justify-content: space-between;
 }
@@ -145,7 +145,7 @@
 .finance-area {
     position: relative;
     width: 30%;
-    height: 2.6rem;
+    height: 2.4rem;
     background-color: var(--background-small);
     list-style: none;
     border-radius: 2rem;
@@ -185,7 +185,7 @@
 .buy-gold__title,
 .silver-number,
 .gold-number {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 /* silver */
@@ -216,8 +216,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2.6rem;
-    width: 2.6rem;
+    height: 2.4rem;
+    width: 2.4rem;
     background-color: var(--green);
     border-radius: 0 2rem 2rem 0;
     color: white;
@@ -240,7 +240,7 @@
     width: 100%;
     height: 26.5rem;
     justify-content: space-between;
-    padding: 0 1rem 0 1rem;
+    padding: 3rem 0.5rem 0 0.5rem;
 }
 
 

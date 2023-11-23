@@ -7,7 +7,7 @@ export default function Gold() {
                 <img src={silverImg} alt="" />
             </li>
             <li className="gold-number">
-                9999999
+                99
             </li>
             <li className="gold-button box--shadow">
                 <i className="fas fa-plus"></i>
