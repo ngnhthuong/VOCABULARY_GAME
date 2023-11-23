@@ -320,8 +320,6 @@
     background-color: var(--orange);
     color: white;
     border: none;
-    /* border: 1px solid var(--greenBlack);
-    animation: pulse 2s infinite ease-in-out; */
 }
 
 .box-animation{
@@ -372,7 +370,7 @@
 .player-list{
     width: 100%;
     min-height: 18.5%;
-    background-color: rgb(219, 198, 172);
+    background-color: rgb(210, 180, 144);
     border-radius: 0.5rem;
     overflow: hidden;
 }
