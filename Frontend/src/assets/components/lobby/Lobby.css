@@ -420,9 +420,9 @@
     font-size: 0.6rem !important;
 }
 
-.watch-btn{
+.watch-btn, .invite-btn{
     height: 1.3rem;
-    width: 4rem;
+    width: 3.4rem;
     font-size: 0.5rem;
     border: none;
     border-radius: 0.3rem;
@@ -430,10 +430,20 @@
     color: white;
 }
 
-.watch-btn:hover{
+.invite-btn{
+    background-color: var(--greenBlack) !important;
+}
+
+.watch-btn:hover, .invite-btn:hover{
     transform: scale(1.02);
 }
 
-.watch-btn:active{
+.watch-btn:active, .invite-btn:active{
     transform: scale(1.05);
+}
+
+.player-list__function{
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
 }

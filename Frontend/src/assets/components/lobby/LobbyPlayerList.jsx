@@ -11,7 +11,10 @@ export default function PlayerList({ playerList }) {
                             <p className="player-list-name">{player.name}</p>
                             <p>Rank: {player.ranking}</p>
                             <p>Elo: {player.elo}</p>
-                            <button className="watch-btn box--shadow">Watch</button>
+                            <div className="player-list__function flex--row">
+                                <button className="watch-btn box--shadow">Watch</button>
+                                <button className="invite-btn box--shadow">Invite</button>
+                            </div>
                         </div>
                     </li>
                 ))
