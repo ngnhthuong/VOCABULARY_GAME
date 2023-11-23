@@ -1,4 +1,4 @@
-.docks{
+.docks {
     position: absolute;
     width: 100vw;
     height: 16vh;
@@ -12,24 +12,26 @@
     overflow: hidden;
 }
 
-.dock img{
+.dock img {
     height: 4.5rem;
     width: 4.5em;
     justify-content: center;
     align-items: center;
 }
 
-.dock:hover{
+.dock:hover {
     transform: scale(1.05);
 }
 
-.dock:active{
+.dock:active {
     transform: scale(1.1);
 }
 
 
 /* Dock Model */
-.docks-model{
+
+
+.docks-model {
     position: absolute;
     width: 75vw;
     height: 12vh;
@@ -43,18 +45,64 @@
     padding: 0 1rem 0 1rem;
 }
 
-.dock-model img{
+.dock-model img {
     height: 3rem;
     width: 3rem;
     justify-content: center;
     align-items: center;
 }
 
-.dock-model:hover{
+@media (min-height: 800px) {
+    .docks-model {
+        position: absolute;
+        width: 75vw;
+        height: 13vh;
+        background-color: var(--background-modal);
+        bottom: 0.5rem;
+        border-radius: 1rem 1rem 2.5rem 2.5rem;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        overflow: hidden;
+        padding: 0 1rem 0 1rem;
+    }
+
+    .dock-model img {
+        height: 3.5rem;
+        width: 3.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (min-height: 800px) {
+    .docks-model {
+        position: absolute;
+        width: 75vw;
+        height: 13vh;
+        background-color: var(--background-modal);
+        bottom: 0.5rem;
+        border-radius: 1rem 1rem 2.5rem 2.5rem;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        overflow: hidden;
+        padding: 0 1rem 0 1rem;
+    }
+
+    .dock-model img {
+        height: 3.5rem;
+        width: 3.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+.dock-model:hover {
     transform: scale(1.05);
 }
 
-.dock-model:active{
+.dock-model:active {
     transform: scale(1.1);
 }
-
