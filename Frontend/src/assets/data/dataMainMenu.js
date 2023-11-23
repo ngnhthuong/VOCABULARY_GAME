@@ -18,17 +18,104 @@ import taskImg from '../images/task/task.png'
 import avatarImg from '../images/player/user.png'
 import frameImg from '../images/player/frame.png'
 import rank1Img from '../images/rank/rank2.png'
-// Data player
+
+
+
+//Img player List
+import avatar1Img from '../images/player/user1.png'
+import avatar2Img from '../images/player/user2.png'
+import avatar3Img from '../images/player/user3.png'
+import avatar4Img from '../images/player/user4.png'
+import avatar5Img from '../images/player/user5.png'
+import avatar6Img from '../images/player/user6.png'
+import avatar7Img from '../images/player/user7.png'
+
+
+// Data player 
 
 export const PLAYER_DATA= {
         name: 'Cow Cow',
         avatar: avatarImg,
         frameImg: frameImg,
         rank: rank1Img,
-        Elo: 1000,
+        elo: 1000,
         exp: 98,
         pow: 56,
 }
+
+
+export const PLAYERLIST_DATA= [
+    {
+        name: 'Cow Cow',
+        avatar: avatar1Img,
+        frameImg: frameImg,
+        rank: rank1Img,
+        elo: 1000,
+        ranking: 1,
+        exp: 98,
+        pow: 56,
+    },
+    {
+        name: 'Milk Milk',
+        avatar: avatar2Img,
+        frameImg: frameImg,
+        rank: rank1Img,
+        elo: 1000,
+        ranking: 7,
+        exp: 98,
+        pow: 56,
+    },
+    {
+        name: 'Lion Lion',
+        avatar: avatar3Img,
+        frameImg: frameImg,
+        rank: rank1Img,
+        ranking: 8,
+        elo: 1000,
+        exp: 98,
+        pow: 56,
+    },
+    {
+        name: 'Dark Dark',
+        avatar: avatar4Img,
+        frameImg: frameImg,
+        rank: rank1Img,
+        elo: 1000,
+        ranking: 12,
+        exp: 98,
+        pow: 56,
+    },
+    {
+        name: 'Bum Bum',
+        avatar: avatar5Img,
+        frameImg: frameImg,
+        rank: rank1Img,
+        elo: 1000,
+        ranking: 18,
+        exp: 98,
+        pow: 56,
+    },
+    {
+        name: 'Ohmygod',
+        avatar: avatar6Img,
+        frameImg: frameImg,
+        rank: rank1Img,
+        elo: 1000,
+        ranking: 128,
+        exp: 98,
+        pow: 56,
+    },
+    {
+        name: 'Shut Shut',
+        avatar: avatar7Img,
+        frameImg: frameImg,
+        rank: rank1Img,
+        elo: 1000,
+        ranking: 7,
+        exp: 98,
+        pow: 56,
+    },
+]
 
 // Data task
 export const TASK_DATA= [
@@ -88,5 +175,137 @@ export const DOCKS_DATA = [
         title: 'Setting',
         image: settingImg,
         notification: undefined,
+    },
+]
+
+
+// DATA ROOM LIST
+
+export const ROOMS_DATA = [
+    {
+        id: 123,
+        owner: 'Cow Cow',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 103,
+        owner: 'Cow Ahu',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 130,
+        owner: 'Cow Aho',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 131,
+        owner: 'Cow Adu',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 132,
+        owner: 'Cow Milk',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 135,
+        owner: 'Cow Max',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 143,
+        owner: 'Cow Min',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 135,
+        owner: 'Cow Max',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 143,
+        owner: 'Cow Min',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 135,
+        owner: 'Cow Max',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 143,
+        owner: 'Cow Min',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 135,
+        owner: 'Cow Max',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 143,
+        owner: 'Cow Min',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 135,
+        owner: 'Cow Max',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 143,
+        owner: 'Cow Min',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 135,
+        owner: 'Cow Max',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 143,
+        owner: 'Cow Min',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 135,
+        owner: 'Cow Max',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 143,
+        owner: 'Cow Min',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 135,
+        owner: 'Cow Max',
+        max_member: 5,
+        now_member: 1,
+    },
+    {
+        id: 143,
+        owner: 'Cow Min',
+        max_member: 5,
+        now_member: 1,
     },
 ]

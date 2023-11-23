@@ -3,6 +3,9 @@ import DocksModel from '../dock/DocksModel';
 import LobbyChat from './LobbyChat.jsx';
 import LobbyFunction from './LobbyFunction.jsx';
 import LobbyRoomList from './LobbyRoomList.jsx';
+import PlayerList from './LobbyPlayerList.jsx';
+
+import { ROOMS_DATA, PLAYERLIST_DATA } from '../../data/dataMainMenu.js';
 
 export default function Lobby({ lobby, handleLobby }) {
     return (
@@ -20,13 +23,15 @@ export default function Lobby({ lobby, handleLobby }) {
                 </div>
                 <div className="lobby flex--row">
                     <div className="lobby-left flex--col">
-                        <LobbyRoomList/>
+                        <LobbyRoomList roomData = {ROOMS_DATA}/>
                         <div className="lobby-chat-func flex--row">
                             <LobbyChat/>
                             <LobbyFunction/>
                         </div>
                     </div>
-                    <div className="lobby-right box--shadow"></div>
+                    <div className="lobby-right box--shadow">
+                        <PlayerList playerList = {PLAYERLIST_DATA}/>
+                    </div>
                 </div>
                 <DocksModel/>
             </div>

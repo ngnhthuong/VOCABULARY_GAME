@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 :root {
-  --background-small: rgba(255, 255, 255, 0.3);
+  --background-small: rgba(226, 219, 219, 0.3);
   --background-windows: rgba(255, 255, 255, 0.4);
   --background-black: rgba(210, 210, 210, 0.3);
-  --background-frame: #eaeaea;
-  --background-modal: #536f37;
+  --background-frame: #f1f1f1;
+  /* --background-modal: #5a7242; */
+  --background-modal: #94794c;
   --green: #66CC33;
-  --greenBlack: #41ac0b;
-  --orange: #FFCC00;
+  --greenBlack: #51b751;
+  --orange: #f8c031;
   --red: #e40000;
   --redLight: rgba(255, 0, 0);
   --brown-fresh:#4e2b12;
+  --color-message: #4e2b12;
+  --navi: #9f9f9f;
+  --teal: #637f7f;
+  --tiffany-blue: #0abab5;
 }
 
 .open{
@@ -87,4 +92,18 @@ main{
 img {
   pointer-events: none;
 }
-
+/* animation */
+@keyframes pulse {
+  0% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
+  }
+  50% {
+    border-color: #f8c031;
+    box-shadow: 0 0 0 0.7rem rgba(248, 165, 49, 0);
+  }
+  100% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
+  }
+}
