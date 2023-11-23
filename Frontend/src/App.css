@@ -6,11 +6,16 @@
   --background-frame: #eaeaea;
   --background-modal: #536f37;
   --green: #66CC33;
-  --greenBlack: #41ac0b;
-  --orange: #FFCC00;
+  --greenBlack: #228b22;
+  --orange: #f8c031;
   --red: #e40000;
   --redLight: rgba(255, 0, 0);
   --brown-fresh:#4e2b12;
+  --color-message: rgb(255, 255, 255);
+  --navi: #001f3f;
+  --teal: #008080;
+  --tiffany-blue: #0abab5;
+
 }
 
 .open{
@@ -87,4 +92,18 @@ main{
 img {
   pointer-events: none;
 }
-
+/* animation */
+@keyframes pulse {
+  0% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
+  }
+  50% {
+    border-color: #f8c031;
+    box-shadow: 0 0 0 0.5rem rgba(248, 165, 49, 0);
+  }
+  100% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
+  }
+}

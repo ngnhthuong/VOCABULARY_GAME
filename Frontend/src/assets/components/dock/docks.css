@@ -75,11 +75,11 @@
     }
 }
 
-@media (min-height: 800px) {
+@media (max-height: 799px) {
     .docks-model {
         position: absolute;
         width: 75vw;
-        height: 13vh;
+        height: 12vh;
         background-color: var(--background-modal);
         bottom: 0.5rem;
         border-radius: 1rem 1rem 2.5rem 2.5rem;

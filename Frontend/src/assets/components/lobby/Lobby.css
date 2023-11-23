@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size: cover;
 }
 
 .lobby-modal {
@@ -145,9 +146,7 @@
 
 .room-list::-webkit-scrollbar-thumb {
     background-color: var(--orange);
-    /* Màu của phần thumb */
     border-radius: 4px;
-    /* Bo tròn góc của phần thumb */
 }
 
 .room {
@@ -170,46 +169,173 @@
     font-size: 0.7rem;
     height: 1.5rem;
     width: 5rem;
-    background-color: var(--brown-fresh);
+    /* background-color: var(--brown-fresh); */
+    background-color: var(--greenBlack);
     border-radius: 1rem;
     color: white;
 }
 
-.room-list-function button:hover{
+.room-list-function button:hover {
     transform: scale(1.05);
 }
-.room-list-function button:active{
+
+.room-list-function button:active {
     transform: scale(1.1);
 }
 
+/* ------------ */
+
 /* LobbyChat */
 
-.lobby-chat-func{
+.lobby-chat-func {
     height: 37%;
     width: 100%;
     justify-content: space-between;
 }
 
-.lobby-chat{
+.lobby-chat {
+    position: relative;
     min-height: 100%;
-    min-width: 45%;
+    max-width: 49%;
     background-color: var(--background-windows);
-    border-radius: 1rem ;
-
+    border-radius: 1rem;
+    padding-top: 1rem;
+    overflow: hidden;
 }
 
-/* Room lobby function */
-.lobby-function{
-    min-height: 100%;
-    min-width: 50%;
-    background-color: var(--background-windows);
-    border-radius: 1rem ;
+.chatbox {
+    width: 100%;
+    height: 7rem;
+    padding: 0 1rem 0rem 1rem;
+    overflow: auto;
+    margin-bottom: 0.5rem;
 }
-/* ------ */
+
+.chatbox::-webkit-scrollbar {
+    width: 4px;
+}
+
+.chatbox::-webkit-scrollbar-thumb {
+    background-color: var(--orange);
+    border-radius: 4px;
+}
+
+.messages {
+    list-style: none;
+}
+
+.message {
+    word-wrap: break-word;
+    padding: 0.3rem 0 0.3rem 0;
+    font-size: 0.6rem !important;
+    color: var(--color-message);
+    line-height: 0.9rem;
+}
+
+
+
+.send-message {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2rem;
+    overflow: hidden;
+}
+
+#message-input {
+    width: 100%;
+    height: 100%;
+    font-size: 0.6rem;
+    border-radius: 0.2rem;
+    padding: 0 2rem 0 1rem;
+    border: none;
+    background-color: var(--background-frame);
+}
+
+#message-input:focus {
+    outline: none;
+}
+
+.sent-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 2rem;
+    height: 100%;
+    right: 0.3rem;
+    top: 0;
+    border-radius: 1rem;
+    border: none;
+    background: none;
+}
+
+.sent-btn i {
+    color: var(--background-modal);
+}
+
+/* ------------- */
 
 .lobby-right {
     width: 20%;
     height: 100%;
     background-color: var(--background-black);
     border-radius: 1rem;
+}
+
+
+@media (min-height: 800px) {
+    .chatbox {
+        width: 100%;
+        height: 9rem;
+        padding: 0 1rem 0rem 1rem;
+        overflow: auto;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-height: 800px) {}
+
+/* ---------------- */
+/* Room lobby function */
+.lobby-function {
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    min-width: 48%;
+    border-radius: 1rem;
+    gap: 2rem;
+}
+
+.start-now {
+    width: 77%;
+}
+
+.start-now button {
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 2rem;
+    background-color: var(--orange);
+    color: white;
+    border: 1px solid #f6e35a;
+    /* Thêm border ban đầu */
+
+    animation: pulse 2s infinite ease-in-out;
+}
+
+
+.find-create {
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+}
+
+.find-create button {
+    width: 45%;
+    height: 3.5rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: var(--greenBlack);
+    color: white;
+    font-size: 0.8rem;
 }
