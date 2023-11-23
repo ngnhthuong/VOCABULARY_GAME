@@ -4,8 +4,10 @@
   --background-windows: rgba(255, 255, 255, 0.4);
   --background-black: rgba(210, 210, 210, 0.3);
   --background-frame: #f1f1f1;
-  /* --background-modal: #5a7242; */
-  --background-modal: #866d41;
+  --background-modal: #516e33;
+  /* --background-modal: #5a7242;
+  --background-modal: #866d41; */
+  --brow: brown;
   --green: #66CC33;
   --greenBlack: #51b751;
   --orange: #f8c031;

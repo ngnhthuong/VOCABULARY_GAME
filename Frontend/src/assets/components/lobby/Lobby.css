@@ -370,7 +370,7 @@
 .player-list{
     width: 100%;
     min-height: 18.5%;
-    background-color: rgb(210, 180, 144);
+    background-color: rgb(245, 245, 245);
     border-radius: 0.5rem;
     overflow: hidden;
 }
@@ -423,11 +423,17 @@
 .watch-btn{
     height: 1.3rem;
     width: 4rem;
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     border: none;
     border-radius: 0.3rem;
+    background-color: var(--brow);
+    color: white;
 }
 
 .watch-btn:hover{
     transform: scale(1.02);
+}
+
+.watch-btn:active{
+    transform: scale(1.05);
 }
