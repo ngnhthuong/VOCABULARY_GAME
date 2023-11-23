@@ -35,7 +35,7 @@
     position: absolute;
     width: 75vw;
     height: 12vh;
-    background-color: var(--background-modal);
+    background-color: var(--background-brow-dock);
     bottom: 0.5rem;
     border-radius: 1rem 1rem 2.5rem 2.5rem;
     justify-content: space-around;
@@ -57,7 +57,7 @@
         position: absolute;
         width: 75vw;
         height: 13vh;
-        background-color: var(--background-modal);
+        background-color: var(--background-brow-dock);
         bottom: 0.5rem;
         border-radius: 1rem 1rem 2.5rem 2.5rem;
         justify-content: space-around;
