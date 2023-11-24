@@ -33,18 +33,18 @@ import avatar7Img from '../images/player/user7.png'
 
 // Data player 
 
-export const PLAYER_DATA= {
-        name: 'Cow Cow',
-        avatar: avatarImg,
-        frameImg: frameImg,
-        rank: rank1Img,
-        elo: 1000,
-        exp: 98,
-        pow: 56,
+export const PLAYER_DATA = {
+    name: 'Cow Cow',
+    avatar: avatarImg,
+    frameImg: frameImg,
+    rank: rank1Img,
+    elo: 1000,
+    exp: 98,
+    pow: 56,
 }
 
 
-export const PLAYERLIST_DATA= [
+export const PLAYERLIST_DATA = [
     {
         name: 'Cow Cow',
         avatar: avatar1Img,
@@ -118,7 +118,7 @@ export const PLAYERLIST_DATA= [
 ]
 
 // Data task
-export const TASK_DATA= [
+export const TASK_DATA = [
     {
         title: 'Tasks',
         image: taskImg,
@@ -127,7 +127,7 @@ export const TASK_DATA= [
 ]
 
 // Data event
-export const EVENT_DATA= [
+export const EVENT_DATA = [
     {
         title: 'Event',
         image: eventImg,
@@ -190,127 +190,1338 @@ export const ROOMS_DATA = [
     {
         id: 123,
         owner: 'Cow Cow',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Ohmygod',
+                avatar: avatar6Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 128,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 103,
         owner: 'Cow Ahu',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 130,
         owner: 'Cow Aho',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 131,
         owner: 'Cow Adu',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Ohmygod',
+                avatar: avatar6Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 128,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 132,
         owner: 'Cow Milk',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 135,
         owner: 'Cow Max',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 143,
         owner: 'Cow Min',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 135,
         owner: 'Cow Max',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
+        max_member: 5,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 143,
         owner: 'Cow Min',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 135,
         owner: 'Cow Max',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 143,
         owner: 'Cow Min',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 135,
         owner: 'Cow Max',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 143,
         owner: 'Cow Min',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 135,
         owner: 'Cow Max',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 143,
         owner: 'Cow Min',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 135,
         owner: 'Cow Max',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 143,
         owner: 'Cow Min',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 135,
         owner: 'Cow Max',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 143,
         owner: 'Cow Min',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 135,
         owner: 'Cow Max',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
     {
         id: 143,
         owner: 'Cow Min',
+        member: [
+            {
+                name: 'Cow Cow',
+                avatar: avatar1Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 1,
+                exp: 98,
+                pow: 56,
+                caption: 1,
+            },
+            {
+                name: 'Dark Dark',
+                avatar: avatar4Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 12,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Bum Bum',
+                avatar: avatar5Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 18,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+            {
+                name: 'Shut Shut',
+                avatar: avatar7Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 7,
+                exp: 98,
+                pow: 56,
+                caption: null,
+            },
+        ],
         max_member: 5,
-        now_member: 1,
+        get now_member() {
+            return this.member.length;
+        },
+        get full() {
+            if (this.now_member === this.max_member) {
+                return true;
+            }
+            return false;
+        },
     },
 ]

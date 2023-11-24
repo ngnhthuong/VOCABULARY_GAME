@@ -15,7 +15,15 @@ export default function LobbyRoomList({ roomData }) {
                         <p>{room.owner}</p>
                         <p>{room.now_member} / {room.max_member}</p>
                         <p className="room-list-function">
-                            <button className="box--shadow">Join</button>
+                            {room.full === false ? (
+                                <button className="box--shadow">
+                                     <i className="fas fa-sign-in-alt"></i>
+                                </button>
+                            ) : (
+                                <button className="full-label box--shadow">
+                                     <i className="fas fa-ban"></i>
+                                </button>
+                            )}
                         </p>
                     </li>
                 )

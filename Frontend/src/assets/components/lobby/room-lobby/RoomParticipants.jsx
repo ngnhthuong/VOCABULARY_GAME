@@ -1,0 +1,47 @@
+
+export default function RoomParticipants({ roomData }) {
+    return (
+        <div className="lobby-room-participants box--shadow flex--col">
+            <div className="room-participants-header flex--row">
+                <p></p>
+                <p>Player</p>
+                <p>Ranking</p>
+                <p>Elo</p>
+                <p></p>
+            </div>
+            <ul className="room-participants-list flex--col">
+                {roomData.map((room) =>
+                    room.id === 123 ? (
+                        room.member.map((participant, participantIndex) => (
+                            <li key={participantIndex} className="participant flex--row box--shadow-title" >
+                                <div className="participant-avatar flex--row">
+                                        <img src={participant.avatar} alt="" />
+                                </div>
+                                <p className="participant-name">{participant.name}</p>
+                                <p>{participant.ranking}</p>
+                                <p>{participant.elo}</p>
+                                <p className="room-participant-function flex--row">
+                                    <button className="box--shadow">
+                                        <i class="fas fa-eye fa-eye"></i>
+                                    </button>
+                                    <button className="delete box--shadow">
+                                        <i class="fas fa-times fa-x"></i>
+                                    </button>
+                                </p>
+                            </li>
+                        ))
+                    ) : null
+                )}
+            </ul>
+        </div >
+    )
+}
+
+// <li li key={roomIndex} className="participant flex--row box--shadow-title" >
+//     <p>h</p>
+//     <p>h</p>
+//     <p>h</p>
+//     <p className="room-list-function">
+//         <button className="box--shadow">Join</button>
+//     </p>
+// </li>

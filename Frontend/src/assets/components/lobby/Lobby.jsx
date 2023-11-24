@@ -4,7 +4,8 @@ import LobbyChat from './LobbyChat.jsx';
 import LobbyFunction from './LobbyFunction.jsx';
 import LobbyRoomList from './LobbyRoomList.jsx';
 import PlayerList from './LobbyPlayerList.jsx';
-
+import RoomParticipants from './room-lobby/RoomParticipants.jsx';
+import RoomFunction from './room-lobby/RoomFunction.jsx';
 import { ROOMS_DATA, PLAYERLIST_DATA } from '../../data/dataMainMenu.js';
 
 export default function Lobby({ lobby, handleLobby }) {
@@ -23,17 +24,19 @@ export default function Lobby({ lobby, handleLobby }) {
                 </div>
                 <div className="lobby flex--row">
                     <div className="lobby-left flex--col">
+                        {/* <RoomParticipants roomData = {ROOMS_DATA}/> */}
                         <LobbyRoomList roomData = {ROOMS_DATA}/>
                         <div className="lobby-chat-func flex--row">
-                            <LobbyChat/>
-                            <LobbyFunction/>
+                            <LobbyChat />
+                            <LobbyFunction />
+                            {/* <RoomFunction /> */}
                         </div>
                     </div>
                     <div className="lobby-right box--shadow">
-                        <PlayerList playerList = {PLAYERLIST_DATA}/>
+                        <PlayerList playerList={PLAYERLIST_DATA} />
                     </div>
                 </div>
-                <DocksModel/>
+                <DocksModel />
             </div>
         </div>
     )
