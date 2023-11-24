@@ -4,7 +4,7 @@ export default function LobbyChat() {
         <div className="lobby-chat box--shadow flex--col">
             <div className='chatbox'>
                 <ul className='messages'>
-                    <li className='message'>CowCow: Hello I am Thuong CowCow: Hello I am Thuong CowCow: Hello I am Thuong</li>
+                    <li className='message'>CowCow: Hello I am Thuong</li>
                     <li className='message'>MinMin: Hello I am Thuong</li>
                     <li className='message'>CowCow: Hello I am Thuong</li>
                     <li className='message'>MinMin: Hello I am Thuong</li>
