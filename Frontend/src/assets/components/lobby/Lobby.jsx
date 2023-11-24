@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Lobby.css';
 import DocksModel from '../dock/DocksModel';
 import LobbyChat from './LobbyChat.jsx';
@@ -9,6 +10,23 @@ import RoomFunction from './room-lobby/RoomFunction.jsx';
 import { ROOMS_DATA, PLAYERLIST_DATA } from '../../data/dataMainMenu.js';
 
 export default function Lobby({ lobby, handleLobby }) {
+    const [inRoom, setInRoom] = useState(false); /*in room?*/
+    const [roomID, setRoomID] = useState(null);
+    function handleJoinTeam(){
+        setInRoom(!inRoom);
+    }
+
+    function joinRoom(id_room){
+        setRoomID(()=> {return id_room});
+        handleJoinTeam();
+    }
+
+    function outRoom(){
+        setRoomID(()=>{return null});
+        handleJoinTeam();
+    }
+
+
     return (
         <div className={`lobby-outside ${lobby ? 'open' : 'close'}`}>
             <div className="lobby-modal box--shadow">
@@ -23,13 +41,18 @@ export default function Lobby({ lobby, handleLobby }) {
                     </div>
                 </div>
                 <div className="lobby flex--row">
-                    <div className="lobby-left flex--col">
-                        {/* <RoomParticipants roomData = {ROOMS_DATA}/> */}
-                        <LobbyRoomList roomData = {ROOMS_DATA}/>
+                    <div className={`lobby-left flex--col ${inRoom ? 'close' : 'open'}`}>
+                        <LobbyRoomList checkJoin = {joinRoom}  roomData = {ROOMS_DATA}/>
                         <div className="lobby-chat-func flex--row">
                             <LobbyChat />
                             <LobbyFunction />
-                            {/* <RoomFunction /> */}
+                        </div>
+                    </div>
+                    <div className={`lobby-left flex--col ${inRoom ? 'open' : 'close'}`}>
+                        <RoomParticipants roomID = {roomID} roomData={ROOMS_DATA} />
+                        <div className="lobby-chat-func flex--row">
+                            <LobbyChat />
+                            <RoomFunction checkJoin = {outRoom}/>
                         </div>
                     </div>
                     <div className="lobby-right box--shadow">

@@ -1,5 +1,5 @@
 
-export default function RoomParticipants({ roomData }) {
+export default function RoomParticipants({ checkJoin, roomID, roomData }) {
     return (
         <div className="lobby-room-participants box--shadow flex--col">
             <div className="room-participants-header flex--row">
@@ -11,7 +11,7 @@ export default function RoomParticipants({ roomData }) {
             </div>
             <ul className="room-participants-list flex--col">
                 {roomData.map((room) =>
-                    room.id === 123 ? (
+                    room.id === roomID ? (
                         room.member.map((participant, participantIndex) => (
                             <li key={participantIndex} className="participant flex--row box--shadow-title" >
                                 <div className="participant-avatar flex--row">
@@ -36,12 +36,3 @@ export default function RoomParticipants({ roomData }) {
         </div >
     )
 }
-
-// <li li key={roomIndex} className="participant flex--row box--shadow-title" >
-//     <p>h</p>
-//     <p>h</p>
-//     <p>h</p>
-//     <p className="room-list-function">
-//         <button className="box--shadow">Join</button>
-//     </p>
-// </li>
