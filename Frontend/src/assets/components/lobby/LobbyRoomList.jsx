@@ -1,5 +1,5 @@
 
-export default function LobbyRoomList({ roomData }) {
+export default function LobbyRoomList({ checkJoin, roomData }) {
     return (
         <div className="lobby-room-list  box--shadow flex--col">
             <div className="room-list-header flex--row">
@@ -16,7 +16,7 @@ export default function LobbyRoomList({ roomData }) {
                         <p>{room.now_member} / {room.max_member}</p>
                         <p className="room-list-function">
                             {room.full === false ? (
-                                <button className="box--shadow">
+                                <button onClick={() => checkJoin(room.id)} className="box--shadow">
                                      <i className="fas fa-sign-in-alt"></i>
                                 </button>
                             ) : (
