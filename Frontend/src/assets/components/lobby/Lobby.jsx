@@ -7,7 +7,7 @@ import LobbyRoomList from './LobbyRoomList.jsx';
 import PlayerList from './LobbyPlayerList.jsx';
 import RoomParticipants from './room-lobby/RoomParticipants.jsx';
 import RoomFunction from './room-lobby/RoomFunction.jsx';
-import { ROOMS_DATA, PLAYERLIST_DATA } from '../../data/dataMainMenu.js';
+import { ROOMS_DATA, PLAYERLIST_DATA, PLAYER_DATA } from '../../data/dataMainMenu.js';
 
 export default function Lobby({ lobby, handleLobby }) {
     const [inRoom, setInRoom] = useState(false); /*in room?*/
@@ -16,13 +16,28 @@ export default function Lobby({ lobby, handleLobby }) {
         setInRoom(!inRoom);
     }
 
+    function createRoom(){
+        
+    }
+
     function joinRoom(id_room){
         setRoomID(()=> {return id_room});
+        ROOMS_DATA.map((room) => {
+            if(room.id === id_room){
+                room.member.push(PLAYER_DATA);
+            }
+        })
         handleJoinTeam();
     }
 
-    function outRoom(){
+    function outRoom(id_room){
         setRoomID(()=>{return null});
+        ROOMS_DATA.map((room) => {
+            if(room.id === id_room){
+                const newMemberRoom = room.member.filter(user => user.id !== PLAYER_DATA.id);
+                room.member = newMemberRoom;
+            }
+        })
         handleJoinTeam();
     }
 
@@ -35,7 +50,7 @@ export default function Lobby({ lobby, handleLobby }) {
                         <p>Lobby Room</p>
                         <div onClick={handleLobby} className="lobby-close__zone">
                             <div className="lobby-close box--shadow">
-                                <i class="fas fa-times close-icon"></i>
+                                <i className="fas fa-times close-icon"></i>
                             </div>
                         </div>
                     </div>
@@ -52,7 +67,7 @@ export default function Lobby({ lobby, handleLobby }) {
                         <RoomParticipants roomID = {roomID} roomData={ROOMS_DATA} />
                         <div className="lobby-chat-func flex--row">
                             <LobbyChat />
-                            <RoomFunction checkJoin = {outRoom}/>
+                            <RoomFunction roomID = {roomID} checkJoin = {outRoom}/>
                         </div>
                     </div>
                     <div className="lobby-right box--shadow">

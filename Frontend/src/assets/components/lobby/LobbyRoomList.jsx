@@ -12,7 +12,13 @@ export default function LobbyRoomList({ checkJoin, roomData }) {
                 {roomData.map((room, roomIndex) => (
                     <li key={roomIndex} className="room flex--row box--shadow-title">
                         <p>{room.id}</p>
-                        <p>{room.owner}</p>
+                        <p>{room.member.map(
+                            (member) => {
+                                if((member.id === room.owner)){
+                                    return member.name;
+                                }
+                            }
+                        )}</p>
                         <p>{room.now_member} / {room.max_member}</p>
                         <p className="room-list-function">
                             {room.full === false ? (
