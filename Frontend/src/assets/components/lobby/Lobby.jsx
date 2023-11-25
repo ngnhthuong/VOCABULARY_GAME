@@ -24,7 +24,7 @@ export default function Lobby({ lobby, handleLobby }) {
             return !createRoomDisplay;
         })
     }
-    // BUG deplay update room.
+    
     const handleCreateRoom = (maxPlayers) => {
         const id_room = rooms.length + 1;
         const newRoom = {
@@ -85,43 +85,9 @@ export default function Lobby({ lobby, handleLobby }) {
             return newRooms;
         });
         handleJoinTeam();
+        console.log(setRooms); 
     }
     
-    // // BUG affect by deplay update room.
-    // function joinRoom(id_room) {
-    //     console.log(rooms);
-    //     setRoomID(id_room);
-    //     rooms.map((room) => {
-    //         if (room.id === id_room) {
-    //             room.member.push(PLAYER_DATA);
-    //         }
-    //     })
-    //     handleJoinTeam();
-    // }
-
-
-    // // BUG deplay update room after delete.
-    // function outRoom(id_room) {
-    //     setRoomID(null);
-    //     let deleteRoom = false;
-    //     rooms.map((room) => {
-    //         if (room.id === id_room) {
-    //             const newMemberRoom = room.member.filter(user => user.id !== PLAYER_DATA.id);
-    //             if (newMemberRoom.length === 0) {
-    //                 deleteRoom = true;
-    //             }
-    //             room.member = newMemberRoom;
-    //         }
-    //     })
-    //     if (deleteRoom) {
-    //         const newRoomList = rooms.filter(room => room.id !== id_room);
-    //         setRooms([...newRoomList]);
-    //     }
-    //     console.log(rooms);
-    //     handleJoinTeam();
-    // }
-
-
     return (
         <div className={`lobby-outside ${lobby ? 'open' : 'close'}`}>
             <div className="lobby-modal box--shadow">
