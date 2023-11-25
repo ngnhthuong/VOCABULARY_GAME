@@ -1,5 +1,5 @@
 
-export default function LobbyFunction() {
+export default function LobbyFunction({onDisplayCreateRoom}) {
     return (
         <div className="lobby-function flex--col">
             <div className="start-now ">
@@ -8,7 +8,7 @@ export default function LobbyFunction() {
                 </div>
             </div>
             <div className="find-create flex--row">
-                <button className="create-room box--shadow">Create Room</button>
+                <button onClick={onDisplayCreateRoom} className="create-room box--shadow">Create Room</button>
                 <button className="find-room box--shadow">Search Room</button>
             </div>
         </div>

@@ -3,7 +3,7 @@ export default function RoomParticipants({ checkJoin, roomID, roomData }) {
     return (
         <div className="lobby-room-participants box--shadow flex--col">
             <div className="room-participants-header flex--row">
-                <p></p>
+                <p>Room ID: {roomID}</p>
                 <p>Player</p>
                 <p>Ranking</p>
                 <p>Elo</p>
@@ -22,10 +22,10 @@ export default function RoomParticipants({ checkJoin, roomID, roomData }) {
                                 <p>{participant.elo}</p>
                                 <p className="room-participant-function flex--row">
                                     <button className="box--shadow">
-                                        <i class="fas fa-eye fa-eye"></i>
+                                        <i className="fas fa-eye fa-eye"></i>
                                     </button>
                                     <button className="delete box--shadow">
-                                        <i class="fas fa-times fa-x"></i>
+                                        <i className="fas fa-times fa-x"></i>
                                     </button>
                                 </p>
                             </li>

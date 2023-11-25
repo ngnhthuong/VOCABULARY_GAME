@@ -1,0 +1,103 @@
+.create-room-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: var(--background-blackReal);
+}
+
+.create-room-frame {
+    justify-content: center;
+    align-items: center;
+    margin-top: -5rem;
+    width: 20rem;
+    height: 13rem;
+    background-color: var(--background-frame);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.create-room-box-header {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    height: 15%;
+    background-color: blue;
+}
+
+.create-room-box-main {
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 65%;
+}
+
+.create-room-box {
+    overflow: hidden;
+    width: 95%;
+    height: 70%;
+    border-radius: 1rem;
+    background-color: var(--background-modal);
+}
+
+.create-room-btn {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.create-room-btn .cancel,
+.create-room-btn .create {
+    width: 30%;
+    height: 75%;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.create-room-btn .cancel {
+    background-color: var(--brow);
+}
+
+.create-room-btn .create {
+    background-color: var(--green);
+}
+
+.create i,
+.cancel i {
+    color: white;
+}
+
+.create-room-box-main{
+    border: 1px red;
+    height: 100%;
+    width: 100%;
+}
+
+.create-room-box-main button{
+    width: 100%;
+    height: 50%;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 0.7rem;
+    /* font-weight: bold; */
+    text-transform: uppercase;
+}
+
+.active-chose{
+    /* background-color: var(--background-modal); */
+    background: url(../../../../../public/background-chat.png);
+}
+
+.unactive-chose{
+    background-color: var(--navi);
+}
