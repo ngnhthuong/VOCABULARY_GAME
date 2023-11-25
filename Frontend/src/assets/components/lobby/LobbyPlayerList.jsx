@@ -12,7 +12,9 @@ export default function PlayerList({ playerList }) {
                             <p>Rank: {player.ranking}</p>
                             <p>Elo: {player.elo}</p>
                             <div className="player-list__function flex--row">
-                                <button className="watch-btn box--shadow">Watch</button>
+                                <button className="watch-btn box--shadow">
+                                    <i className="fas fa-eye fa-eye"></i>
+                                </button>
                                 <button className="invite-btn box--shadow">Invite</button>
                             </div>
                         </div>

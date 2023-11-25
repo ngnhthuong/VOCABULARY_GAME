@@ -234,6 +234,17 @@ export const ROOMS_DATA = [
                 exp: 98,
                 pow: 56,
             },
+            {
+                id: 6,
+                name: 'Ohmygod',
+                avatar: avatar6Img,
+                frameImg: frameImg,
+                rank: rank1Img,
+                elo: 1000,
+                ranking: 128,
+                exp: 98,
+                pow: 56,
+            },
         ],
         max_member: 5,
         get now_member() {
