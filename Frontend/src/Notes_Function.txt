@@ -1,0 +1,19 @@
+FILE NAME Lobby.jsx
+
+NOTE handleCreateRoomDL
+    - Display create room modal (2player - 5 player).
+    - If false hidden display opposite display modal.
+
+NOTE handleCreateRoom
+    - Create room and add room to data, after that join to room
+    - step 1: Create data room
+    - step 2: Add data to setRooms 
+    - step 3: Move in joinRoom function (callbacks data and display room)
+
+NOTE joinRoom
+    - Join room function join user to room
+    - Step 1: Change useState by id_room
+    - Step 2: Callbacks set up data to rooms and display room
+
+NOTE outRoom
+    - Join room function out room of user

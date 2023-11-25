@@ -1,17 +1,24 @@
 import { useState } from "react";
 import './create-search.css';
 export default function CreateRoom({ onDisplay, onDisplayFC, onCreateRoom }) {
+
     const [createPlayer, setCreatePlayer] = useState(true);
     const [maxPlayers, setMaxPlayers] = useState(2);
 
-    function handleCreatePlayer() {
+    const handleCreatePlayerFive = () => {
         setCreatePlayer(!createPlayer)
-        setMaxPlayers(createPlayer ? 5 : 2);
+        setMaxPlayers(5);
     }
 
-    function handleSubmitRoom() {
+    const handleCreatePlayerTwo = () => {
+        setCreatePlayer(!createPlayer)
+        setMaxPlayers(2);
+    }
+
+    const handleSubmitRoom = () => {
         onDisplayFC();
         onCreateRoom(maxPlayers);
+        setCreatePlayer(true);
         setMaxPlayers(2);
     }
 
@@ -20,8 +27,8 @@ export default function CreateRoom({ onDisplay, onDisplayFC, onCreateRoom }) {
             <div className="create-room-frame flex--col box--shadow">
                 <div className="create-room-box">
                     <div className="create-room-box-main flex--col">
-                        <button onClick={handleCreatePlayer} className={createPlayer ? 'active-chose' : 'unactive-chose'}> Two players </button>
-                        <button onClick={handleCreatePlayer} className={!createPlayer ? 'active-chose' : 'unactive-chose'}> Five players</button>
+                        <button onClick={handleCreatePlayerTwo} className={createPlayer ? 'active-chose' : 'unactive-chose'}> Two players </button>
+                        <button onClick={handleCreatePlayerFive} className={!createPlayer ? 'active-chose' : 'unactive-chose'}> Five players</button>
                     </div>
                 </div>
                 <div className="create-room-btn">
