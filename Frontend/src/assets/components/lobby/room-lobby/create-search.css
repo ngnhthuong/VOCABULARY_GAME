@@ -77,13 +77,13 @@
     color: white;
 }
 
-.create-room-box-main{
+.create-room-box-main {
     border: 1px red;
     height: 100%;
     width: 100%;
 }
 
-.create-room-box-main button{
+.create-room-box-main button {
     width: 100%;
     height: 50%;
     border: none;
@@ -93,11 +93,10 @@
     text-transform: uppercase;
 }
 
-.active-chose{
-    /* background-color: var(--background-modal); */
+.active-chose {
     background: url(../../../../../public/background-chat.png);
 }
 
-.unactive-chose{
+.unactive-chose {
     background-color: var(--navi);
 }
