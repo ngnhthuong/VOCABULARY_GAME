@@ -12,20 +12,11 @@ import RoomParticipants from './room-lobby/RoomParticipants.jsx';
 import RoomFunction from './room-lobby/RoomFunction.jsx';
 import CreateRoom from './room-lobby/CreateRoom.jsx';
 /* --------------------------------------------------- DATA */
-import { ROOMS_DATA, PLAYERLIST_DATA, PLAYER_DATA } from '../../data/dataMainMenu.js';
+// import { ROOMS_DATA, PLAYERLIST_DATA, user } from '../../data/dataMainMenu.js';
 /* --------------------------------------------------------------------------------------------------- */
 
-export default function Lobby({ lobby, handleLobby }) {
-
-    const [rooms, setRooms] = useState([...ROOMS_DATA]);
-    const [inRoom, setInRoom] = useState(false);
+export default function Lobby({userID, roomID, lobby, rooms, playerList,  inRoom, setRooms, handleLobby, setRoomID, handleSetInRoom, handleSetInGame}) {
     const [createRoomDisplay, setCreateRoomDisplay] = useState(false)
-    const [roomID, setRoomID] = useState(null);
-
-    function handleJoinTeam() {
-        setInRoom(!inRoom);
-    };
-
     const handleCreateRoomDL = () => {
         setCreateRoomDisplay(() => {
             return !createRoomDisplay;
@@ -36,7 +27,7 @@ export default function Lobby({ lobby, handleLobby }) {
         const id_room = rooms.length + 1;
         const newRoom = {
             id: id_room,
-            owner: PLAYER_DATA.id,
+            owner: user.id,
             member: [],
             max_member: maxPlayers,
             get now_member() {
@@ -61,13 +52,13 @@ export default function Lobby({ lobby, handleLobby }) {
                 if (room.id === id_room) {
                     return {
                         ...room,
-                        member: [...room.member, PLAYER_DATA],
+                        member: [...room.member, userID],
                     };
                 }
                 return room;
             });
         });
-        handleJoinTeam();
+        handleSetInRoom();
     };
 
     const outRoom = (id_room) => {
@@ -76,7 +67,7 @@ export default function Lobby({ lobby, handleLobby }) {
         setRooms((prevRooms) => {
             const newRooms = prevRooms.map((room) => {
                 if (room.id === id_room) {
-                    const newMemberRoom = room.member.filter((user) => user.id !== PLAYER_DATA.id);
+                    const newMemberRoom = room.member.filter((user) => user.id !== user.id);
                     if (newMemberRoom.length === 0) {
                         deleteRoom = true;
                     }
@@ -92,12 +83,13 @@ export default function Lobby({ lobby, handleLobby }) {
             }
             return newRooms;
         });
-        handleJoinTeam();
+        handleSetInRoom();
         console.log(setRooms);
     };
 
+
     return (
-        <div className={`lobby-outside ${lobby ? 'open' : 'close'}`}>
+        <div className={`lobby-outside ${(lobby) ? 'open' : 'close'}`}>
             <div className="lobby-modal box--shadow">
                 <div className="lobby-header flex--row">
                     <div className="lobby-title">
@@ -116,8 +108,12 @@ export default function Lobby({ lobby, handleLobby }) {
                             roomData={rooms}
                         />
                         <div className="lobby-chat-func flex--row">
-                            <LobbyChat playerChatName={PLAYER_DATA.name} />
-                            <LobbyFunction onDisplayCreateRoom={handleCreateRoomDL} />
+                            <div className='lobby-chat'>
+                                <LobbyChat userName={userID.name} />
+                            </div>
+                            <div className='lobby-function'>
+                                <LobbyFunction onDisplayCreateRoom={handleCreateRoomDL} />
+                            </div>
                             <CreateRoom
                                 onDisplay={createRoomDisplay}
                                 onDisplayFC={handleCreateRoomDL}
@@ -131,12 +127,16 @@ export default function Lobby({ lobby, handleLobby }) {
                             roomData={rooms}
                         />
                         <div className="lobby-chat-func flex--row">
-                            <LobbyChat playerChatName={PLAYER_DATA.name} />
-                            <RoomFunction roomID={roomID} checkJoin={outRoom} />
+                            <div className='lobby-chat'>
+                                <LobbyChat userName={userID.name} />
+                            </div>
+                            <div className='lobby-function'>
+                                <RoomFunction handleSetInGame = {handleSetInGame} roomID={roomID} checkJoin={outRoom} />
+                            </div>
                         </div>
                     </div>
                     <div className="lobby-right box--shadow">
-                        <PlayerList playerList={PLAYERLIST_DATA} />
+                        <PlayerList playerList={playerList} />
                     </div>
                 </div>
                 <DocksModel />
