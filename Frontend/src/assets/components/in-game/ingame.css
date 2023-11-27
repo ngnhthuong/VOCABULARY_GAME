@@ -1,0 +1,220 @@
+#in-game {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    background: url(../../../../public/background.png);
+    background-size: cover;
+}
+
+.ingame__title {
+    color: white;
+}
+
+/* right game */
+
+.right-ingame {
+    justify-content: space-between;
+    align-items: center;
+    width: 77vw;
+    height: 100vh;
+    /* background-color:aqua; */
+    padding: 1rem 0.5rem 1rem 0.5rem;
+}
+
+.ingame-random__vocabulary{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    background-color: var(--background-windows);
+    border-radius: 1rem;
+}
+
+.ingame-panel__vocabulary{
+    width: 100%;
+    height: 88%;
+    background-color: var(--background-windows);
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 0rem 0.5rem 0rem 0.5rem;
+    background: url(../../../../public/background-frame.png);
+}
+
+.col--panel{
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+}
+
+.col-panel__child{
+    width: 100%;
+    height: 8%;
+}
+.row--panel{
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+    height: 100%;
+}
+
+.row-panel__child{
+    width: 16%;
+    height: 100%;
+}
+
+.row-panel__child button{
+    width: 100%;
+    height: 100%;
+    font-size: 0.7rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #000000;
+    color: white;
+}
+
+
+
+/* left game */
+
+.left-ingame {
+    width: 23vw;
+    height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem 1rem 0.5rem;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+}
+
+.ingame__roster {
+    width: 100%;
+    height: 55vh;
+    background-color: var(--background-frame);
+    background: url(../../../../public/background-frame.png);
+    border-radius: 1rem;
+}
+
+.ingame__chat {
+    width: 100%;
+    height: 30vh;
+}
+
+.ingame__function {
+    width: 100%;
+    height: 8vh;
+    background-color: var(--background-frame);
+    border-radius: 1rem;
+    background: url(../../../../public/background-chat1.png);
+}
+
+/* Player Roster */
+.player--roster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.rosters{
+    list-style: none;
+    width: 100%;
+    height: 90%;
+    gap: 5%;
+    overflow: auto;
+    /* margin: 1rem 0 2rem 0; */
+}
+
+.roster-number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 100%;
+    background-color: var(--player-list);
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: url(../../../../public/background-chat1.png);
+    color: #690080;
+}
+
+.roster{
+    height: 100%;
+    width: 85%;
+    background-color: var(--player-list);
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.rosters--line{
+    justify-content: center;
+    align-items: center;
+    min-height: 4.5rem;
+    width: 90%;
+    gap: 0.3rem;
+}
+
+.rosters::-webkit-scrollbar {
+    width: 4px;
+}
+
+.rosters::-webkit-scrollbar-thumb {
+    background-color: var(--orange);
+    border-radius: 4px;
+}
+
+.roster-avt{
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    background:url(../../images/player/frame.png) center center no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.roster-avt img {
+    width: 90%;
+    height: auto;
+    object-fit: cover;
+}
+
+.roster-information{
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+.roster-information p{
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.roster-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 45%;
+    color: #690080;
+}
+
+.roster-score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 45%;
+    background: url(../../../../public/background-chat1.png);
+        border-radius: 1rem;
+}
+
+

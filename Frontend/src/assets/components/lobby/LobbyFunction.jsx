@@ -1,7 +1,7 @@
 
 export default function LobbyFunction({onDisplayCreateRoom}) {
     return (
-        <div className="lobby-function flex--col">
+        <div className="function flex--col">
             <div className="start-now ">
                 <div className="box-animation">
                     <button className="box--shadow" >Start Now</button>

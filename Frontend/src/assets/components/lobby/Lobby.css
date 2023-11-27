@@ -139,7 +139,7 @@
 }
 
 .room-list,
-.room-participants-list{
+.room-participants-list {
     height: 87%;
     width: 100%;
     align-items: center;
@@ -162,7 +162,7 @@
 
 
 
-.room{
+.room {
     justify-content: space-around;
     margin-bottom: 0.5rem;
     width: 97%;
@@ -171,24 +171,26 @@
     border-radius: 0.6rem;
 }
 
-.room p, .participant p, .participant-avatar{
+.room p,
+.participant p,
+.participant-avatar {
     width: 20%;
     font-size: 0.7rem;
     color: white;
 }
 
-.participant-avatar{
+.participant-avatar {
     justify-content: center;
     align-items: center;
     height: 100%;
     overflow: hidden;
 }
 
-.participant-avatar img{
+.participant-avatar img {
     height: 4.1rem;
 }
 
-.participant{
+.participant {
     justify-content: space-around;
     margin-bottom: 0.5rem;
     width: 97%;
@@ -197,7 +199,7 @@
     border-radius: 0.6rem;
 }
 
-.room-participant-function .delete{
+.room-participant-function .delete {
     background-color: var(--brow);
 }
 
@@ -223,20 +225,23 @@
     color: white;
 }
 
-.full-label{
+.full-label {
     background-color: var(--brow) !important;
     user-select: none;
 }
 
-.full-label:hover, .full-label:active{
+.full-label:hover,
+.full-label:active {
     transform: scale(1) !important;
 }
 
-.room-list-function button:hover, .room-participant-function button:hover {
+.room-list-function button:hover,
+.room-participant-function button:hover {
     transform: scale(1.05);
 }
 
-.room-list-function button:active, .room-participant-function button:active {
+.room-list-function button:active,
+.room-participant-function button:active {
     transform: scale(1.1);
 }
 
@@ -250,12 +255,18 @@
     justify-content: space-between;
 }
 
+/* NOTE */
 .lobby-chat {
-    position: relative;
-    min-height: 100%;
+    height: 100%;
     max-width: 49%;
     min-width: 48%;
-    background-color: var( --background-frame);
+}
+
+.chat {
+    position: relative;
+    height: 100%;
+    min-width: 100%;
+    background-color: var(--background-frame);
     border-radius: 1rem;
     padding-top: 1rem;
     overflow: hidden;
@@ -264,10 +275,10 @@
 
 .chatbox {
     width: 100%;
-    height: 8rem;
+    height: 83%;
     padding: 0 1rem 0rem 1rem;
     overflow: auto;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 
 .chatbox::-webkit-scrollbar {
@@ -283,13 +294,13 @@
     list-style: none;
 }
 
-.message{
+.message {
     align-items: center;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
 }
 
-.message p{
+.message p {
     word-wrap: break-word;
     /* padding: 0.3rem 0 0.3rem 0; */
     font-size: 0.5rem !important;
@@ -297,13 +308,12 @@
     line-height: 1rem;
     padding: 0.5rem;
     border-radius: 0 0.7rem 0.7rem 0.7rem;
-    box-shadow:inset 
-    2px 0px 0px 0px rgba(255,255,255,.5),
-    7px 7px 20px 0px rgba(0,0,0,.1),
-    4px 4px 5px 0px rgba(0,0,0,.1);
+    box-shadow: inset 2px 0px 0px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
 }
 
-.message div{
+.message div {
     width: fit-content;
     padding: 0.5rem;
     position: relative;
@@ -311,23 +321,24 @@
     border-radius: 0.7rem 0.7rem 0rem 0;
     color: rgb(105, 0, 128);
     text-decoration: 0.8px underline;
-    box-shadow:inset 
-    2px 2px 2px 0px rgba(255,255,255,.5),
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
 }
 
-.message:nth-child(even) div{
+.message:nth-child(even) div {
     color: rgb(0, 128, 0)
 }
 
-.message:nth-child(odd) div{
+.message:nth-child(odd) div {
     color: rgb(186, 30, 30)
 }
 
-.message:nth-child(even) div, .message:nth-child(even) p{
-        background-color: rgb(255, 255, 255);
+.message:nth-child(even) div,
+.message:nth-child(even) p {
+    background-color: rgb(255, 255, 255);
 }
 
-.message:nth-child(odd) div, .message:nth-child(odd) p{
+.message:nth-child(odd) div,
+.message:nth-child(odd) p {
     background-color: white;
 
 }
@@ -338,7 +349,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2rem;
+    height: 17%;
     overflow: hidden;
 }
 
@@ -349,7 +360,7 @@
     border-radius: 0.2rem;
     padding: 0 2rem 0 1rem;
     border: none;
-    background-color: var(--background-frame);
+    background-color:  lightblue;
 }
 
 #message-input:focus {
@@ -386,40 +397,40 @@
     border-radius: 1rem;
 }
 
-
-@media (min-height: 800px) {
-    .chatbox {
-        width: 100%;
-        height: 9rem;
-        padding: 0 1rem 0rem 1rem;
-        overflow: auto;
-        margin-bottom: 0.5rem;
-    }
-}
-
-@media (max-height: 800px) {}
-
 /* ---------------- */
 /* Room lobby function */
-.lobby-function, .room-function {
+/* NOTE */
+.function,
+.room-function {
+    height: 100%;
+    min-width: 100%;
     justify-content: center;
     align-items: center;
-    min-height: 100%;
-    min-width: 48%;
     border-radius: 1rem;
     gap: 2rem;
 }
 
-.room-start-leave{
+.lobby-function {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 50%;
+    max-width: 51%;
+}
+
+.room-start-leave {
     justify-content: space-around;
     height: 9rem;
 }
 
-.start-now, .room-start-leave {
+.start-now,
+.room-start-leave {
     width: 69%;
 }
 
-.start-now button,.room-start-leave button{
+.start-now button,
+.room-start-leave button {
     width: 100%;
     height: 3.5rem;
     border-radius: 1rem;
@@ -536,11 +547,11 @@
     color: white;
 }
 
-.watch-btn{
+.watch-btn {
     width: 2rem !important;
 }
 
-.watch-btn i{
+.watch-btn i {
     font-size: 0.7rem;
 }
 
