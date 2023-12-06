@@ -2,24 +2,10 @@
 
 :root {
   --background-small: rgba(226, 219, 219, 0.3);
-  --background-windows: rgba(255, 255, 255, 0.4);
-  --background-black: rgba(127, 127, 127, 0.3);
-  --background-blackReal: rgba(0, 0, 0, 0.2);
-  --background-frame: #f1f1f1;
-  --background-modal: #625a4c;
-  --background-brow-dock: #625a4c;
-  --brow: rgb(209, 32, 32);
   --green: #43ae0e;
-  --greenBlack: #2a812a;
   --orange: #f8c031;
   --red: #e40000;
-  --redLight: rgba(255, 0, 0);
-  --brown-fresh: #4e2b12;
-  --color-message: #000000;
-  --navi: #9f9f9f;
-  --teal: #637f7f;
-  --tiffany-blue: #0abab5;
-  --player-list: rgb(245, 245, 245);
+  --login-color: #c6f4f2;
 }
 
 .open {
@@ -48,7 +34,7 @@ main {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: url(../public/background.png);
+  background: url(./public/background.png);
   background-size: cover;
   overflow: hidden;
   background-attachment: fixed;
@@ -76,7 +62,6 @@ main {
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1),
     4px 4px 5px 0px transparent;
-  /* Màu transparent cho bottom */
 }
 
 .title-icon {
