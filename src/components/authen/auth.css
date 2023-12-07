@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Handjet:wght@400;700&display=swap');
+
 #login {
     width: 100vw;
     height: 100vh;
@@ -21,11 +23,13 @@
 }
 
 .login__title {
+    font-family: 'Handjet', monospace !important; 
     align-items: center;
     text-transform: uppercase;
-    font-size: 3.5rem;
+    font-size: 5rem;
     text-shadow: 0 0 4px rgba(35, 34, 34, 0.4);
     color: var(--login-color);
+
 }
 
 .slogan {
@@ -35,6 +39,8 @@
 }
 
 .login__title em {
+    font-family: 'Handjet', monospace !important; 
+    font-size: 5rem;
     font-style: normal;
     color: #00eeff;
 }
@@ -42,6 +48,7 @@
 .login__form label, .signup__form label {
     font-size: 1.5rem;
     color: var(--login-color);
+    font-family: 'Handjet', monospace !important; 
 }
 
 .login__email,
@@ -84,6 +91,7 @@
     border: none;
     background-color: var(--login-color);
     color: #192f2b;
+    font-family: 'Handjet', monospace !important; 
 }
 
 .login__signup:hover, .login__signin:hover{
