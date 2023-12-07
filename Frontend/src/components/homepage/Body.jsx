@@ -1,20 +1,19 @@
-import { TASK_DATA, EVENT_DATA } from "../../assets/data/dataMainMenu.js";
 import cowImg from '../../public/cow.png';
 import cowStart from '../../public/start.png';
+import taskImg from '../../assets/images/task/task.png'
+import eventImg from '../../assets/images/event/fire.gif';
+import giftImg from '../../assets/images/event/gift.png';
+import ruleImg from '../../assets/images/docks/message.png';
+
 export default function Body() {
     return (
         <div id="body" className="flex--row">
-            
+
             <ul className="tasks flex--col">
-                {TASK_DATA.map((task, indexTask) => (
-                    <li className="task flex--col" key={indexTask}>
-                        <div id="notification" className={`box--shadow ${task.notification === undefined ? 'close' : 'active'}`}>
-                            <span>{task.notification}</span>
-                        </div>
-                        <img src={task.image} alt="error task" />
-                        <p className="title-icon">{task.title}</p>
-                    </li>
-                ))}
+                <li className="task flex--col">
+                    <img src={taskImg} alt="error task" />
+                    <p className="title-icon">Tasks</p>
+                </li>
             </ul>
 
             <ul className={`cow-start flex--col`}>
@@ -25,17 +24,23 @@ export default function Body() {
                     <img src={cowStart} alt="error Start" />
                 </li>
             </ul>
-            
+
             <ul className="events flex--col">
-                {EVENT_DATA.map((event, indexEvent) => (
-                    <li className="event flex--col" key={indexEvent}>
-                        <div id="notification" className={`box--shadow ${event.notification === undefined ? 'close' : 'active'}`}>
-                            <span>{event.notification}</span>
-                        </div>
-                        <img src={event.image} alt="error event" />
-                        <p className="title-icon">{event.title}</p>
-                    </li>
-                ))}
+
+                <li className="event flex--col">
+                    <img src={eventImg} alt="error event" />
+                    <p className="title-icon">Fire</p>
+                </li>
+
+                <li className="event flex--col">
+                    <img src={giftImg} alt="error event" />
+                    <p className="title-icon">Fire</p>
+                </li>
+
+                <li className="event flex--col">
+                    <img src={ruleImg} alt="error event" />
+                    <p className="title-icon">Fire</p>
+                </li>
             </ul>
         </div>
     )

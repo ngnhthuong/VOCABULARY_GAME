@@ -40,7 +40,7 @@
     height: 8rem;
     background-color: var(--background-small);
     border-radius: 2rem;
-    background: url(../../images/player/frame.png) center center no-repeat;
+    background: url(../../assets/images/player/frame.png) center center no-repeat;
     background-size: cover;
     overflow: hidden;
 }

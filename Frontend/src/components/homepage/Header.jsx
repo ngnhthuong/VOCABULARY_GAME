@@ -1,7 +1,10 @@
-import { PLAYER_DATA } from "../../assets/data/dataMainMenu.js";
 import buyGoldImg from "../../assets/images/finance/buygold.png"
 import silverImg from "../../assets/images/finance/silver.png"
 import goldImg from "../../assets/images/finance/gold.png"
+// Player
+import avatarImg from '../../assets/images/player/user.png';
+import frameImg from '../../assets/images/player/frame.png';
+import rankImg from '../../assets/images/rank/rank2.png';
 
 export default function Header() {
     return (
@@ -9,7 +12,7 @@ export default function Header() {
             <div id="player-rank__div" className="flex--row">
                 <section id="main-player" className="flex--row box--shadow">
                     <div id="avatar" className="box--shadow">
-                        <img src={PLAYER_DATA.avatar} alt="avatar" />
+                        <img src={avatarImg} alt="avatar" />
                     </div>
                     <ul id="information-player" className="flex--col">
                         <li className="name-player">
@@ -30,17 +33,19 @@ export default function Header() {
                     </ul>
                 </section>
                 <section id="rank" className="box--shadow">
-                    <img src={PLAYER_DATA.rank} alt="" />
+                    <img src={rankImg} alt="" />
                 </section>
             </div>
 
             <div id="finance" className="flex--row">
+
                 <ul className="finance-area buy-gold box--shadow flex--row">
                     <li className="buy-gold__img">
                         <img src={buyGoldImg} alt="buygold" />
                     </li>
                     <li className="buy-gold__title">BUY GOLD</li>
                 </ul>
+
                 <ul className="finance-area box--shadow flex--row">
                     <li className="silver-img">
                         <img src={silverImg} alt="" />
@@ -52,6 +57,7 @@ export default function Header() {
                         <i className="fas fa-plus"></i>
                     </li>
                 </ul>
+
                 <ul className="finance-area box--shadow flex--row">
                     <li className="gold-img">
                         <img src={goldImg} alt="" />
@@ -63,6 +69,7 @@ export default function Header() {
                         <i className="fas fa-plus"></i>
                     </li>
                 </ul>
+                
             </div>
         </header>
     )
