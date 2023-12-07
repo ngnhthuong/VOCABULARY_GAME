@@ -5,7 +5,7 @@
   import SignUp from './pages/SignUp.js';
   import Room from './pages/Room.js';
 
-  import './App.css';
+  import './app.css';
   const router = createBrowserRouter(
     [
       {path: '/', element: <Login/>},

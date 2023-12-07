@@ -1,6 +1,6 @@
-import Body from "../components/homepage/Body";
-import Header from "../components/homepage/Header";
-import Docks from "../components/dock/Docks";
+import Body from "../components/homepage/Body.js";
+import Header from "../components/homepage/Header.js";
+import Docks from "../components/dock/Docks.js";
 import '../components/homepage/home_page.css';
 
 export default function HomePage() {
