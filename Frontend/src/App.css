@@ -2,24 +2,13 @@
 
 :root {
   --background-small: rgba(226, 219, 219, 0.3);
-  --background-windows: rgba(255, 255, 255, 0.4);
-  --background-black: rgba(127, 127, 127, 0.3);
-  --background-blackReal: rgba(0, 0, 0, 0.2);
-  --background-frame: #f1f1f1;
-  --background-modal: #625a4c;
-  --background-brow-dock: #625a4c;
-  --brow: rgb(209, 32, 32);
   --green: #43ae0e;
-  --greenBlack: #2a812a;
+  --greenBlack:#37a003;
   --orange: #f8c031;
   --red: #e40000;
-  --redLight: rgba(255, 0, 0);
-  --brown-fresh: #4e2b12;
-  --color-message: #000000;
-  --navi: #9f9f9f;
-  --teal: #637f7f;
-  --tiffany-blue: #0abab5;
-  --player-list: rgb(245, 245, 245);
+  --redLight: #ce0202;
+  --login-color: #c6f4f2;
+  --modal-background: #dedede;
 }
 
 .open {
@@ -48,7 +37,7 @@ main {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: url(../public/background.png);
+  background: url(./public/background.png);
   background-size: cover;
   overflow: hidden;
   background-attachment: fixed;
@@ -76,7 +65,6 @@ main {
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1),
     4px 4px 5px 0px transparent;
-  /* Màu transparent cho bottom */
 }
 
 .title-icon {
@@ -132,5 +120,112 @@ img {
   100% {
     border-color: #f6e35a;
     box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
+  }
+}
+
+/* modal frame */
+
+.modal__background{
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.modal__frame{
+  width: 70vw;
+  height: 90vh;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url(./public/background-frame.png);
+}
+
+.modal__header{
+  width: 95%;
+  height: 3%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__background--title{
+  background-color: var(--modal-background);
+  width: 15rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.close__modal{
+  position: absolute;
+  right: 0rem;
+  top: -1rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #ce0202;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.close__modal:hover{
+  transform: scale(1.05);
+}
+
+.close__modal:active{
+  transform: scale(1.05);
+}
+
+.close__modal button{
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.close--icon{
+  color: white;
+  font-size: 1rem;
+}
+
+.modal__header--tille{
+  align-content: center;
+  color: rgb(0, 0, 0);
+}
+
+.modal{
+  width: 94%;
+  height: 90%;
+  background-color: var(--modal-background) ;
+  border-radius: 1rem;
+}
+ 
+.open_modal[open] {
+  animation: slide-in-from-top 0.35s ease-out;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
   }
 }
