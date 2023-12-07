@@ -7,8 +7,11 @@
   --orange: #f8c031;
   --red: #e40000;
   --redLight: #ce0202;
+  --redBrown: rgb(209, 32, 32);
   --login-color: #c6f4f2;
   --modal-background: #dedede;
+  --modal-lobby-background: #58503f;
+  --background-color: rgba(132, 132, 132, 0.3);
 }
 
 .open {
@@ -139,14 +142,15 @@ img {
 }
 
 .modal__frame{
-  width: 70vw;
+  width: 80vw;
   height: 90vh;
-  border-radius: 2rem;
+  border-radius: 3.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: url(./public/background-frame.png);
+  background-size: cover;
 }
 
 .modal__header{
@@ -161,7 +165,7 @@ img {
 .modal__background--title{
   background-color: var(--modal-background);
   width: 15rem;
-  height: 3rem;
+  height: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -170,10 +174,10 @@ img {
 
 .close__modal{
   position: absolute;
-  right: 0rem;
-  top: -1rem;
-  width: 2rem;
-  height: 2rem;
+  right: 0.5rem;
+  top: -0.7rem;
+  width: 1.8rem;
+  height: 1.8rem;
   background-color: #ce0202;
   display: flex;
   justify-content: center;
@@ -190,8 +194,8 @@ img {
 }
 
 .close__modal button{
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border: none;
   background: none;
   outline: none;
@@ -208,7 +212,7 @@ img {
 }
 
 .modal{
-  width: 94%;
+  width: 96%;
   height: 90%;
   background-color: var(--modal-background) ;
   border-radius: 1rem;
@@ -229,3 +233,4 @@ img {
     opacity: 0.5;
   }
 }
+

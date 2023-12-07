@@ -22,7 +22,11 @@ const SettingModal = forwardRef(function SettingModal({},ref) {
                             </button>
                         </form>
                     </div>
-                    <div className="modal box--shadow"></div>
+                    <div className="modal box--shadow">
+                        <a href="/">
+                            <button>Exit</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </dialog>
