@@ -2,8 +2,10 @@ import { useRef, useState } from 'react'
 import ErrorMessage from './ErrorMessage';
 import './auth.css'
 export default function AuthLogin() {
-    const [error, setError] = useState({title: null,
-    message: null});
+    const [error, setError] = useState({
+        title: null,
+        message: null
+    });
     const emailLogin = useRef();
     const passwordLogin = useRef();
     const errorMessage = useRef();
@@ -17,7 +19,7 @@ export default function AuthLogin() {
         console.log(email);
         console.log(password);
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (email.length<5 || !emailRegex.test(email)) {
+        if (email.length < 5 || !emailRegex.test(email)) {
             setError({
                 title: 'ERROR EMAIL TYPE',
                 message: 'your email is false!'
@@ -37,15 +39,16 @@ export default function AuthLogin() {
                 message: 'your password is very short!'
             })
             handleOpenModal();
+        } else {
+            window.location.href = '/homepage';
         }
-        return;
     }
     const errorHandler = () => {
         setError(null);
     }
     return (
         <>
-            <ErrorMessage ref={errorMessage} errorValue = {error}/>
+            <ErrorMessage ref={errorMessage} errorValue={error} />
             <div id="login">
                 <form method="post" className="login__form">
                     <h1 className='login__title'>Login <em>Cow</em> Game</h1>
