@@ -1,4 +1,6 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
+import { createPortal } from "react-dom";
+
 const RankingModal = forwardRef(function RankingModal({},ref) {
     const rankingModal = useRef();
     useImperativeHandle(ref, () => {
@@ -8,7 +10,7 @@ const RankingModal = forwardRef(function RankingModal({},ref) {
             }
         }
     });
-    return (
+    return createPortal(
         <dialog ref={rankingModal} className="open_modal">
             <div className="modal__background close-modal">
                 <div className="modal__frame box--shadow">
@@ -25,7 +27,8 @@ const RankingModal = forwardRef(function RankingModal({},ref) {
                     <div className="modal box--shadow"></div>
                 </div>
             </div>
-        </dialog>
+        </dialog>,
+        document.getElementById('modal')
     );
 });
 

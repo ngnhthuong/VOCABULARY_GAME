@@ -1,4 +1,6 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
+import { createPortal } from "react-dom";
+
 const StoreModal = forwardRef(function StoreModal({},ref) {
     const storeModal = useRef();
     useImperativeHandle(ref, () => {
@@ -8,7 +10,7 @@ const StoreModal = forwardRef(function StoreModal({},ref) {
             }
         }
     });
-    return (
+    return createPortal(
         <dialog ref={storeModal} className="open_modal">
             <div className="modal__background close-modal">
                 <div className="modal__frame box--shadow">
@@ -25,7 +27,8 @@ const StoreModal = forwardRef(function StoreModal({},ref) {
                     <div className="modal box--shadow"></div>
                 </div>
             </div>
-        </dialog>
+        </dialog>,
+        document.getElementById('modal')
     );
 });
 

@@ -153,10 +153,10 @@
     width: 30%;
     height: 2.4rem;
     background-color: var(--background-small);
-    list-style: none;
     border-radius: 2rem;
     padding-left: 0.4rem;
     gap: 0.8rem;
+    list-style: none;
 }
 
 
@@ -380,7 +380,7 @@
     overflow: auto;
     list-style: none;
     gap: 0.5rem;
-    padding-bottom: 1rem ;
+    padding-bottom: 1rem;
 }
 
 .modal__listroom>li {
@@ -438,7 +438,7 @@
 }
 
 .modal__listroom--function {
-    height:14%;
+    height: 14%;
     width: 97%;
     background-color: var(--background-color);
     border-radius: 0 0 1rem 1rem;
@@ -465,40 +465,48 @@
     border-radius: 0.5rem;
     border: none;
 }
-.modal__listroom--function .start__now{
+
+.modal__listroom--function .start__now {
     background-color: var(--orange);
     color: white;
 }
-.start__now{
+
+.start__now {
     animation: pulse 2s infinite ease-in-out;
 }
 
-.find__room, .create__room{
+.find__room,
+.create__room {
     background-color: var(--green);
     color: white;
 }
 
-.find__room:hover, .create__room:hover, .start__now:hover{
+.find__room:hover,
+.create__room:hover,
+.start__now:hover {
     transform: scale(1.05);
 }
 
-.find__room:active, .create__room:active, .start__now:active{
+.find__room:active,
+.create__room:active,
+.start__now:active {
     transform: scale(1.1);
 }
 
 @keyframes pulse {
     0% {
-      border-color: #f6e35a;
-      box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
+        border-color: #f6e35a;
+        box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
     }
-  
+
     50% {
-      border-color: #f8c031;
-      box-shadow: 0 0 0 0.7rem rgba(248, 165, 49, 0);
+        border-color: #f8c031;
+        box-shadow: 0 0 0 0.7rem rgba(248, 165, 49, 0);
     }
-  
+
     100% {
-      border-color: #f6e35a;
-      box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
+        border-color: #f6e35a;
+        box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
     }
 }
+

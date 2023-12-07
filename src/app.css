@@ -175,9 +175,9 @@ img {
 .close__modal{
   position: absolute;
   right: 0.5rem;
-  top: -0.7rem;
-  width: 1.8rem;
-  height: 1.8rem;
+  top: -0.85rem;
+  width: 2.5rem;
+  height: 2rem;
   background-color: #ce0202;
   display: flex;
   justify-content: center;
@@ -206,14 +206,14 @@ img {
   font-size: 1rem;
 }
 
-.modal__header--tille{
+.modal__header--title{
   align-content: center;
   color: rgb(0, 0, 0);
 }
 
 .modal{
   width: 96%;
-  height: 90%;
+  height: 92%;
   background-color: var(--modal-background) ;
   border-radius: 1rem;
 }
