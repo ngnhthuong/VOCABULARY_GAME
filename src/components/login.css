@@ -1,4 +1,4 @@
-#login {
+/* #login {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -92,4 +92,4 @@
 
 .login__signup:active, .login__signin:active{
     transform: scale(1.1);
-}
+} */

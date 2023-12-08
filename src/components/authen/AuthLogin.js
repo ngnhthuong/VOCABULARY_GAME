@@ -9,6 +9,7 @@ export default function AuthLogin() {
     const emailLogin = useRef();
     const passwordLogin = useRef();
     const errorMessage = useRef();
+    
     function handleOpenModal() {
         errorMessage.current.open();
     }
@@ -16,27 +17,25 @@ export default function AuthLogin() {
     function handleClickLogin() {
         const email = emailLogin.current.value;
         const password = passwordLogin.current.value;
-        console.log(email);
-        console.log(password);
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email.length < 5 || !emailRegex.test(email)) {
             setError({
                 title: 'ERROR EMAIL TYPE',
-                message: 'your email is false!'
+                message: 'Your email is false!'
             })
             handleOpenModal();
         }
         else if (password.length < 8) {
             setError({
                 title: 'ERROR PASSWORD',
-                message: 'your password is very short!'
+                message: 'Your password is very short!'
             })
             handleOpenModal();
         }
         else if (password !== '123456789' || email !== 'thuong@gmail.com') {
             setError({
                 title: 'WRONG ACCOUNT',
-                message: 'your password is very short!'
+                message: 'Your password is very short!'
             })
             handleOpenModal();
         } else {
@@ -44,11 +43,16 @@ export default function AuthLogin() {
         }
     }
     const errorHandler = () => {
-        setError(null);
+        setError({
+            title: null,
+            message: null
+        }
+        );
     }
+    console.log(error)
     return (
         <>
-            <ErrorMessage ref={errorMessage} errorValue={error} />
+            <ErrorMessage ref={errorMessage} errorValue={error} errorHandler={errorHandler} />
             <div id="login">
                 <form method="post" className="login__form">
                     <h1 className='login__title'>Login <em>Cow</em> Game</h1>

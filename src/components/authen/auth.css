@@ -58,8 +58,7 @@
     height: 6rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: space-around;
 }
 
 .login__email input,
@@ -85,7 +84,7 @@
 
 .login__signup, .login__signin{
     border-radius: 0.5rem;
-    width: 5rem;
+    width: 8rem;
     height: 2.5rem;
     font-size: 1.5rem;
     border: none;
@@ -100,4 +99,10 @@
 
 .login__signup:active, .login__signin:active{
     transform: scale(1.1);
+}
+
+.error-signup__message{
+    height: 1.2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: red;
 }
