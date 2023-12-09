@@ -43,7 +43,7 @@ export default function InitPlayer() {
                     <li
                         key={index}
                         onClick={() => handleAvatarClick(image)}
-                        className={`avatar box--shadow ${selectedAvatar === image ? 'selected' : ''}`}
+                        className={`avatar box--shadow ${selectedAvatar === image ? 'selected flash' : ''}`}
                     >
                         <img src={image} alt={`avatar-${index}`} />
                     </li>

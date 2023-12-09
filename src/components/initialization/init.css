@@ -61,7 +61,7 @@
 }
 
 .avatar:hover{
-    background-color: var(--orange);
+    background-color: var(--orange-lastic);
 }
 
 .avatar img{
@@ -84,4 +84,8 @@
 
 .init-btn:active{
     transform: scale(1.1);
+}
+
+.selected{
+    background-color: var(--orange-lastic);
 }
