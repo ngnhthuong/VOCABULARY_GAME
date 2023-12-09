@@ -19,50 +19,74 @@ export default function SignUp() {
     const phone_signup = useRef();
     const password_signup = useRef();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+    function handleChange(event){
+        let email = email_signup.target.value;
+        let phone = phone_signup.current.value;
+        let password = password_signup.current.value;
+    }
+    
     const handleSignUp = () => {
         let email = email_signup.current.value;
         let phone = phone_signup.current.value;
         let password = password_signup.current.value;
-        if (email.length < 5 || !emailRegex.test(email)) {
-            setErrorSignup((value) => ({
-                ...value,
-                email: "Wrong email!"
-            }));
-        } else {
-            setErrorSignup((value) => ({
-                ...value,
-                email: null
-            }));
-        }
-        if (phone.length < 10) {
-            setErrorSignup((value) => ({
-                ...value,
-                phone: "Phone weak!"
-            }));
-        } else {
-            setErrorSignup((value) => ({
-                ...value,
-                phone: null
-            }));
-        }
-        if (password.length < 8) {
-            setErrorSignup((value) => ({
-                ...value,
-                password: "Password very weak!"
-            }));
-        } else {
-            setErrorSignup((value) => ({
-                ...value,
-                password: null
-            }));
-        }
-        console.log(errorSignup);
-        if (errorSignup.password === null && errorSignup.phone === null && errorSignup.email === null) {
+        if ((email.length < 5 || !emailRegex.test(email)) || phone.length < 10 || password.length < 8) {
+            if (email.length < 5 || !emailRegex.test(email)) {
+                setErrorSignup((value) => ({
+                    ...value,
+                    email: "Wrong email!"
+                }));
+            } else {
+                setErrorSignup((value) => ({
+                    ...value,
+                    email: null
+                }));
+            }
+            if (phone.length < 10) {
+                setErrorSignup((value) => ({
+                    ...value,
+                    phone: "Phone weak!"
+                }));
+            } else {
+                setErrorSignup((value) => ({
+                    ...value,
+                    phone: null
+                }));
+            }
+            if (password.length < 8) {
+                setErrorSignup((value) => ({
+                    ...value,
+                    password: "Password very weak!"
+                }));
+            } else {
+                setErrorSignup((value) => ({
+                    ...value,
+                    password: null
+                }));
+            }
+        } else if (errorSignup.password === null && errorSignup.phone === null && errorSignup.email === null) {
             window.location.href = '/';
+        } else if ((email.length > 5 || emailRegex.test(email)) || phone.length >= 10 || password.length > 8) {
+            if (email.length > 5 || emailRegex.test(email)) {
+                setErrorSignup((value) => ({
+                    ...value,
+                    email: null
+                }));
+            }
+            if (phone.length >= 10) {
+                setErrorSignup((value) => ({
+                    ...value,
+                    phone: null
+                }));
+            }
+            if (password.length > 8) {
+                setErrorSignup((value) => ({
+                    ...value,
+                    password: null
+                }));
+            }
         }
     };
-
+    console.log(errorSignup)
     return (
         <div id="login">
             <form method="post" className="signup__form">

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import ErrorMessage from './ErrorMessage';
 import './auth.css'
+import { PLAYER_DATA } from '../PLAYER_DATA';
 export default function AuthLogin() {
     const [error, setError] = useState({
         title: null,
@@ -9,10 +10,11 @@ export default function AuthLogin() {
     const emailLogin = useRef();
     const passwordLogin = useRef();
     const errorMessage = useRef();
-    
+
     function handleOpenModal() {
         errorMessage.current.open();
     }
+    console.log(PLAYER_DATA[1]);
 
     function handleClickLogin() {
         const email = emailLogin.current.value;
@@ -31,16 +33,16 @@ export default function AuthLogin() {
                 message: 'Your password is very short!'
             })
             handleOpenModal();
-        }
-        else if (password !== '123456789' || email !== 'thuong@gmail.com') {
-            setError({
-                title: 'WRONG ACCOUNT',
-                message: 'Your password is very short!'
-            })
-            handleOpenModal();
         } else {
-            window.location.href = '/homepage';
+            PLAYER_DATA.map((player) => {
+                if (player.email === email && player.password === password && player.player_name !== null) {
+                    window.location.href = '/homepage';
+                } else if (player.email === email && player.password === password && player.player_name === null) {
+                    window.location.href = '/initplayer';
+                }
+            })
         }
+
     }
     const errorHandler = () => {
         setError({

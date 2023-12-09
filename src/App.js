@@ -4,6 +4,7 @@
   import Login from './pages/Login.js';
   import SignUp from './pages/SignUp.js';
   import Room from './pages/Room.js';
+  import InitPlayer from './components/initialization/InitPlayer.js';
 
   import './app.css';
   const router = createBrowserRouter(
@@ -12,6 +13,7 @@
       {path: '/homepage', element: <HomePage/>},
       {path: '/signup', element: <SignUp/>},
       {path: '/room', element: <Room/>}, 
+      {path: '/initplayer', element: <InitPlayer/>}, 
     ]
   )
   function App() {
