@@ -332,7 +332,6 @@
 }
 
 .modal__lobby--title {
-    background-color: var(--modal-lobby-background);
     width: 15rem;
     height: 2.5rem;
     display: flex;
@@ -346,7 +345,7 @@
     width: 97%;
     height: 77%;
     background-color: var(--background-color);
-    border-radius: 1rem 1rem 0 0;
+    border-radius: 1rem;
     overflow: hidden;
 }
 
@@ -356,10 +355,11 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 5%;
+    height: 8%;
     padding: 1rem 0 1rem 0;
     list-style: none;
     color: white;
+    background-color: #218b82;
 }
 
 .modal__listroom--label {
@@ -380,7 +380,9 @@
     overflow: auto;
     list-style: none;
     gap: 0.5rem;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    background-color: rgba(144, 205, 195, 0.9);
 }
 
 .modal__listroom>li {
@@ -397,15 +399,22 @@
     justify-content: space-around;
     align-items: center;
     list-style: none;
-    background-color: var(--background-color);
+    background-color: rgba(255, 189, 203, 0.8);
 }
 
-.modal__listroom--function {
-    height: 10%;
-    width: 97%;
-    background-color: bisque;
-    list-style: none;
+.modal__listroom--room:hover{
+    background-color: rgb(253, 164, 183);
 }
+
+.modal__listroom--room a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 100%;
+}
+
+
 
 .modal__listroom--fn {
     display: flex;
@@ -419,9 +428,17 @@
     width: 4rem;
     height: 80%;
     border-radius: 0.5rem;
-    background-color: var(--greenBlack);
+    background-color: #218b82;
     border: none;
     color: white;
+}
+
+.modal__listroom--join:hover{
+    transform: scale(1.05);
+}
+
+.modal__listroom--join:active{
+    transform: scale(1.02);
 }
 
 .room--full {
@@ -433,15 +450,15 @@
 }
 
 .modal__listroom::-webkit-scrollbar-thumb {
-    background-color: var(--orange);
+    background-color: #218b82;
     border-radius: 4px;
 }
 
 .modal__listroom--function {
-    height: 14%;
+    height: 15%;
     width: 97%;
-    background-color: var(--background-color);
-    border-radius: 0 0 1rem 1rem;
+    background-color: rgba(144, 205, 195, 0.9);
+    border-radius:1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -454,7 +471,7 @@
     justify-content: center;
     align-items: center;
     width: 20%;
-    height: 90%;
+    height: 3.5rem;
 }
 
 .modal__listroom--function .create__room,
@@ -462,8 +479,9 @@
 .modal__listroom--function .start__now {
     width: 100%;
     height: 3.5rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     border: none;
+    font-size: 0.7rem;
 }
 
 .modal__listroom--function .start__now {
@@ -471,13 +489,15 @@
     color: white;
 }
 
-.start__now {
+.start__animation{
+    width: 100%;
+    border-radius: 1rem;
     animation: pulse 2s infinite ease-in-out;
 }
 
 .find__room,
 .create__room {
-    background-color: var(--green);
+    background-color: #218b82;
     color: white;
 }
 

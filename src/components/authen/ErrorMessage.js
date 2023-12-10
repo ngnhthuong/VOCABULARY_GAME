@@ -16,7 +16,7 @@ const ErrorMessage = forwardRef(function ErrorMessage({ errorValue, errorHandler
 
     return createPortal(
         <dialog ref={errorMessage} id="effectModal" >
-            <div className="modal-message ">
+            <div className="modal-message box--shadow">
                 <div className="modal-message__error box--shadow">
                     <div className="modal-message__title box--shadow">{errorValue.title}</div>
                     <div className="modal-message__text">{errorValue.message}</div>

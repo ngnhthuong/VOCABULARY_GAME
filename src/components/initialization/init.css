@@ -44,10 +44,10 @@
     list-style: none;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     gap: 1rem;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
 }
 
 .avatar{
@@ -58,10 +58,11 @@
     height: 10rem;
     overflow: hidden;
     border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .avatar:hover{
-    background-color: var(--orange-lastic);
+    background-color: var(--green-lastic);
 }
 
 .avatar img{
@@ -74,7 +75,7 @@
     height: 3rem;
     border-radius: 1rem;
     border: none;
-    background-color: var(--greenBlack);
+    background-color: var(--green-lastic);
     color: white;
 }
 
@@ -87,5 +88,5 @@
 }
 
 .selected{
-    background-color: var(--orange-lastic);
+    background-color: var(--green-lastic);
 }

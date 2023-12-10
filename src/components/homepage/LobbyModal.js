@@ -1,5 +1,5 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
-import {createPortal} from 'react-dom';
+import { createPortal } from 'react-dom';
 
 const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
     const lobbyModal = useRef();
@@ -16,7 +16,7 @@ const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
                 <div className="modal__frame box--shadow">
                     <div className="modal__header">
                         <div className="modal__lobby--title">
-                            <p className="modal__lobby--tille">Lobby</p>
+                            <p className="modal__lobby--tille">L 0 B B Y</p>
                         </div>
                         <form method="dialog" className="box--shadow close__modal">
                             <button>
@@ -26,7 +26,7 @@ const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
                     </div>
                     <div className="modal__lobby">
                         <div className="modal__lobby--listroom box--shadow">
-                            <ul className="modal__listroom--header">
+                            <ul className="modal__listroom--header box--shadow">
                                 <li className="modal__listroom--label">
                                     ID
                                 </li>
@@ -39,16 +39,18 @@ const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
                                 <li className="modal__listroom--label">
                                 </li>
                             </ul>
-                            <ul className="modal__listroom">
+                            <ul className="modal__listroom box--shadow">
                                 <li>
                                     <ul className="modal__listroom--room box--shadow">
                                         <li className="modal__listroom--label">102</li>
                                         <li className="modal__listroom--label">CowCow</li>
                                         <li className="modal__listroom--label">4/5</li>
                                         <li className="modal__listroom--label modal__listroom--fn">
-                                            <button className="modal__listroom--join box--shadow">
-                                                <i className="fas fa-sign-in-alt"></i>
-                                            </button>
+                                            <a href="/room">
+                                                <button className="modal__listroom--join box--shadow">
+                                                    <i className="fas fa-sign-in-alt"></i>
+                                                </button>
+                                            </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -107,7 +109,7 @@ const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
                                         <li className="modal__listroom--label">4/5</li>
                                         <li className="modal__listroom--label modal__listroom--fn">
                                             <button className="modal__listroom--join room--full  box--shadow">
-                                                <i className="fas fa-ban"></i>                                            
+                                                <i className="fas fa-ban"></i>
                                             </button>
                                         </li>
                                     </ul>
@@ -131,7 +133,7 @@ const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
                                         <li className="modal__listroom--label">4/5</li>
                                         <li className="modal__listroom--label modal__listroom--fn">
                                             <button className="modal__listroom--join room--full  box--shadow">
-                                                <i className="fas fa-ban"></i>                                            
+                                                <i className="fas fa-ban"></i>
                                             </button>
                                         </li>
                                     </ul>
@@ -155,7 +157,7 @@ const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
                                         <li className="modal__listroom--label">4/5</li>
                                         <li className="modal__listroom--label modal__listroom--fn">
                                             <button className="modal__listroom--join room--full  box--shadow">
-                                                <i className="fas fa-ban"></i>                                            
+                                                <i className="fas fa-ban"></i>
                                             </button>
                                         </li>
                                     </ul>
@@ -179,7 +181,7 @@ const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
                                         <li className="modal__listroom--label">4/5</li>
                                         <li className="modal__listroom--label modal__listroom--fn">
                                             <button className="modal__listroom--join room--full  box--shadow">
-                                                <i className="fas fa-ban"></i>                                            
+                                                <i className="fas fa-ban"></i>
                                             </button>
                                         </li>
                                     </ul>
@@ -203,7 +205,7 @@ const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
                                         <li className="modal__listroom--label">4/5</li>
                                         <li className="modal__listroom--label modal__listroom--fn">
                                             <button className="modal__listroom--join room--full  box--shadow">
-                                                <i className="fas fa-ban"></i>                                            
+                                                <i className="fas fa-ban"></i>
                                             </button>
                                         </li>
                                     </ul>
@@ -217,7 +219,7 @@ const LobbyModal = forwardRef(function LobbyModal({ }, ref) {
                             <li>
                                 <button className="find__room box--shadow">Search room</button>
                             </li>
-                            <li>
+                            <li className="start__animation">
                                 <button className="start__now box--shadow">Start Now</button>
                             </li>
                         </ul>

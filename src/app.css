@@ -5,14 +5,20 @@
   --green: #43ae0e;
   --greenBlack:#37a003;
   --orange: #f8c031;
-  --orange-lastic: rgba(250, 225, 6, 0.7);
+  --orange-lastic: rgba(255, 247, 0, 0.8);
+  --green-lastic: rgba(0, 231, 54, 0.7);
   --red: #e40000;
   --redLight: #ce0202;
   --redBrown: rgb(209, 32, 32);
   --login-color: #c6f4f2;
   --modal-background: #dedede;
-  --modal-lobby-background: #58503f;
+  --modal-lobby-background: rgba(243, 203, 189);
+  --modal-room-background: rgba(220, 216, 216, 0.9);
   --background-color: rgba(132, 132, 132, 0.3);
+  --background-chat: #218b82;
+  --background-middle-room: #218b82;
+  --background-player-room: #A9C8C0;
+  ;
 }
 
 .open {
@@ -143,8 +149,8 @@ img {
 }
 
 .modal__frame{
-  width: 80vw;
-  height: 90vh;
+  width: 70vw;
+  height: 89vh;
   border-radius: 3.5rem;
   display: flex;
   flex-direction: column;
@@ -156,7 +162,7 @@ img {
 
 .modal__header{
   width: 95%;
-  height: 3%;
+  height: 5%;
   display: flex;
   position: relative;
   justify-content: center;
@@ -176,7 +182,7 @@ img {
 .close__modal{
   position: absolute;
   right: 0.5rem;
-  top: -0.85rem;
+  top: -0.2rem;
   width: 2.5rem;
   height: 2rem;
   background-color: #ce0202;
@@ -233,5 +239,10 @@ img {
   100% {
     opacity: 0.5;
   }
+}
+
+.box-animation{
+    border: none;
+    animation: pulse 2s infinite ease-in-out;
 }
 
