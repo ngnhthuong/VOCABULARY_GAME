@@ -62,11 +62,13 @@ export default function MiddleRoom() {
                     </button>
                 </div>
                 <div className='room-body__middle--start box-animation'>
-                    <button className='room-body__middle--start-btn box--shadow'>
-                        START
-                    </button>
+                    <a href="/match">
+                        <button className='room-body__middle--start-btn box--shadow'>
+                            START
+                        </button>
+                    </a>
                 </div>
             </div>
-            </>
+        </>
     )
 }

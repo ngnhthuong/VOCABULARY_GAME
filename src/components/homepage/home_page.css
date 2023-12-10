@@ -442,6 +442,7 @@
 }
 
 .room--full {
+    pointer-events: none;
     background-color: var(--redBrown);
 }
 

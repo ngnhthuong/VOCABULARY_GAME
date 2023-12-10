@@ -52,7 +52,6 @@ export default function ChatRoom() {
                         </div>
                         <p><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
                     </li>
-
                 </ul>
             </div>
             <div className='room-chat__send box--shadow'>
