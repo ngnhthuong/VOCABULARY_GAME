@@ -151,102 +151,109 @@ export default function Match() {
                     </div>
                 </div>
             </div>
-            <div className="match-form__right box--shadow">
-                <div className='player-ratings__ingame match-element__active-player box--shadow'>
-                    <div className='player-ratings__ingame-numbers box--shadow'>
-                        <div className="player-ratings__ingame-number player-ratings__ingame-number-border-left  ingame-top1 box--shadow">1</div>
-                        <div className="player-ratings__ingame-number ingame-top2 box--shadow">2</div>
-                        <div className="player-ratings__ingame-number ingame-top3 box--shadow">3</div>
-                        <div className="player-ratings__ingame-number ingame-top4 box--shadow">4</div>
+            <div className='match-form__right'>
+                <div className="math-form__right-chatrank box--shadow">
+                    <div className='player-ratings__ingame match-element__active-player box--shadow'>
+                        <div className='player-ratings__ingame-numbers box--shadow'>
+                            <div className="player-ratings__ingame-number player-ratings__ingame-number-border-left  ingame-top1 box--shadow">1</div>
+                            <div className="player-ratings__ingame-number ingame-top2 box--shadow">2</div>
+                            <div className="player-ratings__ingame-number ingame-top3 box--shadow">3</div>
+                            <div className="player-ratings__ingame-number ingame-top4 box--shadow">4</div>
+                        </div>
+                        <div className='player-ratings__ingame-information'>
+                            <div className="player-ratings__player-information player-ratings__player-information1 box--shadow">
+                                <div className='player-ratings__player-information--avatar box--shadow' >
+                                    <img src={userImg1} alt="error" />
+                                </div>
+                                <div className='player-ratings__player-information--namescore'>
+                                    <p className='player-ratings__player-information--name'>Cowcow</p>
+                                    <p className='player-ratings__player-information--scorer'>Score: 1331</p>
+                                </div>
+                            </div>
+                            <div className="player-ratings__player-information player-ratings__player-information2 box--shadow">
+                                <div className='player-ratings__player-information--avatar box--shadow' >
+                                    <img src={userImg7} alt="error" />
+                                </div>
+                                <div className='player-ratings__player-information--namescore'>
+                                    <p className='player-ratings__player-information--name'>Hulaboly</p>
+                                    <p className='player-ratings__player-information--scorer'>Score: 1331</p>
+                                </div>
+                            </div>
+                            <div className="player-ratings__player-information player-ratings__player-information3 box--shadow">
+                                <div className='player-ratings__player-information--avatar box--shadow' >
+                                    <img src={userImg4} alt="error" />
+                                </div>
+                                <div className='player-ratings__player-information--namescore'>
+                                    <p className='player-ratings__player-information--name'>Minsum</p>
+                                    <p className='player-ratings__player-information--scorer'>Score: 1331</p>
+                                </div>
+                            </div>
+                            <div className="player-ratings__player-information player-ratings__player-information4 box--shadow">
+                                <div className='player-ratings__player-information--avatar box--shadow' >
+                                    <img src={userImg5} alt="error" />
+                                </div>
+                                <div className='player-ratings__player-information--namescore'>
+                                    <p className='player-ratings__player-information--name'>Ramboas</p>
+                                    <p className='player-ratings__player-information--scorer'>Score: 1331</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className='player-ratings__ingame-information'>
-                        <div className="player-ratings__player-information player-ratings__player-information1 box--shadow">
-                            <div className='player-ratings__player-information--avatar box--shadow' >
-                                <img src={userImg1} alt="error" />
-                            </div>
-                            <div className='player-ratings__player-information--namescore'>
-                                <p className='player-ratings__player-information--name'>Cowcow</p>
-                                <p className='player-ratings__player-information--scorer'>Score: 1331</p>
-                            </div>
+                    <div className='chat-ingame box--shadow'>
+                        <div className='chat-ingame__title box--shadow'></div>
+                        <div className='chat-ingame__message'>
+                            <ul className='room-chat__list room-chat__ingame--list'>
+                                <li className='room-chat__message box--shadow'>
+                                    <div className='room-chat__message--avatar box--shadow'>
+                                        <img src={userImg1} alt="error" />
+                                    </div>
+                                    <p className='font-chat_ingame'><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell!</p>
+                                </li>
+                                <li className='room-chat__message box--shadow'>
+                                    <div className='room-chat__message--avatar box--shadow'>
+                                        <img src={userImg2} alt="error" />
+                                    </div>
+                                    <p className='font-chat_ingame'><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell!</p>
+                                </li>
+                                <li className='room-chat__message box--shadow'>
+                                    <div className='room-chat__message--avatar box--shadow'>
+                                        <img src={userImg4} alt="error" />
+                                    </div>
+                                    <p className='font-chat_ingame'><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
+                                </li>
+                                <li className='room-chat__message box--shadow'>
+                                    <div className='room-chat__message--avatar box--shadow'>
+                                        <img src={userImg5} alt="error" />
+                                    </div>
+                                    <p className='font-chat_ingame'><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
+                                </li>
+                                <li className='room-chat__message box--shadow'>
+                                    <div className='room-chat__message--avatar box--shadow'>
+                                        <img src={userImg6} alt="error" />
+                                    </div>
+                                    <p className='font-chat_ingame'><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
+                                </li>
+                                <li className='room-chat__message box--shadow'>
+                                    <div className='room-chat__message--avatar box--shadow'>
+                                        <img src={userImg7} alt="error" />
+                                    </div>
+                                    <p className='font-chat_ingame'><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
+                                </li>
+                            </ul>
                         </div>
-                        <div className="player-ratings__player-information player-ratings__player-information2 box--shadow">
-                            <div className='player-ratings__player-information--avatar box--shadow' >
-                                <img src={userImg7} alt="error" />
-                            </div>
-                            <div className='player-ratings__player-information--namescore'>
-                                <p className='player-ratings__player-information--name'>Hulaboly</p>
-                                <p className='player-ratings__player-information--scorer'>Score: 1331</p>
-                            </div>
-                        </div>
-                        <div className="player-ratings__player-information player-ratings__player-information3 box--shadow">
-                            <div className='player-ratings__player-information--avatar box--shadow' >
-                                <img src={userImg4} alt="error" />
-                            </div>
-                            <div className='player-ratings__player-information--namescore'>
-                                <p className='player-ratings__player-information--name'>Minsum</p>
-                                <p className='player-ratings__player-information--scorer'>Score: 1331</p>
-                            </div>
-                        </div>
-                        <div className="player-ratings__player-information player-ratings__player-information4 box--shadow">
-                            <div className='player-ratings__player-information--avatar box--shadow' >
-                                <img src={userImg5} alt="error" />
-                            </div>
-                            <div className='player-ratings__player-information--namescore'>
-                                <p className='player-ratings__player-information--name'>Ramboas</p>
-                                <p className='player-ratings__player-information--scorer'>Score: 1331</p>
-                            </div>
+                        <div className='room-chat__ingame--chatbox'>
+                            <textarea className='chat-ingame-textarea box--shadow' type='textarea'>
+                            </textarea>
+                            <button box--shadow>
+                                <i className="fas fa-paper-plane"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div className='chat-ingame box--shadow'>
-                    <div className='chat-ingame__title box--shadow'></div>
-                    <div className='chat-ingame__message'>
-                        <ul className='room-chat__list room-chat__ingame--list'>
-                            <li className='room-chat__message box--shadow'>
-                                <div className='room-chat__message--avatar box--shadow'>
-                                    <img src={userImg1} alt="error" />
-                                </div>
-                                <p><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
-                            </li>
-                            <li className='room-chat__message box--shadow'>
-                                <div className='room-chat__message--avatar box--shadow'>
-                                    <img src={userImg2} alt="error" />
-                                </div>
-                                <p><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
-                            </li>
-                            <li className='room-chat__message box--shadow'>
-                                <div className='room-chat__message--avatar box--shadow'>
-                                    <img src={userImg4} alt="error" />
-                                </div>
-                                <p><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
-                            </li>
-                            <li className='room-chat__message box--shadow'>
-                                <div className='room-chat__message--avatar box--shadow'>
-                                    <img src={userImg5} alt="error" />
-                                </div>
-                                <p><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
-                            </li>
-                            <li className='room-chat__message box--shadow'>
-                                <div className='room-chat__message--avatar box--shadow'>
-                                    <img src={userImg6} alt="error" />
-                                </div>
-                                <p><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
-                            </li>
-                            <li className='room-chat__message box--shadow'>
-                                <div className='room-chat__message--avatar box--shadow'>
-                                    <img src={userImg7} alt="error" />
-                                </div>
-                                <p><label className='box--shadow'>CowCow</label><> </>What the hell! What the hell! What the hell! What the hell! What the hell! What the hell! What the hell!</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className='room-chat__ingame--chatbox'>
-                        <textarea className='chat-ingame-textarea box--shadow' type='textarea'>
-                        </textarea>
-                        <button>
-                            <i className="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
+                <div className='ingame-setting box--shadow'>
+                    <button className='box--shadow'>
+                        <i className="fas fa-cog"></i>
+                    </button>
                 </div>
             </div>
         </div>
