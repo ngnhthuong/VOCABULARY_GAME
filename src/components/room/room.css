@@ -403,7 +403,7 @@
 /* Room Right */
 .room-body__right {
     position: relative;
-    font-family: 'Quicksand', sans-serif;
+    /* font-family: 'Quicksand', sans-serif; */
     width: 29%;
     height: 100%;
     background-color: var(--background-chat);
@@ -474,16 +474,17 @@
     padding: 1rem 4rem 1rem 1rem;
     resize: none;
     border: none;
-    line-height: 1.4rem;
+    line-height: 2rem;
     border-radius: 0.7rem;
     box-sizing: border-box;
     /* Đảm bảo kích thước tính cả border và padding */
     font-size: 1rem;
     /* Đặt kích thước chữ cho văn bản trong textarea */
     overflow: auto;
-    font-family: 'Quicksand', sans-serif;
+    /* font-family: 'Quicksand', sans-serif; */
     background-color: var(--modal-room-background);
-    color: white;
+    color: rgb(0, 0, 0);
+    font-size: 0.7rem;
 }
 
 .chat-textarea::-webkit-scrollbar,
