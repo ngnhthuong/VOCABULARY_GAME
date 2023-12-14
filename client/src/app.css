@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --background-small: rgba(226, 219, 219, 0.3);
+  --green: #43ae0e;
+  --greenBlack:#37a003;
+  --orange: #f8c031;
+  --orange-lastic: rgba(255, 247, 0, 0.8);
+  --green-lastic: rgba(0, 231, 54, 0.6);
+  --green-lastic-hover: rgba(0, 231, 54, 0.2);
+  --red: #e40000;
+  --redLight: #ce0202;
+  --redBrown: rgb(209, 32, 32);
+  --login-color: #c6f4f2;
+  --modal-background: #dedede;
+  --modal-lobby-background: rgba(243, 203, 189);
+  --modal-room-background: rgba(220, 216, 216, 0.9);
+  --modal-room-background-origin: rgb(245, 245, 245);
+
+  --background-color: rgba(132, 132, 132, 0.3);
+  --background-chat: #218b82;
+  --background-middle-room: #218b82;
+  --background-player-room: #A9C8C0;
+  ;
+}
+
+.open {
+  display: hidden !important;
+}
+
+.close {
+  display: none !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  user-select: none;
+  cursor: url(../public/cursor_now.png) 16 16, auto !important;
+}
+
+*:active {
+  cursor: url(../public/cursor_active.png) 16 16, auto !important;
+}
+
+main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url(./assets//images/formgame/background.png);
+  background-size: cover;
+  overflow: hidden;
+  background-attachment: fixed;
+}
+
+.flex--col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex--row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.box--shadow {
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
+}
+
+.box--shadow-title {
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+    4px 4px 5px 0px transparent;
+}
+
+.title-icon {
+  background: linear-gradient(to right, yellow, orange);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.title-icon-model {
+  color: white;
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+img {
+  pointer-events: none;
+}
+
+/* notification */
+#notification {
+  position: absolute;
+  right: 0rem;
+  top: 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  background-color: var(--red);
+  color: white;
+  border-radius: 1rem;
+}
+
+#notification span {
+  font-size: 0.5rem;
+}
+
+/* animation */
+@keyframes pulse {
+  0% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
+  }
+
+  50% {
+    border-color: #f8c031;
+    box-shadow: 0 0 0 0.7rem rgba(248, 165, 49, 0);
+  }
+
+  100% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
+  }
+}
+
+
+/* modal frame */
+
+.modal__background{
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.modal__frame{
+  width: 70vw;
+  height: 89vh;
+  border-radius: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url(./assets/images/formgame/background-frame.png);
+  background-size: cover;
+}
+
+.modal__header{
+  width: 95%;
+  height: 5%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__background--title{
+  background-color: var(--modal-background);
+  width: 15rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.close__modal{
+  position: absolute;
+  right: 0.5rem;
+  top: -0.2rem;
+  width: 2.5rem;
+  height: 2rem;
+  background-color: #ce0202;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.close__modal:hover{
+  transform: scale(1.05);
+}
+
+.close__modal:active{
+  transform: scale(1.05);
+}
+
+.close__modal button{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.close--icon{
+  color: white;
+  font-size: 1rem;
+}
+
+.modal__header--title{
+  align-content: center;
+  color: rgb(0, 0, 0);
+}
+
+.modal{
+  width: 96%;
+  height: 92%;
+  background-color: var(--modal-background) ;
+  border-radius: 1rem;
+}
+ 
+.open_modal[open] {
+  animation: slide-in-from-top 0.35s ease-out;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.box-animation{
+    border: none;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+
+
+div {
+  font-family: 'Courier New', Courier, monospace;
+}

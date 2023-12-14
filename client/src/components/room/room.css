@@ -1,0 +1,601 @@
+.background-modal__room {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.room {
+    position: relative;
+    width: 85vw;
+    height: 95vh;
+    background: url(../../assets/images/formgame/background-frame.png);
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-size: cover; */
+}
+
+.room-footer {
+    height: 1%;
+    width: 100%;
+}
+
+.room-header {
+    top: 0;
+    width: 100%;
+    height: 7%;
+    border-radius: 3rem 3rem 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.room-title {
+    width: 17rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.room-title__child {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5em 1.5rem 0 0;
+    color: white;
+    background-color: var(--modal-room-background);
+}
+
+.room-close {
+    position: absolute;
+    right: 0rem;
+    width: 8rem;
+    height: 7%;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.room-close button {
+    width: 40%;
+    height: 2rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    background-color: var(--red);
+}
+
+.room-close button:hover {
+    transform: scale(1.05);
+}
+
+.room-close button:active {
+    transform: scale(1.1);
+}
+
+.room-id {
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7%;
+    width: 13rem;
+}
+
+.room-id button {
+    padding: 0.5rem;
+    width: 7rem;
+    height: 2rem;
+    border-radius: 0.9rem;
+    border: none;
+    outline: none;
+    background-color: rgba(207, 54, 54, 0.9);
+    color: white;
+    font-size: 0.7rem;
+}
+
+/* Room body */
+.room-body {
+    width: 97%;
+    height: 90.5%;
+    background-color: var(--modal-room-background);
+    border-radius: 2rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Room body left - friend list */
+.room-body__left {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22%;
+    height: 100%;
+    background-color: var(--background-chat);
+    border-radius: 1rem;
+    /* overflow: hidden; */
+}
+
+.room-body__friends {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 94%;
+    width: 100%;
+    overflow: auto;
+    list-style: none;
+    gap: 1%;
+}
+
+.room-body__friend {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 95%;
+    min-height: 15.20%;
+    background-color: #E5DBD9;
+    border-radius: 1rem;
+}
+
+.room-body__friend--avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    /* background-color: bisque; */
+    border-radius: 0.7rem 0 0 0.7rem;
+    background: url(../../assets//images/player/frame.png) center center no-repeat;
+    background-size: cover;
+}
+
+.room-body__friend--avatar img {
+    width: 80%;
+    height: auto;
+}
+
+.room-body__friend--information {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.room-body__friend--information p {
+    font-size: 0.6rem;
+    text-align: center;
+}
+
+.room-body__friend--name {
+    font-size: 0.8rem !important;
+    color: rgb(105, 0, 128);
+}
+
+.room-body__friend--invite{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 1.8rem;
+    width: 2rem;
+    border-radius: 0 1rem 0 0.7rem;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.room-body__friend--look{
+    background-color: var(--red);
+    color: white;
+}
+
+.room-body__friend--invite,
+.room-body__middle--add {
+    background-color: var(--greenBlack);
+    color: white;
+}
+
+
+.room-body__friend--look i,
+.room-body__friend--invite i,
+.room-body__middle--function button i {
+    font-size: 0.8rem;
+}
+
+/* Room body middle - room people */
+
+.room-body__middle {
+    width: 47%;
+    height: 100%;
+    background-color: var( --background-middle-room);
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.6rem 0.6rem 0.6rem;
+}
+
+.room-body__middle--players {
+    width: 100%;
+    height: 77%;
+    border-radius: 0.5rem;
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.room-body__middle--player {
+    width: 30%;
+    height: 100%;
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.room-body__middle--player_1,
+.room-body__middle--player_2,
+.room-body__middle--player_3,
+.room-body__middle--player_4 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 33%;
+    border-radius: 1rem;
+    gap: 0.5rem;
+    background-color: var(--background-player-room);
+}
+
+.room-body__middle--player_1 p,
+.room-body__middle--player_2 p,
+.room-body__middle--player_3 p,
+.room-body__middle--player_4 p{
+    font-size: 0.8rem;
+    color: rgb(56, 38, 38);
+}
+
+.room-body__middle--player_1:hover,
+.room-body__middle--player_2:hover,
+.room-body__middle--player_3:hover,
+.room-body__middle--player_4:hover,
+.room-body__middle--delete:hover,
+.room-body__friend--invite:hover{
+    transform: scale(1.05);
+} 
+
+.room-body__middle--player_1:active,
+.room-body__middle--player_2:active,
+.room-body__middle--player_3:active,
+.room-body__middle--player_4:active{
+    transform: scale(1.03);
+} 
+
+.room-body__middle--delete:active,
+.room-body__friend--invite:active{
+    transform: scale(1.1);
+} 
+
+.room-body__middle--player_1 img,
+.room-body__middle--player_2 img,
+.room-body__middle--player_3 img,
+.room-body__middle--player_4 img {
+    width: 60%;
+    height: auto;
+}
+
+.room-body__middle--img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 29%;
+    overflow: hidden;
+}
+
+.room-body__middle--img img {
+    width: 100%;
+    height: auto;
+    transform: scale(1.2);
+}
+
+.room-body__middle--delete{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius:  0rem 1rem 0 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border: none;
+    outline: none;
+}
+
+.room-body__middle--delete i{
+    color: white;
+    font-size: 0.7rem;
+}
+
+.room-body__middle--functions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 20%;
+    border-radius: 0.5rem;
+}
+
+.room-body__middle--start{
+    border-radius: 0.5rem;
+    width: 30%;
+    height: 100%;
+}
+.room-body__middle--start-btn{
+    width: 100%;
+    height: 100%;
+    background-color: var(--orange);
+    border-radius: 0.5rem;
+    border: none;
+    color: white;
+}
+
+
+
+.room-body__middle--function-game{
+    width: 67%;
+    height: 100%;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-body__middle--function-game button{
+    width: 100%;
+    height: 46%;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+}
+
+.invite-player{
+    color: white;
+    background-color: var(--greenBlack);
+}
+
+.leave-room{
+    color: white;
+    background-color: var(--modal-room-background);
+}
+
+
+
+.hidden--player {
+    visibility: hidden;
+}
+
+/* Room Right */
+.room-body__right {
+    position: relative;
+    /* font-family: 'Quicksand', sans-serif; */
+    width: 29%;
+    height: 100%;
+    background-color: var(--background-chat);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.8rem 0rem 0.5rem 0rem;
+    overflow: hidden;
+}
+
+.room-chat__title {
+    position: absolute;
+    width: 100%;
+    height: 2.8rem;
+    background-color: var(--modal-room-background);
+    top: 0;
+    border-radius: 1rem 1rem 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: #218b82; */
+}
+
+.room-chat__title label {
+    font-size: 0.8rem;
+    color: white;
+}
+
+.room-chat__send {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 96%;
+    height: 12%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.7rem;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+
+.room-chat__send button {
+    position: absolute;
+    right: 0.8rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: rgb(0, 0, 0, 0.2);
+    color: white;
+    outline: none;
+}
+
+.room-chat__send button:hover {
+    transform: scale(1.05);
+}
+
+.room-chat__send button:active {
+    transform: scale(1.1);
+}
+
+.chat-textarea {
+    width: 100%;
+    height: 100%;
+    padding: 1rem 4rem 1rem 1rem;
+    resize: none;
+    border: none;
+    line-height: 2rem;
+    border-radius: 0.7rem;
+    box-sizing: border-box;
+    /* Đảm bảo kích thước tính cả border và padding */
+    font-size: 1rem;
+    /* Đặt kích thước chữ cho văn bản trong textarea */
+    overflow: auto;
+    /* font-family: 'Quicksand', sans-serif; */
+    background-color: var(--modal-room-background);
+    color: rgb(0, 0, 0);
+    font-size: 0.7rem;
+}
+
+.chat-textarea::-webkit-scrollbar,
+.room-chat__list::-webkit-scrollbar,
+.room-body__friends::-webkit-scrollbar {
+    width: 3px;
+}
+
+.chat-textarea::-webkit-scrollbar-thumb,
+.room-chat__list::-webkit-scrollbar-thumb,
+.room-body__friends::-webkit-scrollbar-thumb {
+    background-color: #FBECDB;
+    border-radius: 4px;
+}
+
+/* chat list */
+.room-chat {
+    height: 87%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.room-chat__list {
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    overflow: auto;
+    font-family: 'Quicksand', sans-serif;
+    box-sizing: border-box;
+}
+
+
+.room-chat__list li {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+}
+
+.room-chat__message {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 92%;
+    min-height: fit-content;
+    word-wrap: break-word;
+    border-radius: 0.6rem;
+    /* height: fit-content; */
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: auto;
+    margin-bottom: 0.5rem;
+}
+
+.room-chat__useractive {
+    flex-direction: row-reverse !important;
+}
+
+.room-chat__message p {
+    margin: 0.4rem;
+    width: 72%;
+    font-size: 0.5rem;
+    line-height: 1.2rem;
+}
+
+.room-chat__message p label {
+    font-weight: bold;
+    font-size: 0.6rem;
+    width: fit-content;
+    height: 1rem;
+    background-color: rgb(76, 76, 76);
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    color: rgb(255, 255, 255);
+}
+
+.room-chat__message label {
+    width: fit-content;
+    /* font-weight: bold; */
+}
+
+/* .room-chat__message--info {
+    width: 20%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+} */
+
+.room-chat__message--info label {
+    font-size: 0.7rem;
+}
+
+.room-chat__message--avatar {
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(226, 219, 219, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.6rem;
+}
+
+.room-chat__message--avatar img {
+    width: 3.5rem;
+    height: auto;
+}

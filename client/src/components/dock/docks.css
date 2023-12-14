@@ -1,0 +1,35 @@
+.docks {
+    position: absolute;
+    width: 100vw;
+    height: 15vh;
+    background-color: var(--background-small);
+    bottom: 0;
+    border-radius: 6rem 6rem 0 0;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    list-style: none;
+    overflow: hidden;
+}
+
+.dock{
+    position: relative;
+}
+
+.dock img {
+    height: 4.5rem;
+    width: 4.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.dock:hover {
+    transform: scale(1.05);
+}
+
+.dock:active {
+    transform: scale(1.1);
+}
+
+
+
