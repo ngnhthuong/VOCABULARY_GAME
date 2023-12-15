@@ -157,6 +157,7 @@
     font-size: 0.7rem;
     background-color: var(--red);
     color: white;
+    
 }
 
 .logout__btn:hover{
@@ -181,4 +182,104 @@
     height: 10%;
     padding-right: 5%;
     /* background-color: aqua; */
+}
+
+/* Create Room Modal */
+
+.modal__createroom--frame{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 20%;
+    border-radius: 1rem;
+    background: url(../assets/images/formgame/background-frame.png);
+}
+
+.body__modal-createroom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 92%;
+    height: 70%;
+    background-color: rgb(175, 202, 227);
+    border-radius: 1rem;
+}
+
+.header__modal-createroom{
+    width: 90%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__modal-createroom p {
+    color: white;
+    font-size: 0.8rem;
+}
+
+.body__modal--fn {
+    display: flex;
+    width: 100%;
+    height: 38%;
+}
+
+.cancel__createroom-btn{
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 0 1rem;
+    outline: none;
+    border: none;
+    background-color: var(--red);
+}
+
+.cancel__createroom-btn:hover{
+    background-color: #fb0303;
+}
+
+.cancel__createroom-btn i{
+    color: white;
+}
+
+.create__room-btn{
+    width: 50%;
+    height: 100%;
+    border-radius: 0 0 1rem 0;
+    outline: none;
+    border: none;
+    background-color: var(--orange);
+}
+
+.create__room-btn:hover{
+    background-color: #f5b40f;
+}
+
+.create__room-btn i {
+    color: white;
+}
+
+.box--shadow-btn {
+    box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, .5),
+      7px 7px 20px 0px rgba(0, 0, 0, .1),
+      4px 4px 5px 0px rgba(0, 0, 0, .1);
+  }
+
+.close__createroom--form{
+    width: 50%;
+    height: 100%;
+}
+
+.message--createroom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100% ;
+}
+
+.message--createroom p{
+    font-size: 0.7rem;
+    color: #5e4301;
 }

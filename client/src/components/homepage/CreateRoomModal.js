@@ -13,23 +13,25 @@ const CreateRoomModal = forwardRef(function CreateRoomModal({}, ref) {
   return createPortal(
     <dialog ref={createRoomModal} className="open_modal">
       <div className="modal__background close-modal">
-        <div className="modal__setting--frame box--shadow">
-          <div className="modal__setting--headers">
-            <div className="modal__setting--header">
-              <p>Setting</p>
-            </div>
-            <form className="modal__setting--header-close" method="dialog">
-              <button className="box--shadow">
-                <i className="fas fa-times close--icon"></i>
-              </button>
-            </form>
+        <div className="modal__createroom--frame box--shadow">
+          <div className="header__modal-createroom">
+            <p>CREATE ROOM</p>
           </div>
-          <div className="modal__setting--body">
-            <div className="modal__setting--bottom">
-              <button
-                className="logout__btn box--shadow"
+          <div className="body__modal-createroom box--shadow">
+            <div className="message--createroom">
+              <p>Do you want create room?</p>
+            </div>
+            <div className="body__modal--fn">
+              <form
+                method="dialog"
+                className="box--shadow close__createroom--form"
               >
-                LOG OUT
+                <button className="cancel__createroom-btn box--shadow">
+                  <i className="fas fa-times"></i>
+                </button>
+              </form>
+              <button className="create__room-btn box--shadow-btn">
+                <i className="fas fa-sign-in-alt"></i>
               </button>
             </div>
           </div>

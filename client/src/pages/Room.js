@@ -15,6 +15,10 @@ import userImg6 from '../assets/images/player/user6.png';
 import userImg7 from '../assets/images/player/user7.png';
 
 export default function Room() {
+    function backToHomePage(){
+        console.log("hello");
+        window.location.href = "/homepage";
+    }
     return (
         <>
             <div className='background-modal__room'>
@@ -26,7 +30,7 @@ export default function Room() {
                             </div>
                         </div>
                         <div className='room-close'>
-                            <button className='box--shadow'>
+                            <button className='box--shadow'  onClick={backToHomePage}>
                                 <i className="fas fa-times close--icon"></i>
                             </button>
                         </div>
@@ -36,15 +40,12 @@ export default function Room() {
                     </div>
                     <div className='room-body'>
                         <div className='room-body__left box--shadow'>
-                            {/* Friends List */}
                             <FriendList />
                         </div>
                         <div className='room-body__middle box--shadow'>
-                            {/* Function and player */}
                             <MiddleRoom />
                         </div>
                         <div className='room-body__right box--shadow'>
-                            {/* Chat Room */}
                             <ChatRoom />
                         </div>
                     </div>
@@ -60,7 +61,7 @@ export default function Room() {
                         <ChatInGame />
                     </div>
                     <div className='ingame-setting box--shadow'>
-                        <button className='box--shadow'>
+                        <button className='box--shadow' >
                             <i className="fas fa-cog"></i>
                         </button>
                     </div>

@@ -26,9 +26,7 @@ const SearchRoomModal = forwardRef(function SearchRoomModal({}, ref) {
           </div>
           <div className="modal__setting--body">
             <div className="modal__setting--bottom">
-              <button
-                className="logout__btn box--shadow"
-              >
+              <button className="logout__btn box--shadow">
                 LOG OUT
               </button>
             </div>

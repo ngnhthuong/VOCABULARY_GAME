@@ -20,37 +20,37 @@ export default function ChatRoom() {
                         <div className='room-chat__message--avatar box--shadow'>
                             <img src={userImg1} alt="error" />
                         </div>
-                        <p><label className='box--shadow'>CowCow</label><> </>what the hell</p>
+                        <p><label className='box--shadow'>CowCow</label><> </>Game is game?</p>
                     </li>
                     <li className='room-chat__message box--shadow'>
                         <div className='room-chat__message--avatar box--shadow'>
                             <img src={userImg2} alt="error" />
                         </div>
-                        <p><label className='box--shadow'>CowCow</label><> </>what the hell</p>
+                        <p><label className='box--shadow'>CowCow</label><> </>Game is game?</p>
                     </li>
                     <li className='room-chat__message box--shadow'>
                         <div className='room-chat__message--avatar box--shadow'>
                             <img src={userImg4} alt="error" />
                         </div>
-                        <p><label className='box--shadow'>CowCow</label><> </>what the hell</p>
+                        <p><label className='box--shadow'>CowCow</label><> </>Game is game?</p>
                     </li>
                     <li className='room-chat__message box--shadow'>
                         <div className='room-chat__message--avatar box--shadow'>
                             <img src={userImg5} alt="error" />
                         </div>
-                        <p><label className='box--shadow'>CowCow</label><> </>what the hell</p>
+                        <p><label className='box--shadow'>CowCow</label><> </>Game is game?</p>
                     </li>
                     <li className='room-chat__message box--shadow'>
                         <div className='room-chat__message--avatar box--shadow'>
                             <img src={userImg6} alt="error" />
                         </div>
-                        <p><label className='box--shadow'>CowCow</label><> </>what the hell</p>
+                        <p><label className='box--shadow'>CowCow</label><> </>Game is game?</p>
                     </li>
                     <li className='room-chat__message box--shadow'>
                         <div className='room-chat__message--avatar box--shadow'>
                             <img src={userImg7} alt="error" />
                         </div>
-                        <p><label className='box--shadow'>CowCow</label><> </>what the hell</p>
+                        <p><label className='box--shadow'>CowCow</label><> </>Game is game?</p>
                     </li>
                 </ul>
             </div>
