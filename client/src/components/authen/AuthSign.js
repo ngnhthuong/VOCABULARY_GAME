@@ -58,8 +58,6 @@ export default function AuthSign() {
     } else {
       navigate("/");
     }
-    // console.log("effect");
-    // console.log([player, isError, isLoading, isSuccess, message]);
   }, [player, isError, isLoading, isSuccess, message]);
 
   function handleOpenModal() {

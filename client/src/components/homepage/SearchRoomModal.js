@@ -37,5 +37,4 @@ const SearchRoomModal = forwardRef(function SearchRoomModal({}, ref) {
     document.getElementById("modal")
   );
 });
-
 export default SearchRoomModal;

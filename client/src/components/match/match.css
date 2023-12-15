@@ -49,7 +49,7 @@
 }
 
 .match-element__active {
-    background-color: rgb(244, 209, 163) !important;
+    background-color: #fcec78 !important;
     animation: element-game 0.9s infinite ease-in;
     animation-timing-function: ease-out;
 }
@@ -373,21 +373,10 @@
 }
 
 @keyframes element-game {
-    0% {
-        border-color: #f4d1a3;
-        box-shadow: 0 0 0 0 rgba(244, 209, 163, 0.4);
-    }
-
-    50% {
-        border-color: #f8c031;
-        box-shadow: 0 0 0 1rem rgba(248, 165, 49, 0);
-        animation-timing-function: ease-out;
-    }
-
-    100% {
-        border-color: #f4d1a3;
-        box-shadow: 0 0 0 0 rgba(244, 209, 163, 0);
-    }
+    0% { box-shadow: 0 0 10px 5px  var(--primary-color); }
+    50% { box-shadow: 0 0 20px 10px  var(--primary-color); }
+    100% { box-shadow: 0 0 10px 5px var(--primary-color); }
+  
 }
 
 @keyframes player-game {
