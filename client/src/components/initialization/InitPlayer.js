@@ -26,7 +26,13 @@ export default function InitPlayer() {
   });
 
   const validationSchema = Yup.object().shape({
-    playerName: Yup.string().required("Player Name is required"),
+    playerName: Yup.string()
+      .required("Player Name is required <3")
+      .test(
+        "no-spaces",
+        "Player Name cannot contain spaces!",
+        (value) => String(value).indexOf(" ") === -1
+      ),
     avatar: Yup.string(),
   });
 
@@ -71,7 +77,7 @@ export default function InitPlayer() {
         window.location.href = "/homepage";
       }, 2000);
     }
-  },[initPlayer, isError, isLoading, isSuccess, message]);
+  }, [initPlayer, isError, isLoading, isSuccess, message]);
 
   return (
     <>
@@ -79,6 +85,7 @@ export default function InitPlayer() {
         <form onSubmit={formik.handleSubmit} className="init-information">
           <label>PLAYER NAME</label>
           <input
+            maxLength={7}
             className="init-name box--shadow"
             type="text"
             name="playerName"
@@ -89,9 +96,11 @@ export default function InitPlayer() {
           <button type="submit" className="init-btn box--shadow">
             Create
           </button>
-          {formik.touched.playerName && formik.errors.playerName ? (
-            <div className="error">{formik.errors.playerName}</div>
-          ) : null}
+          <div className="error-signup__message">
+            {formik.touched.playerName && formik.errors.playerName ? (
+              <p>{formik.errors.playerName}</p>
+            ) : null}
+          </div>
         </form>
 
         <ul className="init-avatar box--shadow">
@@ -120,4 +129,3 @@ export default function InitPlayer() {
     </>
   );
 }
-     

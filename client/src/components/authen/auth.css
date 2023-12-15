@@ -104,26 +104,29 @@
 }
 
 .error-signup__message{
-    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
 }
 
 .error-signup__message p{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: red;
+    font-size: 0.6rem;
+    color: rgb(205, 45, 45);
+    text-transform: uppercase;
 }
 
 .error_message--login{
     display: flex;
     align-items: center;
     height: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.7rem;
     color: red;
     width: 28rem;
 }
 
 .error_message--login p{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
 }
 
 input{

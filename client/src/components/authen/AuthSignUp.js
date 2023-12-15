@@ -37,16 +37,18 @@ export default function SignUp() {
     },
   });
 
-  
-  const { registerPlayer, isError, isLoading, isSuccess, message } = useSelector(
-    (state) => state.register
-  );
+  function handleLoginWin(){
+    navigate("/");
+  }
+
+  const { registerPlayer, isError, isLoading, isSuccess, message } =
+    useSelector((state) => state.register);
   useEffect(() => {
     if (isSuccess === true) {
       setTimeout(() => {
         navigate("/");
       }, 2000);
-    } 
+    }
   }, [registerPlayer, isError, isLoading, isSuccess, message]);
 
   return (
@@ -113,6 +115,9 @@ export default function SignUp() {
             </div>
           </div>
           <div className="login__btn">
+            <button className="login__signup" onClick={handleLoginWin} >
+              Login
+            </button>
             <button className="login__signup" type="submit">
               Confirm
             </button>

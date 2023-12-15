@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv").config();
 const PORT = process.env.PORT || 4000;
-const playerRoute = require("./routes/playerRoute")
-const rankingRoute = require("./routes/rankingRoute")
+const playerRoute = require("./routes/playerRoute");
+const rankingRoute = require("./routes/rankingRoute");
 const cors = require("cors");
-
+// const "reflect-metadata";
 // MongoDB connect
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
@@ -30,3 +30,4 @@ app.use("/api/ranking", rankingRoute);
 app.listen(PORT, () => {
   console.log(`Server running PORT: http://localhost:${PORT}`);
 });
+// const io = socketServer(app);

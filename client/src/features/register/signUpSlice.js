@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import signUpService from './signUpService';
 import { toast } from 'react-toastify';
-
 const registerDefaultState = {
   email: null,
   avatar: null,

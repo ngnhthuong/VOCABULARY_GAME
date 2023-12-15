@@ -87,6 +87,15 @@ module.exports = {
     const { id } = req.params;
     validIdMogo(id);
     try {
+
+      const playerName_check = await playerModel.findOne({
+        playerName: req.body.playerName,
+      });
+
+      if (playerName_check) {
+        return res.status(401).json({ message: "User name exist" });
+      }
+
       const player = await playerModel.findByIdAndUpdate(
         id,
         {
@@ -100,12 +109,7 @@ module.exports = {
       if (!player) {
         return res.status(404).json({ message: "Player not found" });
       }
-      const playerName_check = await playerModel.findOne({
-        playerName: req.body.playerName,
-      });
-      if (playerName_check === false) {
-        return res.status(401).json({ message: "User doesn't exist" });
-      }
+
       res
         .status(200)
         .json({ message: "Update player successfully", data: player });

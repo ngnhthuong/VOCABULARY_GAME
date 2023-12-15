@@ -38,8 +38,6 @@ export default function Docks() {
             <RankingModal ref={rankingModal} />
             <StoreModal ref={storeModal} />
             <BackpackModal ref={backpackModal} />
-
-            
             <ul className="docks box--shadow flex--row">
                 <li onClick={()=>handleOpenModal("ranking")} className="dock flex--col">
                     <img src={heroChartImg} alt="dock error" />

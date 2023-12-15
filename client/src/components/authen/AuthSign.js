@@ -9,9 +9,6 @@ import { login } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 export default function AuthSign() {
   const errorMessage = useRef();
-  function handleOpenModal() {
-    errorMessage.current.open();
-  }
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -31,10 +28,6 @@ export default function AuthSign() {
     },
   });
 
-  const { player, isError, isLoading, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
-
   const getPlayerDataFromStorage = () => {
     try {
       const playerDataString = localStorage.getItem("player");
@@ -45,19 +38,33 @@ export default function AuthSign() {
       return null;
     }
   };
-  const playerAuth = getPlayerDataFromStorage()
+  const playerAuth = getPlayerDataFromStorage();
+
+  const { player, isError, isLoading, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
     if (playerAuth !== null && playerAuth.active === false) {
       window.location.href = "/initplayer";
-    } else if (!player == null || isSuccess || (playerAuth!==null && playerAuth.active === true)) {
+    } else if (
+      !player == null ||
+      isSuccess ||
+      (playerAuth !== null && playerAuth.active === true)
+    ) {
       navigate("/homepage");
     } else if (isError) {
       handleOpenModal();
     } else {
       navigate("/");
     }
+    // console.log("effect");
+    // console.log([player, isError, isLoading, isSuccess, message]);
   }, [player, isError, isLoading, isSuccess, message]);
+
+  function handleOpenModal() {
+    errorMessage.current.open();
+  }
 
   return (
     <>
@@ -116,6 +123,3 @@ export default function AuthSign() {
     </>
   );
 }
-
-
-

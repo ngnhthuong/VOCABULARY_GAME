@@ -41,11 +41,13 @@ export const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(login.pending, (state) => {
+            state.isError = false;
             state.isLoading = true;
         })
         builder.addCase(login.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
+            state.isError = false;
             state.player = action.payload;
         })
         builder.addCase(login.rejected, (state, action) => {

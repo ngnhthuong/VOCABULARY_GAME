@@ -25,7 +25,7 @@ export default function Header() {
       <div id="player-rank__div" className="flex--row">
         <section id="main-player" className="flex--row box--shadow">
           <div id="avatar" className="box--shadow">
-            <img src={avatarImg} alt="avatar" />
+            <img src={playerAuth.avatar} alt="avatar" />
           </div>
           <ul id="information-player" className="flex--col">
             <li className="name-player">
