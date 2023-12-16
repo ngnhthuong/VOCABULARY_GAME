@@ -482,10 +482,9 @@
     font-size: 1rem;
     /* Đặt kích thước chữ cho văn bản trong textarea */
     overflow: auto;
-    /* font-family: 'Quicksand', sans-serif; */
     background-color: var(--modal-room-background);
     color: rgb(0, 0, 0);
-    font-size: 0.7rem;
+    font-size: 1rem;
 }
 
 .chat-textarea::-webkit-scrollbar,
@@ -531,7 +530,7 @@
 .room-chat__message {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 92%;
     min-height: fit-content;
     word-wrap: break-word;
@@ -549,15 +548,16 @@
 }
 
 .room-chat__message p {
-    margin: 0.4rem;
+    margin: 0.4rem 0.4rem 0.4rem 0.6rem;
+    font-family: 'Quicksand', sans-serif;
     width: 72%;
-    font-size: 0.5rem;
+    font-size: 1rem !important;
     line-height: 1.2rem;
 }
 
 .room-chat__message p label {
     font-weight: bold;
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     width: fit-content;
     height: 1rem;
     background-color: rgb(76, 76, 76);

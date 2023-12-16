@@ -261,7 +261,7 @@
     align-items: center;
     font-size: 0.9rem;
     width: 100%;
-    height: 1.3%;
+    height: 1%;
     background-color: rgb(82, 57, 57);
 }
 
@@ -321,8 +321,8 @@
     border: none;
     /* background-color: #83C75D; */
     background-color: var(--modal-room-background);
-    font-size: 0.65rem;
-    padding: 1rem 3.5rem 1rem 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem 1rem 1rem;
     line-height: 2;
     outline: none;
     margin: 0 auto;
@@ -330,7 +330,7 @@
 }
 
 .chat-ingame-textarea::placeholder{
-    color: white;
+    color: rgb(140, 137, 137);
 }
 
 .chat-ingame-textarea::-webkit-scrollbar {
@@ -339,16 +339,17 @@
 
 .room-chat__ingame--list{
     width: 100%;
-    background-color: var(--background-middle-room);
+    /* background-color: var(--background-middle-room); */
+    background-color: #588d3c;
 }
 
 .room-chat__ingame--list::-webkit-scrollbar {
-    width: 2px;
-    display: none;
+    width: 3px;
+    /* display: none; */
 }
 
 .room-chat__ingame--list::-webkit-scrollbar-thumb {
-    background-color: #367517;
+    background-color: #dfc9c9;
     border-radius: 0 !important;
 }
 

@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 export default function MatchMap() {
 var preElement = null;
   useEffect(() => {
-    setInterval(() => {
-      const matchElements = document.querySelectorAll(".element");
-      const randomIndex = Math.floor(Math.random() * matchElements.length);
-      if (preElement !== null) {
-        matchElements[preElement].classList.remove("match-element__active");
-        const elementPre = matchElements[preElement].querySelectorAll("p");
-        elementPre[0].textContent = "?";
-        console.log("pre",preElement);
-      }
-      preElement = randomIndex;
-      console.log("pre",preElement);
-      console.log("Random",randomIndex)
-      matchElements[randomIndex].classList.add("match-element__active");
-      const elementP = matchElements[randomIndex].querySelectorAll("p");
-      elementP[0].textContent = "100";
-    }, 5000);
+    // setInterval(() => {
+    //   const matchElements = document.querySelectorAll(".element");
+    //   const randomIndex = Math.floor(Math.random() * matchElements.length);
+    //   if (preElement !== null) {
+    //     matchElements[preElement].classList.remove("match-element__active");
+    //     const elementPre = matchElements[preElement].querySelectorAll("p");
+    //     elementPre[0].textContent = "?";
+    //     console.log("pre",preElement);
+    //   }
+    //   preElement = randomIndex;
+    //   console.log("pre",preElement);
+    //   console.log("Random",randomIndex)
+    //   matchElements[randomIndex].classList.add("match-element__active");
+    //   const elementP = matchElements[randomIndex].querySelectorAll("p");
+    //   elementP[0].textContent = "100";
+    // }, 5000);
   }, []);
 
   return (
