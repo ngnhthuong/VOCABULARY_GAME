@@ -1,12 +1,22 @@
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useEffect,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import CreateRoomModal from "./CreateRoomModal";
 import SearchRoomModal from "./SearchRoomModal";
+import { useNavigate } from "react-router-dom";
 
-const LobbyModal = forwardRef(function LobbyModal({}, ref) {
+const LobbyModal = forwardRef(function LobbyModal({ socket, rooms }, ref) {
+  const navigate = useNavigate(); // Add this line
+
   const lobbyModal = useRef();
   const createRoomModal = useRef();
   const searchRoomModal = useRef();
+  const [displayedRooms, setDisplayedRooms] = useState([]);
   function handleOpenModal(nameDialog) {
     if (nameDialog === "createRoom") {
       console.log("createRoom");
@@ -23,10 +33,26 @@ const LobbyModal = forwardRef(function LobbyModal({}, ref) {
     };
   });
 
+  useEffect(() => {
+    if (rooms !== null) {
+      setDisplayedRooms(rooms);
+    }
+  }, [rooms]);
+
+  const handleJoinRoom = (roomCode) => {
+    socket.emit("room-found", roomCode);
+    socket.on("room-response", (data) => {
+      if (data) {
+        console.log("room found");
+        navigate(`/room?inputValue=${roomCode}`);
+      }
+    });
+  };
+
   return createPortal(
     <>
       <CreateRoomModal ref={createRoomModal} />
-      <SearchRoomModal ref={searchRoomModal} />
+      <SearchRoomModal ref={searchRoomModal} socket={socket} />
       <dialog ref={lobbyModal} className="open_modal">
         <div className="modal__background close-modal">
           <div className="modal__frame box--shadow">
@@ -48,177 +74,35 @@ const LobbyModal = forwardRef(function LobbyModal({}, ref) {
                   <li className="modal__listroom--label">Quantity</li>
                   <li className="modal__listroom--label"></li>
                 </ul>
+
                 <ul className="modal__listroom box--shadow">
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <a href="/room">
-                          <button className="modal__listroom--join box--shadow">
-                            <i className="fas fa-sign-in-alt"></i>
-                          </button>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join box--shadow">
-                          <i className="fas fa-sign-in-alt"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join box--shadow">
-                          <i className="fas fa-sign-in-alt"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join box--shadow">
-                          <i className="fas fa-sign-in-alt"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join box--shadow">
-                          <i className="fas fa-sign-in-alt"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join room--full  box--shadow">
-                          <i className="fas fa-ban"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join box--shadow">
-                          <i className="fas fa-sign-in-alt"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join room--full  box--shadow">
-                          <i className="fas fa-ban"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join box--shadow">
-                          <i className="fas fa-sign-in-alt"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join room--full  box--shadow">
-                          <i className="fas fa-ban"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join box--shadow">
-                          <i className="fas fa-sign-in-alt"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join room--full  box--shadow">
-                          <i className="fas fa-ban"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join box--shadow">
-                          <i className="fas fa-sign-in-alt"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul className="modal__listroom--room box--shadow">
-                      <li className="modal__listroom--label">102</li>
-                      <li className="modal__listroom--label">CowCow</li>
-                      <li className="modal__listroom--label">4/5</li>
-                      <li className="modal__listroom--label modal__listroom--fn">
-                        <button className="modal__listroom--join room--full  box--shadow">
-                          <i className="fas fa-ban"></i>
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
+                  {displayedRooms.map((room, roomkey) => (
+                    <li key={roomkey}>
+                      <ul className="modal__listroom--room box--shadow">
+                        <li className="modal__listroom--label">
+                          {room.roomID}
+                        </li>
+                        <li className="modal__listroom--label">{room.name}</li>
+                        <li className="modal__listroom--label">{`${room.roomMember.length}  / 4`}</li>
+                        {room.roomMember.length < 4 ? (
+                          <li className="modal__listroom--label modal__listroom--fn">
+                            <button
+                              className="modal__listroom--join box--shadow"
+                              onClick={() => handleJoinRoom(room.roomID)}
+                            >
+                              <i className="fas fa-sign-in-alt"></i>
+                            </button>
+                          </li>
+                        ) : (
+                          <li className="modal__listroom--label modal__listroom--fn">
+                            <button className="modal__listroom--join room--full  box--shadow">
+                              <i className="fas fa-ban"></i>
+                            </button>
+                          </li>
+                        )}
+                      </ul>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <ul className="modal__listroom--function box--shadow">
@@ -235,7 +119,7 @@ const LobbyModal = forwardRef(function LobbyModal({}, ref) {
                     onClick={() => handleOpenModal("searchRoom")}
                     className="find__room box--shadow"
                   >
-                    Search room
+                    Find room
                   </button>
                 </li>
                 <li className="start__animation">

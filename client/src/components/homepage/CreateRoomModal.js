@@ -10,6 +10,9 @@ const CreateRoomModal = forwardRef(function CreateRoomModal({}, ref) {
       },
     };
   });
+  function handleCreateRoom() {
+    window.location.href = "/room";
+  }
   return createPortal(
     <dialog ref={createRoomModal} className="open_modal">
       <div className="modal__background close-modal">
@@ -30,7 +33,7 @@ const CreateRoomModal = forwardRef(function CreateRoomModal({}, ref) {
                   <i className="fas fa-times"></i>
                 </button>
               </form>
-              <button className="create__room-btn box--shadow-btn">
+              <button className="create__room-btn box--shadow-btn" onClick={handleCreateRoom}>
                 <i className="fas fa-sign-in-alt"></i>
               </button>
             </div>

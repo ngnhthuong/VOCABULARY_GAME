@@ -4,17 +4,18 @@ import HomePage from "./pages/Home.js";
 import Login from "./pages/Login.js";
 import SignUp from "./pages/SignUp.js";
 import Room from "./pages/Room.js";
-import Match from "./pages/Match.js";
 import InitPlayer from "./components/initialization/InitPlayer.js";
 import "./app.css";
+import io from "socket.io-client";
+
+const socket = io.connect("http://localhost:3005");
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
-  { path: "/homepage", element: <HomePage /> },
+  { path: "/homepage", element: <HomePage socket={socket} /> },
   { path: "/signup", element: <SignUp /> },
-  { path: "/room", element: <Room /> },
+  { path: "/room", element: <Room socket={socket} /> },
   { path: "/initplayer", element: <InitPlayer /> },
-  { path: "/match", element: <Match /> },
 ]);
 
 function App() {

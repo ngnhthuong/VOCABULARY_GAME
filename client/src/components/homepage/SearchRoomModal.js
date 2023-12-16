@@ -1,8 +1,12 @@
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle, useRef, useState} from "react";
 import { createPortal } from "react-dom";
+import { useNavigate } from 'react-router-dom';
 
-const SearchRoomModal = forwardRef(function SearchRoomModal({}, ref) {
+const SearchRoomModal = forwardRef(function SearchRoomModal({socket}, ref) {
+  const [inputValue, setInputValue] = useState('');
   const searchRoomModal = useRef();
+  const navigate = useNavigate(); // Add this line
+
   useImperativeHandle(ref, () => {
     return {
       open() {
@@ -10,24 +14,43 @@ const SearchRoomModal = forwardRef(function SearchRoomModal({}, ref) {
       },
     };
   });
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleJoinRoom = () => {
+    socket.emit("room-found", inputValue);
+    socket.on("room-response", (data) => {
+      if(data){
+        console.log("room found");
+        navigate(`/room?inputValue=${inputValue}`); 
+      } else {
+        const errorExistRoom = document.querySelector(".dont__exist--room");
+        errorExistRoom.textContent = "Room does not exist!";
+      }
+      });
+  };
   return createPortal(
     <dialog ref={searchRoomModal} className="open_modal">
       <div className="modal__background close-modal">
-        <div className="modal__setting--frame box--shadow">
-          <div className="modal__setting--headers">
-            <div className="modal__setting--header">
-              <p>Setting</p>
-            </div>
-            <form className="modal__setting--header-close" method="dialog">
-              <button className="box--shadow">
-                <i className="fas fa-times close--icon"></i>
-              </button>
-            </form>
-          </div>
-          <div className="modal__setting--body">
-            <div className="modal__setting--bottom">
-              <button className="logout__btn box--shadow">
-                LOG OUT
+        <div className="modal__findroom--frame box--shadow">
+          <div className="modal__findroom--body">
+            <input
+              className="modal__findroom--input box--shadow"
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Room ID"
+            />
+            <p className="dont__exist--room">Enter your room ID!</p>
+            <div className="modal__findroom--btn">
+              <form className="findroom__dialog--btn" method="dialog">
+                <button className="findroom--btn box--shadow">
+                  <i className="fas fa-times"></i>
+                </button>
+              </form>
+              <button className="findroom--btn box--shadow" onClick={handleJoinRoom}>
+                <i className="fas fa-sign-in-alt" ></i>
               </button>
             </div>
           </div>

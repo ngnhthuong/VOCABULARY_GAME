@@ -6,7 +6,9 @@ dotenv.config();
 module.exports = {
   login: async (req, res) => {
     try {
+      console.log( req.body.email);
       const player = await playerModel.findOne({ email: req.body.email });
+      console.log(player);
       if (!player) {
         return res.status(404).json({ message: "Email Not found" });
       }
@@ -14,7 +16,7 @@ module.exports = {
         player.password,
         process.env.SECRET
       ).toString(CryptoJS.enc.Utf8);
-
+      console.log(decryptPassword);
       if (decryptPassword !== req.body.password) {
         return res.status(401).json({ message: "Wrong password" });
       }
@@ -160,13 +162,4 @@ module.exports = {
         .json({ message: `Internal Server Error ${error}`, data: null });
     }
   },
-  // getPlayerName: async (req, res) => {sed
-  //   try {
-  //     const player = await playerModel.findOne({playerName: req.params.playername});
-  //     console.log(player);
-  //     res.status(200).json({ message: "Get player successfully", data: player });
-  //   } catch (error) {
-  //     res.status(500).json({ message: `Internal Server Error ${error}`, data: null });
-  //   }
-  // },
 };

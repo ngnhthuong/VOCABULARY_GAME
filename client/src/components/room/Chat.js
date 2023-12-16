@@ -7,22 +7,8 @@ import userImg6 from "../../assets/images/player/user6.png";
 import userImg7 from "../../assets/images/player/user7.png";
 import { useRef, useState, useEffect } from "react";
 
-export default function ChatRoom() {
-  const getPlayerDataFromStorage = () => {
-    try {
-      const playerDataString = localStorage.getItem("player");
-      const playerData = JSON.parse(playerDataString);
-      return playerData;
-    } catch (error) {
-      console.error("Error retrieving player data from LocalStorage:", error);
-      return null;
-    }
-  };
-
-  const playerAuth = getPlayerDataFromStorage();
-
-  const [message, setMessage] = useState({});
-  const [messages, setMessages] = useState([]);
+export default function ChatRoom({playerAuth, message, setMessage, messages, setMessages}) {
+    
   const [defaultMessage, setDefaultMessage] = useState("");
   const handleInputChange = (event) => {
     setDefaultMessage(event.target.value);
@@ -41,10 +27,14 @@ export default function ChatRoom() {
       setDefaultMessage("");
     }
   };
+
+  console.log(messages)
+
   useEffect(() => {
     const chatList = document.querySelector(".room-chat__list");
     chatList.scrollTop = chatList.scrollHeight;
   }, [messages]);
+
   return (
     <>
       <div className="room-chat__title box--shadow">

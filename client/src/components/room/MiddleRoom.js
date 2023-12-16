@@ -8,14 +8,8 @@ import userImg7 from '../../assets/images/player/user7.png';
 import inRoomGame from '../../assets/images/formgame/inroom.gif';
 import './check.css';
 import { useState, useRef, useEffect } from 'react';
-export default function MiddleRoom() {
-    // function check() {
-    //     let checkElements = document.querySelectorAll('.player-game');
-    //     console.log(checkElements)
-    //     for(let i = 0; i < checkElements.length; i++ ){
-    //         console.log(checkElements[i]);
-    //     }
-    // };
+export default function MiddleRoom({handleRoomMatch}) {
+    
     return (
         <>
             <div className='room-body__middle--players'>
@@ -71,11 +65,9 @@ export default function MiddleRoom() {
                     </button>
                 </div>
                 <div className='room-body__middle--start box-animation'>
-                    <a href="/match">
-                        <button className='room-body__middle--start-btn box--shadow'>
+                        <button className='room-body__middle--start-btn box--shadow' onClick={handleRoomMatch}>
                             START
                         </button>
-                    </a>
                 </div>
             </div>
         </>

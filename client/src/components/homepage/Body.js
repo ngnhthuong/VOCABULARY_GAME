@@ -5,21 +5,27 @@ import taskImg from '../../assets/images/task/task.png'
 import eventImg from '../../assets/images/event/fire.gif';
 import giftImg from '../../assets/images/event/gift.png';
 import ruleImg from '../../assets/images/docks/message.png';
-
 import LobbyModal from './LobbyModal.js'
 
-export default function Body() {
+export default function Body({socket}) {
     const lobbyModal = useRef();
+    const [rooms, setRooms] = useState([]);
+
     function handleOpenModal(nameDialog) {
+        socket.emit('get-rooms');
+        socket.on('return-rooms', (data) => {
+            setRooms(data);
+        });
+        
         if (nameDialog === 'lobby') {
             lobbyModal.current.open();
         }
     }
+
     return (
         <>
-            <LobbyModal ref={lobbyModal} />
+            <LobbyModal ref={lobbyModal} socket={socket} rooms={rooms}/>
             <div id="body" className="flex--row">
-
                 <ul className="tasks flex--col">
                     <li className="task flex--col">
                         <img src={taskImg} alt="error task" />

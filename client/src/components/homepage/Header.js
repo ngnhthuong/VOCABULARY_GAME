@@ -19,7 +19,14 @@ export default function Header() {
       return null;
     }
   };
+
   const playerAuth = getPlayerDataFromStorage();
+
+  if(playerAuth === null){
+    window.location.href = "/";
+  }
+
+
   return (
     <header id="header" className="flex--row">
       <div id="player-rank__div" className="flex--row">
