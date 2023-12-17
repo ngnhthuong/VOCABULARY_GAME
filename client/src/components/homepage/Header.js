@@ -9,9 +9,7 @@ import rankImg from "../../assets/images/rank/rank2.png";
 export default function Header() {
   const getPlayerDataFromStorage = () => {
     try {
-      // Lấy dữ liệu từ LocalStorage với key là "player"
       const playerDataString = localStorage.getItem("player");
-      // Chuyển đổi dữ liệu từ chuỗi JSON sang đối tượng JavaScript
       const playerData = JSON.parse(playerDataString);
       return playerData;
     } catch (error) {
@@ -19,7 +17,6 @@ export default function Header() {
       return null;
     }
   };
-
   const playerAuth = getPlayerDataFromStorage();
 
   if(playerAuth === null){

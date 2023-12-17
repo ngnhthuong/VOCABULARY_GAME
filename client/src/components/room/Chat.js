@@ -7,7 +7,7 @@ import userImg6 from "../../assets/images/player/user6.png";
 import userImg7 from "../../assets/images/player/user7.png";
 import { useRef, useState, useEffect } from "react";
 
-export default function ChatRoom({playerAuth, message, setMessage, messages, setMessages}) {
+export default function ChatRoom({playerAuth, message, setMessage, socket, messages}) {
     
   const [defaultMessage, setDefaultMessage] = useState("");
   const handleInputChange = (event) => {
@@ -23,12 +23,10 @@ export default function ChatRoom({playerAuth, message, setMessage, messages, set
 
   const handleEnterPress = (event) => {
     if (event.key === "Enter") {
-      setMessages([...messages, message]);
+      socket.emit("client-sendchat", message);
       setDefaultMessage("");
     }
   };
-
-  console.log(messages)
 
   useEffect(() => {
     const chatList = document.querySelector(".room-chat__list");
@@ -48,7 +46,7 @@ export default function ChatRoom({playerAuth, message, setMessage, messages, set
                   <img src={messages.avatar} alt="error" />
                 </div>
                 <p>
-                  <label className="box--shadow">{messages.name}</label>
+                <label className={`box--shadow ${messages.name === playerAuth.playerName ? 'player__current' : ''}`}>{messages.name}</label>
                   <> </>{messages.chat}
                 </p>
               </li>

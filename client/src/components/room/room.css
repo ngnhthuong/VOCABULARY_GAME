@@ -91,7 +91,7 @@
 
 .room-id button {
     padding: 0.5rem;
-    width: 7rem;
+    width: fit-content;
     height: 2rem;
     border-radius: 0.9rem;
     border: none;
@@ -598,4 +598,17 @@
 .room-chat__message--avatar img {
     width: 3.5rem;
     height: auto;
+}
+
+.opacity__0{
+    opacity: 0;
+}
+
+.opacity_1{
+    opacity: 1;
+}
+
+.player__current{
+    background-color: var(--background-current-player) !important;
+    color: rgb(0, 0, 0) !important;
 }

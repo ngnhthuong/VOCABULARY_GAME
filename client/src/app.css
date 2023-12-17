@@ -14,9 +14,9 @@
   --login-color: #c6f4f2;
   --modal-background: #dedede;
   --modal-lobby-background: rgba(243, 203, 189);
+  --background-current-player: rgb(240, 237, 158);
   --modal-room-background: rgba(220, 216, 216, 0.9);
   --modal-room-background-origin: rgb(245, 245, 245);
-
   --background-color: rgba(132, 132, 132, 0.3);
   --background-chat: #218b82;
   --background-middle-room: #218b82;

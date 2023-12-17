@@ -18,22 +18,40 @@ import { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function Room({ socket }) {
-  
+  const [dataRoom, setDataRoom] = useState(null);
   const location = useLocation();
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const inputValue = searchParams.get("inputValue");
     console.log(inputValue);
     if (inputValue === null) {
-      // --------------------------- tHÊM TÊN VÀO
-      socket.emit("create-room", playerAuth.playerName);
-      socket.on("successfull", (data) => {});
+      socket.emit("create-room", playerAuth);
+      socket.on("return-room", (data) => {});
+      socket.on("successfull", (data) => {
+      });
+      socket.on("return-room", (data) => {
+          setDataRoom(data);
+      });
     } else if(inputValue !== null){
-      socket.emit("join-room", inputValue);
+      var playerMemberJoin = {
+        roomID: inputValue,
+        playerID: playerAuth._id,
+        playerName: playerAuth.playerName,
+        playerScore: 0,
+        playerAvatar: playerAuth.avatar,
+      };
+      socket.emit("join-room", playerMemberJoin);
       socket.on("successfull", (data) => {});
+      socket.on("return-room", (data) => {
+        setDataRoom(data);
+    });
     }
   }, []);
 
+
+  useEffect(() => {
+    console.log(dataRoom);
+  }, [dataRoom]);
   function backToHomePage() {
     window.location.href = "/homepage";
   }
@@ -53,14 +71,23 @@ export default function Room({ socket }) {
     window.location.href = "/";
   }
   // Chat room
-  const [message, setMessage] = useState({});
+
   const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState({});
   const [roomMatch, setRoomMatch] = useState(false);
 
-  //
+    socket.on("server-sendchat", (message) => {
+      setMessages([...messages, message]);
+    });
+
+  console.log(messages);
+
   function handleRoomMatch() {
     setRoomMatch(!roomMatch);
   }
+
+  
+
   // useEffect for change map
   useEffect(() => {
     if (roomMatch === true) {
@@ -95,7 +122,7 @@ export default function Room({ socket }) {
               </button>
             </div>
             <div className="room-id">
-              <button className="box--shadow">ID: 111</button>
+            <button className="box--shadow">ID: {dataRoom ? dataRoom.roomID : null}</button>
             </div>
           </div>
           <div className="room-body">
@@ -103,7 +130,7 @@ export default function Room({ socket }) {
               <FriendList />
             </div>
             <div className="room-body__middle box--shadow">
-              <MiddleRoom handleRoomMatch={handleRoomMatch} />
+              <MiddleRoom handleRoomMatch={handleRoomMatch} dataRoom={dataRoom} playerAuth={playerAuth}/>
             </div>
             <div className="room-body__right box--shadow">
               <ChatRoom
@@ -112,6 +139,7 @@ export default function Room({ socket }) {
                 setMessage={setMessage}
                 messages={messages}
                 setMessages={setMessages}
+                socket = {socket}
               />
             </div>
           </div>
