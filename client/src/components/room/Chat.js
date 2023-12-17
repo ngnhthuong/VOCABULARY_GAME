@@ -7,23 +7,24 @@ import userImg6 from "../../assets/images/player/user6.png";
 import userImg7 from "../../assets/images/player/user7.png";
 import { useRef, useState, useEffect } from "react";
 
-export default function ChatRoom({playerAuth, message, setMessage, socket, messages}) {
-    
+export default function ChatRoom({ playerAuth, socket, messages }) {
+  const [message, setMessage] = useState();
   const [defaultMessage, setDefaultMessage] = useState("");
   const handleInputChange = (event) => {
     setDefaultMessage(event.target.value);
-    const chatValue = event.target.value;
-    const messageValue = {
-      avatar: playerAuth.avatar,
-      name: playerAuth.playerName,
-      chat: chatValue,
-    };
-    setMessage(messageValue);
+    setMessage((pre) => {
+      return {
+        avatar: playerAuth.avatar,
+        name: playerAuth.playerName,
+        chat: event.target.value,
+      };
+    });
   };
-
-  const handleEnterPress = (event) => {
+  // console.log(message);
+  const handleEnterPress = async (event) => {
+    // console.log(message);
     if (event.key === "Enter") {
-      socket.emit("client-sendchat", message);
+      await socket.emit("client-sendchat", message);
       setDefaultMessage("");
     }
   };
@@ -41,15 +42,26 @@ export default function ChatRoom({playerAuth, message, setMessage, socket, messa
       <div className="room-chat">
         <ul className="room-chat__list">
           {messages.map((messages, index) => {
-              return <li key={index} className="room-chat__message box--shadow">
+            return (
+              <li key={index} className="room-chat__message box--shadow">
                 <div className="room-chat__message--avatar box--shadow">
                   <img src={messages.avatar} alt="error" />
                 </div>
                 <p>
-                <label className={`box--shadow ${messages.name === playerAuth.playerName ? 'player__current' : ''}`}>{messages.name}</label>
-                  <> </>{messages.chat}
+                  <label
+                    className={`box--shadow ${
+                      messages.name === playerAuth.playerName
+                        ? "player__current"
+                        : ""
+                    }`}
+                  >
+                    {messages.name}
+                  </label>
+                  <> </>
+                  {messages.chat}
                 </p>
               </li>
+            );
           })}
         </ul>
       </div>

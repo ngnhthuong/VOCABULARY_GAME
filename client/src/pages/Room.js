@@ -27,12 +27,11 @@ export default function Room({ socket }) {
     if (inputValue === null) {
       socket.emit("create-room", playerAuth);
       socket.on("return-room", (data) => {});
-      socket.on("successfull", (data) => {
-      });
+      socket.on("successfull", (data) => {});
       socket.on("return-room", (data) => {
-          setDataRoom(data);
+        setDataRoom(data);
       });
-    } else if(inputValue !== null){
+    } else if (inputValue !== null) {
       var playerMemberJoin = {
         roomID: inputValue,
         playerID: playerAuth._id,
@@ -44,17 +43,18 @@ export default function Room({ socket }) {
       socket.on("successfull", (data) => {});
       socket.on("return-room", (data) => {
         setDataRoom(data);
-    });
+      });
     }
   }, []);
 
-
   useEffect(() => {
-    console.log(dataRoom);
+    console.log("dataroom here", dataRoom);
   }, [dataRoom]);
+
   function backToHomePage() {
     window.location.href = "/homepage";
   }
+
   // Call data from local storage
   const getPlayerDataFromStorage = () => {
     try {
@@ -67,26 +67,28 @@ export default function Room({ socket }) {
     }
   };
   const playerAuth = getPlayerDataFromStorage();
-  if(playerAuth === null){
+  if (playerAuth === null) {
     window.location.href = "/";
   }
   // Chat room
 
   const [messages, setMessages] = useState([]);
-  const [message, setMessage] = useState({});
   const [roomMatch, setRoomMatch] = useState(false);
 
-    socket.on("server-sendchat", (message) => {
-      setMessages([...messages, message]);
-    });
+  socket.on("server-sendchat", (message) => {
+    setMessages([...messages, message]);
+  });
 
   console.log(messages);
 
   function handleRoomMatch() {
-    setRoomMatch(!roomMatch);
+    socket.emit("start-game-client", true);
+    // setRoomMatch(!roomMatch);
   }
 
-  
+  socket.on("start-game-server",(data) => {
+    setRoomMatch(!roomMatch);
+  })
 
   // useEffect for change map
   useEffect(() => {
@@ -122,7 +124,9 @@ export default function Room({ socket }) {
               </button>
             </div>
             <div className="room-id">
-            <button className="box--shadow">ID: {dataRoom ? dataRoom.roomID : null}</button>
+              <button className="box--shadow">
+                ID: {dataRoom ? dataRoom.roomID : null}
+              </button>
             </div>
           </div>
           <div className="room-body">
@@ -130,16 +134,18 @@ export default function Room({ socket }) {
               <FriendList />
             </div>
             <div className="room-body__middle box--shadow">
-              <MiddleRoom handleRoomMatch={handleRoomMatch} dataRoom={dataRoom} playerAuth={playerAuth}/>
+              <MiddleRoom
+                handleRoomMatch={handleRoomMatch}
+                dataRoom={dataRoom}
+                playerAuth={playerAuth}
+              />
             </div>
             <div className="room-body__right box--shadow">
               <ChatRoom
                 playerAuth={playerAuth}
-                message={message}
-                setMessage={setMessage}
                 messages={messages}
                 setMessages={setMessages}
-                socket = {socket}
+                socket={socket}
               />
             </div>
           </div>
@@ -148,17 +154,16 @@ export default function Room({ socket }) {
       {/* match */}
       <div id="match-form">
         <div className="match-form__left box--shadow">
-          <MatchMap roomMatch={roomMatch} />
+          <MatchMap roomMatch={roomMatch} playerAuth={playerAuth} />
         </div>
         <div className="match-form__right">
           <div className="math-form__right-chatrank box--shadow">
-            <RankInGame />
+            <RankInGame dataRoom={dataRoom} playerAuth={playerAuth} />
             <ChatInGame
               playerAuth={playerAuth}
-              message={message}
-              setMessage={setMessage}
               messages={messages}
               setMessages={setMessages}
+              socket={socket}
             />
           </div>
           <div className="ingame-setting box--shadow">

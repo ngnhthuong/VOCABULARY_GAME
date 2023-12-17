@@ -14,6 +14,7 @@ export default function Body({socket}) {
     function handleOpenModal(nameDialog) {
         socket.emit('get-rooms');
         socket.on('return-rooms', (data) => {
+            console.log(data);
             setRooms(data);
         });
         

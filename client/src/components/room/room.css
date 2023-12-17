@@ -270,6 +270,16 @@
     background-color: var(--background-player-room);
 }
 
+.captain{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* top: -10%;
+    left: -8%; */
+    width: 20% !important;
+    height: auto;
+}
+
 .room-body__middle--player_1 p,
 .room-body__middle--player_2 p,
 .room-body__middle--player_3 p,
@@ -363,6 +373,14 @@
     border-radius: 0.5rem;
     border: none;
     color: white;
+}
+
+.room-body__middle--start-btn i{
+    font-size: 1.5rem;
+}
+
+.startroom__ban--btn{
+    background-color: #868584;
 }
 
 
@@ -611,4 +629,8 @@
 .player__current{
     background-color: var(--background-current-player) !important;
     color: rgb(0, 0, 0) !important;
+}
+
+.player__highlightCurrent{
+    color: rgb(226, 226, 43) !important;
 }

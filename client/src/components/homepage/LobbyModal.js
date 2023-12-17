@@ -70,8 +70,8 @@ const LobbyModal = forwardRef(function LobbyModal({ socket, rooms }, ref) {
               <div className="modal__lobby--listroom box--shadow">
                 <ul className="modal__listroom--header box--shadow">
                   <li className="modal__listroom--label">ID</li>
-                  <li className="modal__listroom--label">Name</li>
                   <li className="modal__listroom--label">Quantity</li>
+                  <li className="modal__listroom--label">Status</li>
                   <li className="modal__listroom--label"></li>
                 </ul>
 
@@ -82,9 +82,11 @@ const LobbyModal = forwardRef(function LobbyModal({ socket, rooms }, ref) {
                         <li className="modal__listroom--label">
                           {room.roomID}
                         </li>
-                        <li className="modal__listroom--label">{room.name}</li>
                         <li className="modal__listroom--label">{`${room.roomMember.length}  / 4`}</li>
-                        {room.roomMember.length < 4 ? (
+                        <li className="modal__listroom--label">
+                          {room.roomStatus ? "waiting" : "in game"}
+                        </li>
+                        {room.roomMember.length < 4 && room.roomStatus ? (
                           <li className="modal__listroom--label modal__listroom--fn">
                             <button
                               className="modal__listroom--join box--shadow"

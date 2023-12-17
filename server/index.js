@@ -24,6 +24,7 @@ const io = new Server(server, {
 var roomServer = [];
 io.on("connection", (socket) => {
   var roomIDToFind = null;
+
   socket.on("create-room", (playerAuth) => {
     roomIDToFind = playerAuth.playerName;
     socket.join(playerAuth.playerName);
@@ -40,6 +41,7 @@ io.on("connection", (socket) => {
     var newRoom = {
       roomID: playerAuth.playerName,
       roomMember: [playerMember],
+      roomStatus: true,
     };
 
     var foundRoomIndex = roomServer.findIndex(
@@ -58,24 +60,24 @@ io.on("connection", (socket) => {
         // Cập nhật thông tin người chơi trong mảng roomMember
         roomServer[foundRoomIndex].roomMember[foundMemberIndex] = playerMember;
         var roomServerJSON = JSON.stringify(roomServer);
-        console.log("Update player Exist: ", roomServerJSON);
       } else {
         // Nếu không tìm thấy thành viên, thêm mới vào mảng roomMember
         roomServer[foundRoomIndex].roomMember.push(playerMember);
         var roomServerJSON = JSON.stringify(roomServer);
-        console.log("Add new player to existing room: ", roomServerJSON);
       }
     }
 
-    const rooms = io.sockets.adapter.rooms;
-    const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
-      roomID,
-      roomMember: Array.from(roomMember),
-    }));
+    // const rooms = io.sockets.adapter.rooms;
+    // const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
+    //   roomID,
+    //   roomMember: Array.from(roomMember),
+    // }));
+    // const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
 
-    const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
-    io.sockets.emit("return-rooms", filteredArray);
-    console.log("room array is: ", filteredArray);
+    // io.sockets.emit("return-rooms", filteredArray);
+    io.sockets.emit("return-rooms", roomServer);
+
+    console.log("room array is: ", roomServer);
     // return room created
     var foundRoomIndex = roomServer.findIndex(
       (room) => room.roomID === playerAuth.playerName
@@ -133,15 +135,14 @@ io.on("connection", (socket) => {
         }
       }
     }
-    const rooms = io.sockets.adapter.rooms;
-    const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
-      roomID,
-      roomMember: Array.from(roomMember),
-    }));
-    const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
-    io.sockets.emit("return-rooms", filteredArray);
-    console.log("room array is: ", filteredArray);
-    console.log(socket.adapter.rooms);
+    // const rooms = io.sockets.adapter.rooms;
+    // const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
+    //   roomID,
+    //   roomMember: Array.from(roomMember),
+    // }));
+    // const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
+    io.sockets.emit("return-rooms", roomServer);
+    console.log("room array is: ", roomServer);
   });
 
   socket.on("room-found", (data) => {
@@ -158,19 +159,36 @@ io.on("connection", (socket) => {
   });
 
   socket.on("get-rooms", () => {
-    const rooms = io.sockets.adapter.rooms;
-    const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
-      roomID,
-      roomMember: Array.from(roomMember),
-    }));
-    const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
-    console.log(filteredArray);
-    io.sockets.emit("return-rooms", filteredArray);
+    // const rooms = io.sockets.adapter.rooms;
+    // const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
+    //   roomID,
+    //   roomMember: Array.from(roomMember),
+    // }));
+    // const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
+    // console.log(filteredArray);
+    io.sockets.emit("return-rooms", roomServer);
   });
 
   socket.on("client-sendchat", (data) => {
     console.log(data);
     io.sockets.in(roomIDToFind).emit("server-sendchat", data);
+  });
+
+  socket.on("client-sendchat-ingame", (data) => {
+    console.log(data);
+    io.sockets.in(roomIDToFind).emit("server-sendchat", data);
+  });
+  socket.on("start-game-client", (data) => {
+    // gửi socket bắt đầu game
+    io.sockets.in(roomIDToFind).emit("start-game-server", false);
+    // Đổi trạng thái phòng sang đang trong trận
+    const roomToChange = roomServer.find((room) => room.roomID === roomIDToFind);
+    if (roomToChange) {
+      roomToChange.roomStatus = false;
+    }
+    // Cập nhật lại trạng thái cho toàn bộ server
+    console.log(roomServer)
+    io.sockets.emit("return-rooms", roomServer);
   });
 
   socket.on("disconnect", () => {
@@ -196,15 +214,11 @@ io.on("connection", (socket) => {
     ) {
       roomServer.splice(foundRoomIndex, 1);
     }
-    const rooms = io.sockets.adapter.rooms;
-    const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
-      roomID,
-      roomMember: Array.from(roomMember),
-    }));
-    const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
-    // console.log(filteredArray);
+    
+    // In ra dữ liệu roomServer
     console.log(roomServer);
-    io.sockets.emit("return-rooms", filteredArray);
+    // Trả về dữ liệu server để cập nhật
+    io.sockets.emit("return-rooms", roomServer);
   });
 });
 
