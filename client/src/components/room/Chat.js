@@ -20,7 +20,6 @@ export default function ChatRoom({ playerAuth, socket, messages }) {
       };
     });
   };
-  // console.log(message);
   const handleEnterPress = async (event) => {
     // console.log(message);
     if (event.key === "Enter") {

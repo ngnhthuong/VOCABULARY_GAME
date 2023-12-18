@@ -26,7 +26,7 @@ const SearchRoomModal = forwardRef(function SearchRoomModal({socket}, ref) {
         navigate(`/room?inputValue=${inputValue}`); 
       } else {
         const errorExistRoom = document.querySelector(".dont__exist--room");
-        errorExistRoom.textContent = "Room does not exist!";
+        errorExistRoom.textContent = "Room does not exist or full!";
       }
       });
   };

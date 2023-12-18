@@ -176,7 +176,7 @@ io.on("connection", (socket) => {
 
   socket.on("client-sendchat-ingame", (data) => {
     console.log(data);
-    io.sockets.in(roomIDToFind).emit("server-sendchat", data);
+    io.sockets.in(roomIDToFind).emit("server-sendchat-ingame", data);
   });
   socket.on("start-game-client", (data) => {
     // gửi socket bắt đầu game

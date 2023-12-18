@@ -79,6 +79,11 @@ export default function Room({ socket }) {
     setMessages([...messages, message]);
   });
 
+
+  socket.on("server-sendchat-ingame", (message) => {
+    setMessages([...messages, message]);
+  });
+
   console.log(messages);
 
   function handleRoomMatch() {
