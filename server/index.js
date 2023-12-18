@@ -21,7 +21,56 @@ const io = new Server(server, {
   },
 });
 
+// function process vocabulary game separate
+function rand(max, min) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function makeRandomPosition(arr) {
+  for (let i = arr.length - 2; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]]; // Dùng destructuring để hoán đổi giá trị
+  }
+  return arr;
+}
+
+function mixSingleWord(word) {
+  var strings = [];
+  var string = "";
+  for (var i = 0; i < word.length; i += 2) {
+    if (i % 2 == 0) {
+      if (i === word.length - 1) {
+        strings.push(word[i]);
+      } else {
+        string += word[i];
+        string += word[i + 1];
+        string += "/";
+        strings.push(string);
+      }
+      string = "";
+    }
+  }
+  makeRandomPosition(strings);
+  for (var i = 0; i < strings.length; i++) string += strings[i];
+  return string;
+}
+
+function AddQuess(word) {
+  var text = mixSingleWord(word);
+  if (text.endsWith("/")) {
+    // Nếu có, xóa dấu "/" cuối cùng
+    text = text.slice(0, -1);
+  }
+  return text;
+}
+
+// --------------------------------------------------------
+
 var roomServer = [];
+var vocabularyMap = [];
+
+
+
 io.on("connection", (socket) => {
   var roomIDToFind = null;
 
@@ -179,8 +228,41 @@ io.on("connection", (socket) => {
     io.sockets.in(roomIDToFind).emit("server-sendchat-ingame", data);
   });
   socket.on("start-game-client", (data) => {
+    // random area
+
+    function uniqueRandomArray(n) {
+      const arr = Array.from({ length: n }, (_, i) => i);
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = rand(i, 0);
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+    const roundValues = uniqueRandomArray(data.length);
     // gửi socket bắt đầu game
-    io.sockets.in(roomIDToFind).emit("start-game-server", false);
+    data = data.map((vocab, index) => {
+      const round = roundValues[index];
+      const score = rand(15, 1);
+      const location = index;
+      return { ...vocab, wordSeparate: AddQuess(vocab.word), round, score, location };
+    });
+
+    const dataMatch = {
+      roomID: roomIDToFind,
+      words: data,
+    };
+    // add dataMatch to vocabylaryMap
+    vocabularyMap.push(dataMatch);
+    // find area of dataMatch in vocabularyMap
+    var foundDataMatch = vocabularyMap.findIndex(
+      (match) => match.roomID === roomIDToFind
+    );
+    io.sockets.in(roomIDToFind).emit("start-game-server", vocabularyMap[foundDataMatch]);
+    var foundRound = vocabularyMap[foundDataMatch].words.findIndex(
+      (word) => word.round === 0
+    );
+    io.sockets.in(roomIDToFind).emit("receive-round-server", vocabularyMap[foundDataMatch].words[foundRound]);
+
     // Đổi trạng thái phòng sang đang trong trận
     const roomToChange = roomServer.find((room) => room.roomID === roomIDToFind);
     if (roomToChange) {
@@ -189,6 +271,50 @@ io.on("connection", (socket) => {
     // Cập nhật lại trạng thái cho toàn bộ server
     console.log(roomServer)
     io.sockets.emit("return-rooms", roomServer);
+  });
+
+  socket.on("send-data-round", (data) => {
+    console.log("data", data);
+    var foundDataMatch = vocabularyMap.findIndex(
+      (match) => match.roomID === roomIDToFind
+    );
+    var foundRound = vocabularyMap[foundDataMatch].words.findIndex(
+      (word) => word.round === data
+    );
+    if (foundRound !== -1) {
+      io.sockets.in(roomIDToFind).emit("receive-round-server", vocabularyMap[foundDataMatch].words[foundRound]);
+    } else {
+      io.sockets.in(roomIDToFind).emit("receive-round-server", null);
+    }
+  });
+
+  // end game 
+  socket.on("send-round-endgame", (data) => {
+    console.log("end game");
+    // Xóa dữ liệu vừa chơi
+    var foundDataMatch = vocabularyMap.findIndex(
+      (match) => match.roomID === roomIDToFind
+    );
+    vocabularyMap.splice(foundDataMatch, 1);
+    console.log(vocabularyMap);
+    // Đổi trạng thái phòng sang đang trong trận
+    const roomToChange = roomServer.find((room) => room.roomID === roomIDToFind);
+    if (roomToChange) {
+      roomToChange.roomStatus = true;
+    }
+    // đổi lại điểm người chơi về 0
+    var foundDataRoom = roomServer.findIndex(
+      (room) => room.roomID === roomIDToFind
+    );
+    roomServer[foundDataRoom].roomMember.forEach((member) => {
+      member.playerScore = 0;
+    });
+
+    // Cập nhật lại trạng thái cho toàn bộ server
+    io.sockets.emit("return-rooms", roomServer);
+    // io.sockets.in(roomIDToFind).emit("receive-round-endgame", vocabularyMap[foundDataMatch]);
+    // Cập nhật lại về phòng
+    io.sockets.in(roomIDToFind).emit("end-game-server", true);
   });
 
   socket.on("disconnect", () => {
@@ -204,17 +330,13 @@ io.on("connection", (socket) => {
         foundRoomIndex
       ].roomMember.filter((member) => member.playerSocket !== socket.id);
       console.log(roomServer);
-
-      io.sockets
-        .in(roomServer[foundRoomIndex].roomID)
-        .emit("return-room", roomServer[foundRoomIndex]);
+      io.sockets.in(roomServer[foundRoomIndex].roomID).emit("return-room", roomServer[foundRoomIndex]);
     } else if (
       foundRoomIndex !== -1 &&
       roomServer[foundRoomIndex].roomMember.length === 1
     ) {
       roomServer.splice(foundRoomIndex, 1);
     }
-    
     // In ra dữ liệu roomServer
     console.log(roomServer);
     // Trả về dữ liệu server để cập nhật

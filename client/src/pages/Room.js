@@ -1,4 +1,3 @@
-import io from "socket.io-client";
 import "../components/room/room.css";
 import "../components/match/match.css";
 import ChatRoom from "../components/room/Chat";
@@ -18,8 +17,210 @@ import { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function Room({ socket }) {
+  // datamap
+  const [dataMap, setDataMap] = useState([
+    {
+      word: "Sun",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Clouds",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Ocean",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Mountains",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Rose",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Piano",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Books",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Mobile",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Earth",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Hero",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Moon",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "City",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Family",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Park",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Street",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Artist",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "food",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Computer",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "lights",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Travel",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Adventure",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Coffee",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "worker",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+    {
+      word: "Rainbow",
+      wordSeparate: null,
+      round: null,
+      score: null,
+      winner: null,
+      location: null,
+    },
+  ]);
+  const [resetMatchMap, setResetMatchMap] = useState(false);
+  const [dataUsingMatch, setDataUsingMatch] = useState(null);
+  const [dataRound, setDataRound] = useState(null);
+  // ----
   const [dataRoom, setDataRoom] = useState(null);
   const location = useLocation();
+  // 
+  const [timeoutId, setTimeoutId] = useState(null);
+
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const inputValue = searchParams.get("inputValue");
@@ -79,21 +280,39 @@ export default function Room({ socket }) {
     setMessages([...messages, message]);
   });
 
-
   socket.on("server-sendchat-ingame", (message) => {
     setMessages([...messages, message]);
   });
 
   console.log(messages);
 
+  // send start game
   function handleRoomMatch() {
-    socket.emit("start-game-client", true);
-    // setRoomMatch(!roomMatch);
+    socket.emit("start-game-client", dataMap);
   }
 
-  socket.on("start-game-server",(data) => {
+  // về lại phòng
+  socket.on("end-game-server", (data) => {
+    setDataRound(null);
+    setDataUsingMatch(null);
+    timeoutId && clearTimeout(timeoutId);
+    setTimeoutId(null);
+    setResetMatchMap(!resetMatchMap);
+    setTimeout(() => {
+      setRoomMatch(!roomMatch);
+    }, 4000);
+    // setRoomMatch(!roomMatch);
+  });
+
+  // bắt đầu game
+  socket.on("start-game-server", (data) => {
+    setDataUsingMatch(data);
     setRoomMatch(!roomMatch);
-  })
+  });
+
+  socket.on("receive-round-server", (round) => {
+    setDataRound(round);
+  });
 
   // useEffect for change map
   useEffect(() => {
@@ -113,6 +332,7 @@ export default function Room({ socket }) {
         .classList.remove("close");
     }
   }, [roomMatch]);
+
   return (
     <>
       <div id="room-form" className="background-modal__room">
@@ -159,7 +379,17 @@ export default function Room({ socket }) {
       {/* match */}
       <div id="match-form">
         <div className="match-form__left box--shadow">
-          <MatchMap roomMatch={roomMatch} playerAuth={playerAuth} />
+          <MatchMap
+            dataMap={dataMap}
+            roomMatch={roomMatch}
+            playerAuth={playerAuth}
+            dataUsingMatch={dataUsingMatch}
+            dataRound={dataRound}
+            socket={socket}
+            dataRoom={dataRoom}
+            setTimeoutId = {setTimeoutId}
+            timeoutId = {timeoutId}
+          />
         </div>
         <div className="match-form__right">
           <div className="math-form__right-chatrank box--shadow">

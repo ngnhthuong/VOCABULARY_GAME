@@ -272,12 +272,13 @@
 
 .captain{
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -1%;
+    left: -1%;
     /* top: -10%;
     left: -8%; */
     width: 20% !important;
     height: auto;
+    border-radius: 1rem;
 }
 
 .room-body__middle--player_1 p,

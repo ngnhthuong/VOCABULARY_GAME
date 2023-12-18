@@ -9,6 +9,7 @@ import inRoomGame from "../../assets/images/formgame/inroom.gif";
 import captainImg from "../../assets/images/formgame/captain.png";
 import { useState, useRef, useEffect } from "react";
 export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth }) {
+
   if (dataRoom !== null) {
     console.log(dataRoom.roomMember.length);
   }
@@ -54,7 +55,7 @@ export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth }) {
       <div className="room-body__middle--players">
         <div className="room-body__middle--player">
           <div className="player-game room-body__middle--player_1 box--shadow opacity__0">
-            <img className="captain" src={captainImg} alt="" />
+            <img className="captain box-animation" src={captainImg} alt="" />
             <img className="player-game-avt" src="" alt="error" />
             <p className="player-game-name">Cow Cow</p>
             <div className="room-body__middle--function">
@@ -116,7 +117,7 @@ export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth }) {
         >
           <button
             className="room-body__middle--start-btn box--shadow"
-            onClick={handleRoomMatch}
+            onClick={() => handleRoomMatch()}
           >
             START
           </button>

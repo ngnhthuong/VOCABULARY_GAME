@@ -116,9 +116,288 @@
 
 // console.log(order.products[0].product.name)
 
-
 // You can now use the 'order' object in your JavaScript code.
 // console.log(order);
 
-
 // var = data.products.map((element) => element.product.name)
+
+// var beforeVocabularyArray = [
+//     "Sun",
+//     "Clouds",
+//     "Ocean",
+//     "Mountains",
+//     "Rose",
+//     "Piano",
+//     "Books",
+//     "Mobile",
+//     "Earth",
+//     "Hero",
+//     "Moon",
+//     "City",
+//     "Family",
+//     "Park",
+//     "Street",
+//     "Artist",
+//     "food",
+//     "Computer",
+//     "lights",
+//     "Travel",
+//     "Adventure",
+//     "worker",
+//     "Coffee",
+//     "Rainbow",
+//     "Waves",
+//     "nice",
+//     "Dreams",
+//     "Butterfly",
+//     "Serenity",
+//     "Galaxy",
+//     "Magic",
+//     "Journey",
+//     "Harmony"
+//   ];
+
+function rand(max, min) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  
+  function makeRandomPosition(arr) {
+    for (let i = arr.length - 2; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]]; // Dùng destructuring để hoán đổi giá trị
+    }
+    return arr;
+  }
+  
+  function mixSingleWord(word) {
+    var strings = [];
+    var string = "";
+    for (var i = 0; i < word.length; i += 2) {
+      if (i % 2 == 0) {
+        if (i === word.length - 1) {
+          strings.push(word[i]);
+        } else {
+          string += word[i];
+          string += word[i + 1];
+          string += "/";
+          strings.push(string);
+        }
+        string = "";
+      }
+    }
+    makeRandomPosition(strings);
+    for (var i = 0; i < strings.length; i++) string += strings[i];
+    return string;
+  }
+  
+  function AddQuess(word) {
+    var text = mixSingleWord(word);
+    if (text.endsWith("/")) {
+        // Nếu có, xóa dấu "/" cuối cùng
+        text = text.slice(0, -1);
+    }
+    return text;
+  }
+  
+  // Test the function with a single word
+//   var result = AddQuess("meanss");
+//   console.log(result);
+
+
+var data = [     
+    {
+        word: "Sun",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Clouds",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Ocean",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Mountains",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Rose",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Piano",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Books",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Mobile",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Earth",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Hero",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Moon",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "City",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Family",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Park",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Street",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Artist",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "food",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Computer",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "lights",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Travel",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Adventure",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Coffee",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "worker",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+      {
+        word: "Rainbow",
+        wordSeparate: null,
+        round: null,
+        score: null,
+        winner: null,
+      },
+]
+
+data = data.map((vocab) => {
+    return {...vocab, wordSeparate: AddQuess(vocab.word)};
+})
+
+function uniqueRandomArray(n) {
+    const arr = Array.from({ length: n }, (_, i) => i);
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = rand(i, 0);
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+const roundValues = uniqueRandomArray(data.length);
+
+data = data.map((vocab, index) => {
+    const round = roundValues[index];
+    const score = rand(20, 0); // Chỉ là một giả định, bạn có thể thay đổi theo nhu cầu
+    return { ...vocab, round, score };
+});
+
+console.log(data);
+
+
+// console.log(data);
+  

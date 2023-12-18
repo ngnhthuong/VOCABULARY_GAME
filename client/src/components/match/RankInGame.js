@@ -15,7 +15,6 @@ export default function RankInGame({dataRoom, playerAuth}) {
             const playerAvts = document.querySelectorAll(".player-avt");
             console.log(playerNames)
             for(var i = 0; i < dataRoom.roomMember.length; i++){
-
                 if (dataRoom.roomMember[i].playerName === playerAuth.playerName) {
                     playerNames[i].classList.add("player__highlightCurrent");
                     playerRatings[i].classList.remove("opacity__0");
