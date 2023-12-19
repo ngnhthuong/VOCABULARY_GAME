@@ -13,11 +13,24 @@ import userImg4 from "../assets/images/player/user4.png";
 import userImg5 from "../assets/images/player/user5.png";
 import userImg6 from "../assets/images/player/user6.png";
 import userImg7 from "../assets/images/player/user7.png";
+import winnerRoundEvenImg from "../assets/images/formgame/winnerRoundEven.png";
+import winnerRoundOddImg from "../assets/images/formgame/winnerRoundOdd.png";
+import backgroundWinnerImg from "../assets/images/formgame/backgroundWinRound.gif";
+import winnerGameRightImg from "../assets/images/formgame/winnerMatchRight.png";
+import winnerGameLeftImg from "../assets/images/formgame/winnerMatchLeft.png";
+// import sound
+import gameSound from "../assets/sounds/creepy-devil-dance-166764.mp3";
+
 import { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function Room({ socket }) {
   // datamap
+  // Call dataMap form database here 
+
+
+
+  // ------------------------------
   const [dataMap, setDataMap] = useState([
     {
       word: "Sun",
@@ -218,8 +231,44 @@ export default function Room({ socket }) {
   // ----
   const [dataRoom, setDataRoom] = useState(null);
   const location = useLocation();
-  // 
+  //
   const [timeoutId, setTimeoutId] = useState(null);
+  const [volume, setVolume] = useState(false);
+  const [audioElement, setAudioElement] = useState(new Audio(gameSound));
+
+  useEffect(() => {
+    if(volume === true){
+      audioElement.volume = 0.25; // Set volume to 10%
+      // Gán sự kiện kết thúc âm thanh để tự động phát lại khi kết thúc
+      audioElement.addEventListener("ended", () => {
+        if (volume) {
+          audioElement.currentTime = 0; // Đặt thời gian về đầu để khi phát lại, nó sẽ bắt đầu từ đầu
+          audioElement.play();
+        }
+      });
+  
+      // Xử lý sự thay đổi volume để tắt hoặc bật âm thanh
+      if (volume) {
+        audioElement.play();
+      } else {
+        audioElement.pause();
+        audioElement.currentTime = 0; // Đặt thời gian về đầu để khi phát lại, nó sẽ bắt đầu từ đầu
+      }
+  
+      // Cleanup sự kiện khi component unmount
+      return () => {
+        audioElement.removeEventListener("ended", () => {});
+      };
+    } else {
+      audioElement.pause();
+      audioElement.currentTime = 0; // Đặt thời gian về đầu để khi phát lại, nó sẽ bắt đầu từ đầu
+    }
+  
+  }, [volume]); // Lắng nghe sự thay đổi của volume
+
+  const handleChangeVolume = () => {
+    setVolume(!volume);
+  };
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -227,7 +276,6 @@ export default function Room({ socket }) {
     console.log(inputValue);
     if (inputValue === null) {
       socket.emit("create-room", playerAuth);
-      socket.on("return-room", (data) => {});
       socket.on("successfull", (data) => {});
       socket.on("return-room", (data) => {
         setDataRoom(data);
@@ -293,19 +341,34 @@ export default function Room({ socket }) {
 
   // về lại phòng
   socket.on("end-game-server", (data) => {
-    setDataRound(null);
-    setDataUsingMatch(null);
-    timeoutId && clearTimeout(timeoutId);
-    setTimeoutId(null);
-    setResetMatchMap(!resetMatchMap);
+    // gọi axios update data match had been played
+
+
+
+    // ============================================
+    console.log("end game");
+    setWinnerGame(true);
     setTimeout(() => {
+      if(volume){
+        handleChangeVolume();
+      }
+      setDataRoomScore(null);
+      setWinnerGame(false);
+      setDataRound(null);
+      setDataUsingMatch(null);
+      timeoutId && clearTimeout(timeoutId);
+      setTimeoutId(null);
+      setResetMatchMap(!resetMatchMap);
+      setDataRoomScore(null);
       setRoomMatch(!roomMatch);
-    }, 4000);
-    // setRoomMatch(!roomMatch);
+
+    }, 10000);
   });
 
   // bắt đầu game
   socket.on("start-game-server", (data) => {
+    console.log(data);
+    handleChangeVolume();
     setDataUsingMatch(data);
     setRoomMatch(!roomMatch);
   });
@@ -332,6 +395,38 @@ export default function Room({ socket }) {
         .classList.remove("close");
     }
   }, [roomMatch]);
+
+  // winner round
+  const [winnerRound, setWinnerRound] = useState(null);
+  const [winnerGame, setWinnerGame] = useState(false);
+  socket.on("return-player-player", (data) => {
+    setDataRoomScore(data);
+  });
+  const [dataRoomScore, setDataRoomScore] = useState(null);
+  const [modalWinnerRound, setModalWinnerRound] = useState(false);
+  socket.on("receive-correct-answer", (data) => {
+    setWinnerRound(data);
+  });
+
+  useEffect(() => {
+    if (winnerGame !== null && winnerGame === true) {
+      console.log("winner game:", dataRoomScore);
+      const queryImgWin = document.querySelector(".winner__game--imgWin");
+      var changeWin = 1;
+      const flagSetTime = setInterval(() => {
+        if (changeWin % 2 === 0) {
+          queryImgWin.setAttribute("src", winnerGameRightImg);
+        } else {
+          queryImgWin.setAttribute("src", winnerGameLeftImg);
+        }
+        changeWin++;
+      }, 700);
+      setTimeout(() => {
+        clearInterval(flagSetTime);
+        changeWin = 1;
+      }, 10000);
+    }
+  }, [winnerGame]);
 
   return (
     <>
@@ -379,6 +474,64 @@ export default function Room({ socket }) {
       {/* match */}
       <div id="match-form">
         <div className="match-form__left box--shadow">
+          {/* winner round */}
+          <div
+            className={`winner__round ${modalWinnerRound ? "open" : "close"}`}
+          >
+            <div className="winner__round--img">
+              <img
+                className="winner__round--imgBackground"
+                src={backgroundWinnerImg}
+                alt=""
+              />
+              {winnerRound !== null && (winnerRound.round + 1) % 2 === 0 ? (
+                <img
+                  className="winner__round--imgWin"
+                  src={winnerRoundEvenImg}
+                  alt=""
+                />
+              ) : (
+                <img
+                  className="winner__round--imgWin"
+                  src={winnerRoundOddImg}
+                  alt=""
+                />
+              )}
+            </div>
+            <div className="match-element__active winner__round--infor">
+              <p>ROUND: {winnerRound !== null ? winnerRound.round + 1 : ""}</p>
+              <p>
+                Word: {winnerRound !== null ? winnerRound.word : ""} | Score:{" "}
+                {winnerRound !== null ? winnerRound.score : ""}{" "}
+              </p>
+              <p>Winner: {winnerRound !== null ? winnerRound.winner : ""}</p>
+            </div>
+          </div>
+          {/* winner */}
+          <div className={`winner__round ${winnerGame ? "open" : "close"}`}>
+            <div className="winner__round--img">
+              <img
+                className="winner__round--imgBackground"
+                src={backgroundWinnerImg}
+                alt=""
+              />
+              <img className="winner__game--imgWin" src="" alt="" />
+            </div>
+            <div className="match-element__active winner__round--infor">
+              <p>
+                Winner:{" "}
+                {dataRoomScore !== null
+                  ? dataRoomScore.roomMember[0].playerName
+                  : ""}
+              </p>
+              <p>
+                Total Score:{" "}
+                {dataRoomScore !== null
+                  ? dataRoomScore.roomMember[0].playerScore
+                  : ""}
+              </p>
+            </div>
+          </div>
           <MatchMap
             dataMap={dataMap}
             roomMatch={roomMatch}
@@ -387,13 +540,22 @@ export default function Room({ socket }) {
             dataRound={dataRound}
             socket={socket}
             dataRoom={dataRoom}
-            setTimeoutId = {setTimeoutId}
-            timeoutId = {timeoutId}
+            setTimeoutId={setTimeoutId}
+            timeoutId={timeoutId}
+            setDataRound={setDataRound}
+            winnerRound={winnerRound}
+            setWinnerRound={setWinnerRound}
+            modalWinnerRound={modalWinnerRound}
+            setModalWinnerRound={setModalWinnerRound}
           />
         </div>
         <div className="match-form__right">
           <div className="math-form__right-chatrank box--shadow">
-            <RankInGame dataRoom={dataRoom} playerAuth={playerAuth} />
+            <RankInGame
+              dataRoomScore={dataRoomScore}
+              dataRoom={dataRoom}
+              playerAuth={playerAuth}
+            />
             <ChatInGame
               playerAuth={playerAuth}
               messages={messages}
@@ -401,9 +563,16 @@ export default function Room({ socket }) {
               socket={socket}
             />
           </div>
-          <div className="ingame-setting box--shadow">
+          <div
+            className="ingame-setting box--shadow"
+            onClick={handleChangeVolume}
+          >
             <button className="box--shadow">
-              <i className="fas fa-cog"></i>
+              {volume ? (
+                <i className="fas fa-volume-up"></i>
+              ) : (
+                <i className="fas fa-volume-mute"></i>
+              )}
             </button>
           </div>
         </div>

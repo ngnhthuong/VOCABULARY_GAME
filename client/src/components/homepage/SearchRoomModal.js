@@ -1,9 +1,12 @@
-import { forwardRef, useImperativeHandle, useRef, useState} from "react";
+import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-const SearchRoomModal = forwardRef(function SearchRoomModal({socket}, ref) {
-  const [inputValue, setInputValue] = useState('');
+const SearchRoomModal = forwardRef(function SearchRoomModal(
+  { socket, displayError, setDisplayError },
+  ref
+) {
+  const [inputValue, setInputValue] = useState("");
   const searchRoomModal = useRef();
   const navigate = useNavigate(); // Add this line
 
@@ -15,20 +18,23 @@ const SearchRoomModal = forwardRef(function SearchRoomModal({socket}, ref) {
     };
   });
   const handleInputChange = (e) => {
+    setDisplayError("Enter room ID");
     setInputValue(e.target.value);
   };
 
   const handleJoinRoom = () => {
+
+    console.log(inputValue);
     socket.emit("room-found", inputValue);
     socket.on("room-response", (data) => {
-      if(data){
-        console.log("room found");
-        navigate(`/room?inputValue=${inputValue}`); 
+      console.log(data.message);
+      if (data.requestMessage) {
+        navigate(`/room?inputValue=${inputValue}`);
       } else {
-        const errorExistRoom = document.querySelector(".dont__exist--room");
-        errorExistRoom.textContent = "Room does not exist or full!";
+        setInputValue('');
+        setDisplayError(data.message);
       }
-      });
+    });
   };
   return createPortal(
     <dialog ref={searchRoomModal} className="open_modal">
@@ -42,15 +48,18 @@ const SearchRoomModal = forwardRef(function SearchRoomModal({socket}, ref) {
               onChange={handleInputChange}
               placeholder="Room ID"
             />
-            <p className="dont__exist--room">Enter your room ID!</p>
+            <p className="dont__exist--room">{displayError}</p>
             <div className="modal__findroom--btn">
               <form className="findroom__dialog--btn" method="dialog">
                 <button className="findroom--btn box--shadow">
                   <i className="fas fa-times"></i>
                 </button>
               </form>
-              <button className="findroom--btn box--shadow" onClick={handleJoinRoom}>
-                <i className="fas fa-sign-in-alt" ></i>
+              <button
+                className="findroom--btn box--shadow"
+                onClick={handleJoinRoom}
+              >
+                <i className="fas fa-sign-in-alt"></i>
               </button>
             </div>
           </div>

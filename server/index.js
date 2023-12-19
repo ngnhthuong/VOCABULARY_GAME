@@ -69,8 +69,6 @@ function AddQuess(word) {
 var roomServer = [];
 var vocabularyMap = [];
 
-
-
 io.on("connection", (socket) => {
   var roomIDToFind = null;
 
@@ -135,11 +133,15 @@ io.on("connection", (socket) => {
     io.sockets
       .in(roomServer[foundRoomIndex].roomID)
       .emit("return-room", roomServer[foundRoomIndex]);
+    io.sockets
+      .in(roomIDToFind)
+      .emit("return-player-player", roomServer[foundRoomIndex]);
   });
 
   socket.on("join-room", (playerMemberJoin) => {
     roomIDToFind = playerMemberJoin.roomID;
     console.log("playerMemberJoin", playerMemberJoin);
+
     var playerMember = {
       playerID: playerMemberJoin.playerID,
       playerSocket: socket.id,
@@ -181,40 +183,57 @@ io.on("connection", (socket) => {
           io.sockets
             .in(roomServer[foundRoomIndex].roomID)
             .emit("return-room", roomServer[foundRoomIndex]);
+          // return player for bxh
+          io.sockets
+            .in(roomIDToFind)
+            .emit("return-player-player", roomServer[foundRoomIndex]);
         }
       }
     }
-    // const rooms = io.sockets.adapter.rooms;
-    // const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
-    //   roomID,
-    //   roomMember: Array.from(roomMember),
-    // }));
-    // const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
+
     io.sockets.emit("return-rooms", roomServer);
     console.log("room array is: ", roomServer);
   });
 
   socket.on("room-found", (data) => {
-    var flag = false;
+    console.log("room-found", data);
     for (const [room, roomInfo] of socket.adapter.rooms) {
       if (room == data && roomInfo.size < 4) {
-        flag = true;
-        socket.emit("room-response", true);
+        const findIndexRoom = roomServer.findIndex(
+          (room) => room.roomID === data
+        );
+        if (roomServer[findIndexRoom].roomStatus === true) {
+          const data = {
+            requestMessage: true,
+            message: "Join room success",
+          };
+          console.log("room is not playing");
+          socket.emit("room-response", data);
+        } else {
+          const data = {
+            requestMessage: false,
+            message: "Room is playing",
+          };
+          console.log("room is playing");
+          socket.emit("room-response", data);
+        }
+      } else if (room == data && roomInfo.size >= 4) {
+        const data = {
+          requestMessage: false,
+          message: "Room is full",
+        };
+        socket.emit("room-response", data);
+      } else {
+        const data = {
+          requestMessage: false,
+          message: "Room not exist",
+        };
+        socket.emit("room-response", data);
       }
-    }
-    if (flag == false) {
-      socket.emit("room-response", false);
     }
   });
 
   socket.on("get-rooms", () => {
-    // const rooms = io.sockets.adapter.rooms;
-    // const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
-    //   roomID,
-    //   roomMember: Array.from(roomMember),
-    // }));
-    // const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
-    // console.log(filteredArray);
     io.sockets.emit("return-rooms", roomServer);
   });
 
@@ -242,9 +261,15 @@ io.on("connection", (socket) => {
     // gửi socket bắt đầu game
     data = data.map((vocab, index) => {
       const round = roundValues[index];
-      const score = rand(15, 1);
+      const score = rand(50, 10);
       const location = index;
-      return { ...vocab, wordSeparate: AddQuess(vocab.word), round, score, location };
+      return {
+        ...vocab,
+        wordSeparate: AddQuess(vocab.word),
+        round,
+        score,
+        location,
+      };
     });
 
     const dataMatch = {
@@ -257,23 +282,38 @@ io.on("connection", (socket) => {
     var foundDataMatch = vocabularyMap.findIndex(
       (match) => match.roomID === roomIDToFind
     );
-    io.sockets.in(roomIDToFind).emit("start-game-server", vocabularyMap[foundDataMatch]);
+    io.sockets
+      .in(roomIDToFind)
+      .emit("start-game-server", vocabularyMap[foundDataMatch]);
     var foundRound = vocabularyMap[foundDataMatch].words.findIndex(
       (word) => word.round === 0
     );
-    io.sockets.in(roomIDToFind).emit("receive-round-server", vocabularyMap[foundDataMatch].words[foundRound]);
+    io.sockets
+      .in(roomIDToFind)
+      .emit(
+        "receive-round-server",
+        vocabularyMap[foundDataMatch].words[foundRound]
+      );
 
     // Đổi trạng thái phòng sang đang trong trận
-    const roomToChange = roomServer.find((room) => room.roomID === roomIDToFind);
+    const roomToChange = roomServer.find(
+      (room) => room.roomID === roomIDToFind
+    );
     if (roomToChange) {
       roomToChange.roomStatus = false;
     }
+    // dùng để gưi user player để hiển thị lên bhx trong game
+    io.sockets
+      .in(roomIDToFind)
+      .emit("return-player-player", roomServer[roomToChange]);
     // Cập nhật lại trạng thái cho toàn bộ server
-    console.log(roomServer)
+    console.log(roomServer);
+
     io.sockets.emit("return-rooms", roomServer);
   });
 
   socket.on("send-data-round", (data) => {
+    console.log("here");
     console.log("data", data);
     var foundDataMatch = vocabularyMap.findIndex(
       (match) => match.roomID === roomIDToFind
@@ -281,14 +321,96 @@ io.on("connection", (socket) => {
     var foundRound = vocabularyMap[foundDataMatch].words.findIndex(
       (word) => word.round === data
     );
-    if (foundRound !== -1) {
-      io.sockets.in(roomIDToFind).emit("receive-round-server", vocabularyMap[foundDataMatch].words[foundRound]);
-    } else {
-      io.sockets.in(roomIDToFind).emit("receive-round-server", null);
+    var preFoundRound = vocabularyMap[foundDataMatch].words.findIndex(
+      (word) => word.round === data - 1
+    );
+    console.log(
+      "foundRound",
+      vocabularyMap[foundDataMatch].words[preFoundRound]
+    );
+    if (
+      foundRound !== -1 &&
+      vocabularyMap[foundDataMatch].words[preFoundRound].winner === null
+    ) {
+      console.log("here pre null");
+      io.sockets
+        .in(roomIDToFind)
+        .emit(
+          "receive-round-server",
+          vocabularyMap[foundDataMatch].words[foundRound]
+        );
     }
   });
 
-  // end game 
+  socket.on("request-round-after-roundwin", (data) => {
+    console.log("here");
+    console.log("data", data);
+    var foundDataMatch = vocabularyMap.findIndex(
+      (match) => match.roomID === roomIDToFind
+    );
+    var foundRound = vocabularyMap[foundDataMatch].words.findIndex(
+      (word) => word.round === data
+    );
+    var preFoundRound = vocabularyMap[foundDataMatch].words.findIndex(
+      (word) => word.round === data - 1
+    );
+    if (
+      foundRound !== -1 &&
+      vocabularyMap[foundDataMatch].words[preFoundRound].winner !== null
+    ) {
+      io.sockets
+        .in(roomIDToFind)
+        .emit(
+          "receive-round-server",
+          vocabularyMap[foundDataMatch].words[foundRound]
+        );
+    }
+  });
+
+  // correct answer
+  socket.on("send-correct-answer", (data) => {
+    console.log("correct answer");
+    var foundDataMatch = vocabularyMap.findIndex(
+      (match) => match.roomID === roomIDToFind
+    );
+
+    var foundRound = vocabularyMap[foundDataMatch].words.findIndex(
+      (word) => word.round === data.round.round
+    );
+
+    if (vocabularyMap[foundDataMatch].words[foundRound].winner === null) {
+      vocabularyMap[foundDataMatch].words[foundRound] = {
+        ...vocabularyMap[foundDataMatch].words[foundRound],
+        ...data.round,
+      };
+
+      var foundRoomIndex = roomServer.findIndex(
+        (room) => room.roomID === roomIDToFind
+      );
+      var foundMemberIndex = roomServer[foundRoomIndex].roomMember.findIndex(
+        (playerMember) => playerMember.playerName === data.playerName
+      );
+      roomServer[foundRoomIndex].roomMember[foundMemberIndex].playerScore +=
+        data.score;
+      var flagRoomServer = roomServer[foundRoomIndex];
+      // sắp xếp lại thứ tự người chơi theo điểm
+      flagRoomServer.roomMember.sort((a, b) => b.playerScore - a.playerScore);
+      console.log("player after sort", flagRoomServer.roomMember);
+      console.log(roomServer[foundRoomIndex].roomMember[foundMemberIndex]);
+      io.sockets.in(roomIDToFind).emit("return-player-player", flagRoomServer);
+      io.sockets
+        .in(roomIDToFind)
+        .emit(
+          "receive-correct-answer",
+          vocabularyMap[foundDataMatch].words[foundRound]
+        );
+      io.sockets
+        .in(roomIDToFind)
+        .emit("return-room", roomServer[foundRoomIndex]);
+    }
+  });
+
+  // end game
   socket.on("send-round-endgame", (data) => {
     console.log("end game");
     // Xóa dữ liệu vừa chơi
@@ -297,8 +419,10 @@ io.on("connection", (socket) => {
     );
     vocabularyMap.splice(foundDataMatch, 1);
     console.log(vocabularyMap);
-    // Đổi trạng thái phòng sang đang trong trận
-    const roomToChange = roomServer.find((room) => room.roomID === roomIDToFind);
+    // Đổi trạng thái phòng sang room chờ
+    const roomToChange = roomServer.find(
+      (room) => room.roomID === roomIDToFind
+    );
     if (roomToChange) {
       roomToChange.roomStatus = true;
     }
@@ -311,9 +435,9 @@ io.on("connection", (socket) => {
     });
 
     // Cập nhật lại trạng thái cho toàn bộ server
-    io.sockets.emit("return-rooms", roomServer);
-    // io.sockets.in(roomIDToFind).emit("receive-round-endgame", vocabularyMap[foundDataMatch]);
     // Cập nhật lại về phòng
+    io.sockets.emit("return-rooms", roomServer);
+    // io.sockets.in(roomIDToFind).emit("return-room", roomServer[foundDataRoom]);
     io.sockets.in(roomIDToFind).emit("end-game-server", true);
   });
 
@@ -337,6 +461,8 @@ io.on("connection", (socket) => {
     ) {
       roomServer.splice(foundRoomIndex, 1);
     }
+    // return data for bxh
+    io.sockets.in(roomIDToFind).emit("return-player-player", roomServer[foundRoomIndex]);
     // In ra dữ liệu roomServer
     console.log(roomServer);
     // Trả về dữ liệu server để cập nhật

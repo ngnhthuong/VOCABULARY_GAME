@@ -17,6 +17,7 @@ const LobbyModal = forwardRef(function LobbyModal({ socket, rooms }, ref) {
   const createRoomModal = useRef();
   const searchRoomModal = useRef();
   const [displayedRooms, setDisplayedRooms] = useState([]);
+  const [displayError, setDisplayError] = useState("");
   function handleOpenModal(nameDialog) {
     if (nameDialog === "createRoom") {
       console.log("createRoom");
@@ -42,9 +43,11 @@ const LobbyModal = forwardRef(function LobbyModal({ socket, rooms }, ref) {
   const handleJoinRoom = (roomCode) => {
     socket.emit("room-found", roomCode);
     socket.on("room-response", (data) => {
-      if (data) {
-        console.log("room found");
+      console.log(data);
+      if (data.requestMessage) {
         navigate(`/room?inputValue=${roomCode}`);
+      } else {
+        setDisplayError(data.message);
       }
     });
   };
@@ -52,7 +55,7 @@ const LobbyModal = forwardRef(function LobbyModal({ socket, rooms }, ref) {
   return createPortal(
     <>
       <CreateRoomModal ref={createRoomModal} />
-      <SearchRoomModal ref={searchRoomModal} socket={socket} />
+      <SearchRoomModal ref={searchRoomModal} socket={socket} displayError= {displayError} setDisplayError={setDisplayError} />
       <dialog ref={lobbyModal} className="open_modal">
         <div className="modal__background close-modal">
           <div className="modal__frame box--shadow">

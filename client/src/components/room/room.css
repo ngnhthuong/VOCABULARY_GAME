@@ -376,6 +376,14 @@
     color: white;
 }
 
+.room-body__middle--start-btn:hover{
+    transform: scale(1.05);
+}
+
+.room-body__middle--start-btn:active{
+    transform: scale(1);
+}
+
 .room-body__middle--start-btn i{
     font-size: 1.5rem;
 }

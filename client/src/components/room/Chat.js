@@ -21,10 +21,15 @@ export default function ChatRoom({ playerAuth, socket, messages }) {
     });
   };
   const handleEnterPress = async (event) => {
+    function isEmptyOrSpaces(str) {
+      return str === null || str.match(/^ *$/) !== null;
+    }
     // console.log(message);
     if (event.key === "Enter") {
-      await socket.emit("client-sendchat", message);
-      setDefaultMessage("");
+      if (message.chat !== undefined && !isEmptyOrSpaces(message.chat)) {
+        await socket.emit("client-sendchat", message);
+        setDefaultMessage("");
+      }
     }
   };
 

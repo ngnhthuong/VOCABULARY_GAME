@@ -6,31 +6,38 @@ import userImg4 from '../../assets/images/player/user4.png';
 import userImg5 from '../../assets/images/player/user5.png';
 import userImg6 from '../../assets/images/player/user6.png';
 import userImg7 from '../../assets/images/player/user7.png';
-export default function RankInGame({dataRoom, playerAuth}) {
+export default function RankInGame({dataRoomScore,dataRoom, playerAuth}) {
     useEffect(() => {
-        if(dataRoom!==null){
+        if(dataRoomScore!==null){
             const playerRatings = document.querySelectorAll(".player-ratings__player-information--avatar");
             const playerNames = document.querySelectorAll(".player-ratings__player-information--name");
             const playerScores = document.querySelectorAll(".player-ratings__player-information--scorer");
             const playerAvts = document.querySelectorAll(".player-avt");
             console.log(playerNames)
-            for(var i = 0; i < dataRoom.roomMember.length; i++){
-                if (dataRoom.roomMember[i].playerName === playerAuth.playerName) {
+            for(var i = 0; i < dataRoomScore.roomMember.length; i++){
+                if (dataRoomScore.roomMember[i].playerName === playerAuth.playerName) {
                     playerNames[i].classList.add("player__highlightCurrent");
                     playerRatings[i].classList.remove("opacity__0");
-                    playerNames[i].textContent = dataRoom.roomMember[i].playerName;
-                    playerScores[i].textContent = dataRoom.roomMember[i].playerScore;
-                    playerAvts[i].setAttribute("src", dataRoom.roomMember[i].playerAvatar);
+                    playerNames[i].textContent = dataRoomScore.roomMember[i].playerName;
+                    playerScores[i].textContent = dataRoomScore.roomMember[i].playerScore;
+                    playerAvts[i].setAttribute("src", dataRoomScore.roomMember[i].playerAvatar);
                 } else {
                     playerNames[i].classList.remove("player__highlightCurrent");
                     playerRatings[i].classList.remove("opacity__0");
-                    playerNames[i].textContent = dataRoom.roomMember[i].playerName;
-                    playerScores[i].textContent = dataRoom.roomMember[i].playerScore;
-                    playerAvts[i].setAttribute("src", dataRoom.roomMember[i].playerAvatar);
+                    playerNames[i].textContent = dataRoomScore.roomMember[i].playerName;
+                    playerScores[i].textContent = dataRoomScore.roomMember[i].playerScore;
+                    playerAvts[i].setAttribute("src", dataRoomScore.roomMember[i].playerAvatar);
                 }
             }
+            for(var i = dataRoomScore.roomMember.length; i < 4; i++){
+                playerNames[i].classList.remove("player__highlightCurrent");
+                playerRatings[i].classList.add("opacity__0");
+                playerNames[i].textContent = "";
+                playerScores[i].textContent = "";
+                playerAvts[i].setAttribute("src", "");
+            }
         }
-    }, [dataRoom])
+    }, [dataRoomScore])
     return (
         <div className='player-ratings__ingame match-element__active-player box--shadow'>
             <div className='player-ratings__ingame-numbers box--shadow'>
