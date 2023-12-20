@@ -1,4 +1,5 @@
-import audioWinner4 from "../../assets/sounds/winner4.mp3"
+import audioWinner4 from "../../assets/sounds/winner4.mp3";
+import bipAudio from "../../assets/sounds/bip.mp3";
 import { useEffect, useState } from "react";
 export default function MatchMap({
   dataMap,
@@ -16,6 +17,8 @@ export default function MatchMap({
   setWinnerRound,
   modalWinnerRound,
   setModalWinnerRound,
+  hiddenInputAnswer,
+  setHiddenInputAnswer,
 }) {
   const [roundUsed, setRoundUsed] = useState([
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -48,7 +51,7 @@ export default function MatchMap({
             resolve(); // Thông báo rằng introRound đã hoàn thành
           }
         }
-      }, 50);
+      }, 100);
     });
   };
   function runIntroAndCheckDataRound() {
@@ -83,7 +86,7 @@ export default function MatchMap({
               clearTimeout(newTimeoutId);
               console.log("timeoutId", newTimeoutId);
             }
-          }, 10000);
+          }, 7000);
           setTimeoutId(newTimeoutId);
         }
       });
@@ -100,7 +103,9 @@ export default function MatchMap({
 
       const newTimeoutId = setTimeout(() => {
         matchElements[dataRound.location].classList.add("block-element");
-        matchElements[dataRound.location].classList.remove("match-element__active");
+        matchElements[dataRound.location].classList.remove(
+          "match-element__active"
+        );
         vocabQuestion[dataRound.location].textContent = dataRound.word;
 
         if (dataRound.round === 23) {
@@ -123,11 +128,107 @@ export default function MatchMap({
     }
   }
 
+  var FirstIntro = () => {
+    return new Promise((resolve) => {
+      var flag_first_intro = 1;
+      const queryFive = document.querySelectorAll(".five");
+      const queryFour = document.querySelectorAll(".four");
+      const queryThree = document.querySelectorAll(".three");
+      const queryTwo = document.querySelectorAll(".two");
+      const queryOne = document.querySelectorAll(".one");
+      const queryZero = document.querySelectorAll(".zero");
+      let bipClock = new Audio(bipAudio);
+
+      var fistIntro = setInterval(() => {
+        if (flag_first_intro === 1) {
+          // 5
+          bipClock.play();
+          queryFive.forEach((element) => {
+            element.classList.add("match-element__active--intro");
+          });
+          setTimeout(() => {
+            flag_first_intro++;
+          }, [1000]);
+        } else if (flag_first_intro === 2) {
+          // 4
+          // remove intro 5
+          queryFive.forEach((element) => {
+            element.classList.remove("match-element__active--intro");
+          });
+          //  add intro 4
+          bipClock.play();
+          queryFour.forEach((element) => {
+            element.classList.add("match-element__active--intro");
+          });
+          // set time out ++
+          setTimeout(() => {
+            flag_first_intro++;
+          }, [1000]);
+        } else if (flag_first_intro === 3) {
+          queryFour.forEach((element) => {
+            element.classList.remove("match-element__active--intro");
+          });
+          bipClock.play();
+          queryThree.forEach((element) => {
+            element.classList.add("match-element__active--intro");
+          });
+          setTimeout(() => {
+            flag_first_intro++;
+          }, [1000]);
+          // 3
+        } else if (flag_first_intro === 4) {
+          //  2
+          queryThree.forEach((element) => {
+            element.classList.remove("match-element__active--intro");
+          });
+          bipClock.play();
+          queryTwo.forEach((element) => {
+            element.classList.add("match-element__active--intro");
+          });
+          setTimeout(() => {
+            flag_first_intro++;
+          }, [1000]);
+        } else if (flag_first_intro === 5) {
+          // 1
+          queryTwo.forEach((element) => {
+            element.classList.remove("match-element__active--intro");
+          });
+          bipClock.play();
+          queryOne.forEach((element) => {
+            element.classList.add("match-element__active--intro");
+          });
+          setTimeout(() => {
+            flag_first_intro++;
+          }, [1000]);
+        } else if (flag_first_intro === 6) {
+          // 0
+          queryOne.forEach((element) => {
+            element.classList.remove("match-element__active--intro");
+          });
+          bipClock.play();
+          queryZero.forEach((element) => {
+            element.classList.add("match-element__active--intro");
+          });
+          setTimeout(() => {
+            flag_first_intro++;
+          }, [1000]);
+        } else if (flag_first_intro === 7) {
+          queryZero.forEach((element) => {
+            element.classList.remove("match-element__active--intro");
+          });
+          setHiddenInputAnswer(false);
+          clearInterval(fistIntro);
+          resolve();
+        }
+      }, 1100);
+    });
+  };
+
   // Call for intro or not
   useEffect(() => {
     console.log("dataRound", dataRound);
     if (dataRound !== null && dataRound.round === 0) {
-      runIntroAndCheckDataRound();
+      FirstIntro().then(() => runIntroAndCheckDataRound());
     } else if (dataRound !== null && dataRound.round > 0) {
       runIntroAndCheckDataRound();
     }
@@ -178,12 +279,14 @@ export default function MatchMap({
       const scoreElements = document.querySelectorAll(".match-element__score");
       const vocabQuestion = document.querySelectorAll(".match-element__split");
       matchElements[winnerRound.location].classList.add("block-element");
-      matchElements[winnerRound.location].classList.remove("match-element__active");
+      matchElements[winnerRound.location].classList.remove(
+        "match-element__active"
+      );
       vocabQuestion[winnerRound.location].textContent = winnerRound.word;
       scoreElements[winnerRound.location].textContent = winnerRound.score;
       let winner4 = new Audio(audioWinner4);
       winner4.volume = 1;
-      if(dataRound.round < 23){
+      if (dataRound.round < 23) {
         winner4.play();
         setModalWinnerRound(true);
       } else if (dataRound.round === 23) {
@@ -222,140 +325,200 @@ export default function MatchMap({
   return (
     <>
       <div className="match-row">
+        {/* 1 */}
         <div className="element match-element match-element__border-lefttop">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
+        {/* 2 */}
         <div className="match-element block-element"></div>
-        <div className="element match-element">
+        {/* 3 */}
+        <div className="element match-element five four three two zero">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
+        {/* 4 */}
+        <div className="match-element block-element five three two one zero"></div>
+        {/* 5 */}
+        <div className="element match-element five  three two zero">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
+        {/* 6 */}
         <div className="match-element block-element"></div>
+        {/* 7 */}
         <div className="element match-element match-element__border-righttop">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
       </div>
       <div className="match-row">
+        {/* 8 */}
         <div className="match-element block-element"></div>
+        {/* 9 */}
+        <div className="element match-element ">
+          <p className="match-element__score">?</p>
+          <p className="match-element__split">??/??/??</p>
+        </div>
+        {/* 10 */}
+        <div className="match-element block-element five four one zero"></div>
+        {/* 11 */}
+        <div className="element match-element  one">
+          <p className="match-element__score">?</p>
+          <p className="match-element__split">??/??/??</p>
+        </div>
+        {/* 12 */}
+        <div className="match-element block-element  three two zero"></div>
+        {/* 13 */}
         <div className="element match-element">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
-          <p className="match-element__score">?</p>
-          <p className="match-element__split">??/??/??</p>
-        </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
-          <p className="match-element__score">?</p>
-          <p className="match-element__split">??/??/??</p>
-        </div>
-        <div className="match-element block-element"></div>
-      </div>
-      <div className="match-row">
-        <div className="element match-element">
-          <p className="match-element__score">?</p>
-          <p className="match-element__split">??/??/??</p>
-        </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
-          <p className="match-element__score">?</p>
-          <p className="match-element__split">??/??/??</p>
-        </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
-          <p className="match-element__score">?</p>
-          <p className="match-element__split">??/??/??</p>
-        </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
-          <p className="match-element__score">?</p>
-          <p className="match-element__split">??/??/??</p>
-        </div>
-      </div>
-      <div className="match-row">
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
-          <p className="match-element__score">?</p>
-          <p className="match-element__split">??/??/??</p>
-        </div>
-        <input
-          className="element-answer box--shadow"
-          type="text"
-          placeholder="Enter your answer here!"
-          value={answerValue}
-          onChange={handleInputChange}
-          onKeyDown={handleEnterPressAswer}
-        />
-        <div className="element match-element">
-          <p className="match-element__score">?</p>
-          <p className="match-element__split">??/??/??</p>
-        </div>
+        {/* 14 */}
         <div className="match-element block-element"></div>
       </div>
       <div className="match-row">
+        {/* 15 */}
         <div className="element match-element">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
+        {/* 16 */}
         <div className="match-element block-element"></div>
+        {/* 17 */}
+        <div className="element match-element five four zero">
+          <p className="match-element__score">?</p>
+          <p className="match-element__split">??/??/??</p>
+        </div>
+        {/* 18 */}
+        <div className="match-element block-element one"></div>
+        {/* 19 */}
+        <div className="element match-element four three two zero">
+          <p className="match-element__score">?</p>
+          <p className="match-element__split">??/??/??</p>
+        </div>
+        {/* 20 */}
+        <div className="match-element block-element"></div>
+        {/* 21 */}
         <div className="element match-element">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
+      </div>
+      <div className="match-row">
+        {/* 22 */}
         <div className="match-element block-element"></div>
+        {/* 23 */}
+        <div className="element match-element ">
+          <p className="match-element__score">?</p>
+          <p className="match-element__split">??/??/??</p>
+        </div>
+        {/* 24 25 26 */}
+        {hiddenInputAnswer ? (
+          <>
+            <div className="match-element block-element five four three two zero"></div>
+            <div className="match-element five  one three two">
+              <p className="match-element__score--intro">?</p>
+              <p className="match-element__split--intro">??/??/??</p>
+            </div>
+            <div className="match-element block-element five four three two zero"></div>
+          </>
+        ) : (
+          <input
+            className="element-answer box--shadow five  three two"
+            type="text"
+            placeholder="Enter your answer here!"
+            value={answerValue}
+            onChange={handleInputChange}
+            onKeyDown={handleEnterPressAswer}
+          />
+        )}
+
+        {/* 27 */}
         <div className="element match-element">
+          <p className="match-element__score">?</p>
+          <p className="match-element__split">??/??/??</p>
+        </div>
+        {/* 28 */}
+        <div className="match-element block-element"></div>
+      </div>
+
+      <div className="match-row">
+        {/* 29 */}
+        <div className="element match-element">
+          <p className="match-element__score">?</p>
+          <p className="match-element__split">??/??/??</p>
+        </div>
+        {/* 30 */}
+        <div className="match-element block-element "></div>
+        {/* 31 */}
+        <div className="element match-element four two zero ">
+          <p className="match-element__score">?</p>
+          <p className="match-element__split">??/??/??</p>
+        </div>
+        {/* 32 */}
+        <div className="match-element block-element four one "></div>
+        {/* 33 */}
+        <div className="element match-element five four three zero">
           <p className="match-element__score"></p>
           <p className="match-element__split">??/??/??</p>
         </div>
-        <div className="match-element block-element"></div>
+        {/* 34 */}
+        <div className="match-element block-element four"></div>
+        {/* 35 */}
         <div className="element match-element">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
       </div>
       <div className="match-row">
+        {/* 36 */}
         <div className="match-element block-element"></div>
-        <div className="element match-element">
+        {/* 37 */}
+        <div className="element match-element ">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
+        {/* 38 */}
+        <div className="match-element block-element two zero"></div>
+        {/* 39 */}
+        <div className="element match-element one">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
+        {/* 40 */}
+        <div className="match-element block-element five four three zero"></div>
+        {/* 41 */}
+        <div className="element match-element ">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
+        {/* 42 */}
         <div className="match-element block-element"></div>
       </div>
       <div className="match-row">
+        {/* 43 */}
         <div className="element match-element match-element__border-leftbottom">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
+        {/* 44 */}
+        <div className="match-element block-element "></div>
+        {/* 45 */}
+        <div className="element match-element five three two zero">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
-        <div className="match-element block-element"></div>
-        <div className="element match-element">
+        {/* 46 */}
+        <div className="match-element block-element five three two one zero"></div>
+        {/* 47 */}
+        <div className="element match-element five four three two zero">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>
         </div>
+        {/* 48 */}
         <div className="match-element block-element"></div>
+        {/* 49 */}
         <div className="element match-element match-element__border-rightbottom">
           <p className="match-element__score">?</p>
           <p className="match-element__split">??/??/??</p>

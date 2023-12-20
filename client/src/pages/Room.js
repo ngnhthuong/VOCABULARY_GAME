@@ -18,17 +18,16 @@ import winnerRoundOddImg from "../assets/images/formgame/winnerRoundOdd.png";
 import backgroundWinnerImg from "../assets/images/formgame/backgroundWinRound.gif";
 import winnerGameRightImg from "../assets/images/formgame/winnerMatchRight.png";
 import winnerGameLeftImg from "../assets/images/formgame/winnerMatchLeft.png";
+
 // import sound
 import gameSound from "../assets/sounds/creepy-devil-dance-166764.mp3";
-
+import championRealSound from "../assets/sounds/championreal.mp3";
 import { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function Room({ socket }) {
   // datamap
-  // Call dataMap form database here 
-
-
+  // Call dataMap form database here
 
   // ------------------------------
   const [dataMap, setDataMap] = useState([
@@ -235,10 +234,15 @@ export default function Room({ socket }) {
   const [timeoutId, setTimeoutId] = useState(null);
   const [volume, setVolume] = useState(false);
   const [audioElement, setAudioElement] = useState(new Audio(gameSound));
+  const [championreal, setChampionreal] = useState(
+    new Audio(championRealSound)
+  );
+  // championreal.volume = 0.2;
+  const [hiddenInputAnswer, setHiddenInputAnswer] = useState(true);
 
   useEffect(() => {
-    if(volume === true){
-      audioElement.volume = 0.25; // Set volume to 10%
+    if (volume === true) {
+      audioElement.volume = 0.1; // Set volume to 10%
       // Gán sự kiện kết thúc âm thanh để tự động phát lại khi kết thúc
       audioElement.addEventListener("ended", () => {
         if (volume) {
@@ -246,7 +250,7 @@ export default function Room({ socket }) {
           audioElement.play();
         }
       });
-  
+
       // Xử lý sự thay đổi volume để tắt hoặc bật âm thanh
       if (volume) {
         audioElement.play();
@@ -254,7 +258,7 @@ export default function Room({ socket }) {
         audioElement.pause();
         audioElement.currentTime = 0; // Đặt thời gian về đầu để khi phát lại, nó sẽ bắt đầu từ đầu
       }
-  
+
       // Cleanup sự kiện khi component unmount
       return () => {
         audioElement.removeEventListener("ended", () => {});
@@ -263,7 +267,6 @@ export default function Room({ socket }) {
       audioElement.pause();
       audioElement.currentTime = 0; // Đặt thời gian về đầu để khi phát lại, nó sẽ bắt đầu từ đầu
     }
-  
   }, [volume]); // Lắng nghe sự thay đổi của volume
 
   const handleChangeVolume = () => {
@@ -343,15 +346,16 @@ export default function Room({ socket }) {
   socket.on("end-game-server", (data) => {
     // gọi axios update data match had been played
 
-
-
     // ============================================
     console.log("end game");
     setWinnerGame(true);
+    championreal.play();
     setTimeout(() => {
-      if(volume){
+      championreal.pause();
+      if (volume) {
         handleChangeVolume();
       }
+      setHiddenInputAnswer(true);
       setDataRoomScore(null);
       setWinnerGame(false);
       setDataRound(null);
@@ -361,7 +365,6 @@ export default function Room({ socket }) {
       setResetMatchMap(!resetMatchMap);
       setDataRoomScore(null);
       setRoomMatch(!roomMatch);
-
     }, 10000);
   });
 
@@ -500,11 +503,13 @@ export default function Room({ socket }) {
             </div>
             <div className="match-element__active winner__round--infor">
               <p>ROUND: {winnerRound !== null ? winnerRound.round + 1 : ""}</p>
-              <p>
+              <p style={{ fontSize: "0.7rem" }}>
                 Word: {winnerRound !== null ? winnerRound.word : ""} | Score:{" "}
                 {winnerRound !== null ? winnerRound.score : ""}{" "}
               </p>
-              <p>Winner: {winnerRound !== null ? winnerRound.winner : ""}</p>
+              <p style={{ fontSize: "0.7rem" }}>
+                Winner: {winnerRound !== null ? winnerRound.winner : ""}
+              </p>
             </div>
           </div>
           {/* winner */}
@@ -547,6 +552,8 @@ export default function Room({ socket }) {
             setWinnerRound={setWinnerRound}
             modalWinnerRound={modalWinnerRound}
             setModalWinnerRound={setModalWinnerRound}
+            hiddenInputAnswer={hiddenInputAnswer}
+            setHiddenInputAnswer={setHiddenInputAnswer}
           />
         </div>
         <div className="match-form__right">
