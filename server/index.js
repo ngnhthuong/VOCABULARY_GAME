@@ -237,15 +237,20 @@ io.on("connection", (socket) => {
     io.sockets.emit("return-rooms", roomServer);
   });
 
+  // --------------------chat
+
   socket.on("client-sendchat", (data) => {
-    console.log(data);
+    console.log("chat out room", data);
     io.sockets.in(roomIDToFind).emit("server-sendchat", data);
   });
 
   socket.on("client-sendchat-ingame", (data) => {
     console.log(data);
-    io.sockets.in(roomIDToFind).emit("server-sendchat-ingame", data);
+    // io.sockets.in(roomIDToFind).emit("server-sendchat-ingame", data);
+    io.sockets.in(roomIDToFind).emit("server-sendchat", data);
   });
+
+  // ------------------chat
   socket.on("start-game-client", (data) => {
     // random area
 
@@ -454,7 +459,9 @@ io.on("connection", (socket) => {
         foundRoomIndex
       ].roomMember.filter((member) => member.playerSocket !== socket.id);
       console.log(roomServer);
-      io.sockets.in(roomServer[foundRoomIndex].roomID).emit("return-room", roomServer[foundRoomIndex]);
+      io.sockets
+        .in(roomServer[foundRoomIndex].roomID)
+        .emit("return-room", roomServer[foundRoomIndex]);
     } else if (
       foundRoomIndex !== -1 &&
       roomServer[foundRoomIndex].roomMember.length === 1
@@ -462,7 +469,9 @@ io.on("connection", (socket) => {
       roomServer.splice(foundRoomIndex, 1);
     }
     // return data for bxh
-    io.sockets.in(roomIDToFind).emit("return-player-player", roomServer[foundRoomIndex]);
+    io.sockets
+      .in(roomIDToFind)
+      .emit("return-player-player", roomServer[foundRoomIndex]);
     // In ra dữ liệu roomServer
     console.log(roomServer);
     // Trả về dữ liệu server để cập nhật

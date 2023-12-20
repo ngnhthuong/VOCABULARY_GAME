@@ -8,7 +8,7 @@ import userImg7 from "../../assets/images/player/user7.png";
 import { useRef, useState, useEffect } from "react";
 
 export default function ChatRoom({ playerAuth, socket, messages }) {
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState("");
   const [defaultMessage, setDefaultMessage] = useState("");
   const handleInputChange = (event) => {
     setDefaultMessage(event.target.value);
@@ -20,14 +20,17 @@ export default function ChatRoom({ playerAuth, socket, messages }) {
       };
     });
   };
-  const handleEnterPress = async (event) => {
+  const handleEnterPress = (event) => {
+    event.preventDefault();
     function isEmptyOrSpaces(str) {
       return str === null || str.match(/^ *$/) !== null;
     }
     // console.log(message);
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && !event.shiftKey) {
       if (message.chat !== undefined && !isEmptyOrSpaces(message.chat)) {
-        await socket.emit("client-sendchat", message);
+        console.log("send chat here, ", message.chat);
+        socket.emit("client-sendchat", message);
+        setMessage("");
         setDefaultMessage("");
       }
     }
@@ -75,7 +78,7 @@ export default function ChatRoom({ playerAuth, socket, messages }) {
           type="text"
           value={defaultMessage}
           onChange={handleInputChange}
-          onKeyDown={handleEnterPress}
+          onKeyUp={handleEnterPress}
           placeholder="Enter your message here!"
         ></input>
         <button>

@@ -242,7 +242,7 @@ export default function Room({ socket }) {
 
   useEffect(() => {
     if (volume === true) {
-      audioElement.volume = 0.1; // Set volume to 10%
+      audioElement.volume = 0.3; // Set volume to 10%
       // Gán sự kiện kết thúc âm thanh để tự động phát lại khi kết thúc
       audioElement.addEventListener("ended", () => {
         if (volume) {
@@ -331,9 +331,9 @@ export default function Room({ socket }) {
     setMessages([...messages, message]);
   });
 
-  socket.on("server-sendchat-ingame", (message) => {
-    setMessages([...messages, message]);
-  });
+  // socket.on("server-sendchat-ingame", (message) => {
+  //   setMessages([...messages, message]);
+  // });
 
   console.log(messages);
 
