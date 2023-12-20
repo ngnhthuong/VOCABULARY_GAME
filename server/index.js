@@ -202,33 +202,33 @@ io.on("connection", (socket) => {
         const findIndexRoom = roomServer.findIndex(
           (room) => room.roomID === data
         );
+        console.log("findIndexRoom", roomServer[findIndexRoom].roomStatus);
         if (roomServer[findIndexRoom].roomStatus === true) {
-          const data = {
+          const anounce = {
             requestMessage: true,
             message: "Join room success",
           };
-          console.log("room is not playing");
-          socket.emit("room-response", data);
-        } else {
-          const data = {
+          socket.emit("room-response", anounce);
+        } else if (roomServer[findIndexRoom].roomStatus === false) {
+          const anounce = {
             requestMessage: false,
             message: "Room is playing",
           };
           console.log("room is playing");
-          socket.emit("room-response", data);
+          socket.emit("room-response", anounce);
         }
       } else if (room == data && roomInfo.size >= 4) {
-        const data = {
+        const anounce = {
           requestMessage: false,
           message: "Room is full",
         };
-        socket.emit("room-response", data);
+        socket.emit("room-response", anounce);
       } else {
-        const data = {
+        const anounce = {
           requestMessage: false,
           message: "Room not exist",
         };
-        socket.emit("room-response", data);
+        socket.emit("room-response", anounce);
       }
     }
   });
