@@ -103,7 +103,7 @@
   align-items: center;
   width: 14.2%;
   height: 100%;
-  background-color: rgb(161, 161, 161, 0.5);
+  background-color: rgba(233, 233, 233, 0.6);
 }
 
 .match-element__active {
@@ -251,12 +251,14 @@
 }
 
 .player-ratings__player-information--namescore p {
-  font-size: 0.65rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2rem;
 }
 
 .player-ratings__player-information--name {
+  font-family: "Press Start 2P", cursive !important;
   color: #ffffff;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
 }
 
 .player-ratings__player-information--avatar img {
@@ -276,7 +278,7 @@
 
 .ingame-top1,
 .player-ratings__player-information1 {
-  background-color: #489620;
+  background-color: #66b140;
 }
 
 .ingame-top2,
@@ -305,11 +307,13 @@
 }
 
 .player-ratings__ingame-number {
+  font-size: 1.1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 25%;
+  font-weight: bold;
 }
 
 .player-ratings__ingame-number-border-left {
@@ -341,8 +345,13 @@
   align-items: center;
   font-size: 0.9rem;
   width: 100%;
-  height: 1%;
-  background-color: rgb(82, 57, 57);
+  height: 8%;
+  background-color: #c18c00;
+}
+
+.chat-ingame__title p {
+  color: white;
+  font-size: 0.7rem;
 }
 
 .room-chat__ingame--chatbox {
@@ -416,8 +425,7 @@
 
 .room-chat__ingame--list {
   width: 100%;
-  /* background-color: var(--background-middle-room); */
-  background-color: #588d3c;
+  background-color: #afd788;
 }
 
 .room-chat__ingame--list::-webkit-scrollbar {
@@ -439,13 +447,14 @@
   outline: hidden;
   border: none;
   background-color: rgb(184, 181, 181);
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
-  font-size: 1rem !;
+  font-size: 1.5rem;
 }
 
 .element-answer::placeholder {
   font-size: 1rem;
+  color: #d8d8d8;
 }
 
 @keyframes element-game {

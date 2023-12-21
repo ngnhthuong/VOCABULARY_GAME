@@ -47,7 +47,9 @@ export default function ChatInGame({ playerAuth, socket, messages }) {
 
   return (
     <div className="chat-ingame box--shadow">
-      <div className="chat-ingame__title box--shadow"></div>
+      <div className="chat-ingame__title box--shadow">
+        <p>CHATBOX</p>
+      </div>
       <div className="chat-ingame__message">
         <ul className="room-chat__list room-chat__ingame--list">
           {messages.map((message, index) => {

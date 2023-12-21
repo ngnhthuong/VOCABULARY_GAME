@@ -4,6 +4,7 @@ const dotenv = require("dotenv").config();
 const PORT = process.env.PORT || 4000;
 const playerRoute = require("./routes/playerRoute");
 const rankingRoute = require("./routes/rankingRoute");
+const vocabularyRoute = require("./routes/vocabularyRoute");
 const cors = require("cors");
 const fs = require("fs");
 // Cors
@@ -70,11 +71,13 @@ var roomServer = [];
 var vocabularyMap = [];
 
 io.on("connection", (socket) => {
-  var roomIDToFind = null;
+  var roomIDToFind = 1;
 
   socket.on("create-room", (playerAuth) => {
-    roomIDToFind = playerAuth.playerName;
-    socket.join(playerAuth.playerName);
+    if (playerAuth !== null) {
+      roomIDToFind = playerAuth.playerName;
+      socket.join(playerAuth.playerName);
+    }
     console.log(socket.adapter.rooms);
     // player information
     var playerMember = {
@@ -114,14 +117,6 @@ io.on("connection", (socket) => {
       }
     }
 
-    // const rooms = io.sockets.adapter.rooms;
-    // const newArray = Array.from(rooms, ([roomID, roomMember]) => ({
-    //   roomID,
-    //   roomMember: Array.from(roomMember),
-    // }));
-    // const filteredArray = newArray.filter((room) => room.roomID.length <= 7);
-
-    // io.sockets.emit("return-rooms", filteredArray);
     io.sockets.emit("return-rooms", roomServer);
 
     console.log("room array is: ", roomServer);
@@ -282,14 +277,23 @@ io.on("connection", (socket) => {
       words: data,
     };
     // add dataMatch to vocabylaryMap
-    vocabularyMap.push(dataMatch);
+    var foundDataMatchCheck = vocabularyMap.findIndex(
+      (match) => match.roomID === roomIDToFind
+    );
+
+    if (foundDataMatchCheck === -1) {
+      // Không có phần tử nào khớp, vì vậy đẩy phần tử mới vào mảng
+      vocabularyMap.push(dataMatch);
+    } else {
+      // Phần tử khớp được tìm thấy, vì vậy cập nhật phần tử hiện tại
+      vocabularyMap[foundDataMatchCheck] = dataMatch;
+    }
+
     // find area of dataMatch in vocabularyMap
     var foundDataMatch = vocabularyMap.findIndex(
       (match) => match.roomID === roomIDToFind
     );
-    io.sockets
-      .in(roomIDToFind)
-      .emit("start-game-server", vocabularyMap[foundDataMatch]);
+    io.sockets.in(roomIDToFind).emit("start-game-server", vocabularyMap[foundDataMatch]);
     var foundRound = vocabularyMap[foundDataMatch].words.findIndex(
       (word) => word.round === 0
     );
@@ -323,9 +327,14 @@ io.on("connection", (socket) => {
     var foundDataMatch = vocabularyMap.findIndex(
       (match) => match.roomID === roomIDToFind
     );
-    var foundRound = vocabularyMap[foundDataMatch].words.findIndex(
-      (word) => word.round === data
-    );
+    try{
+      var foundRound = vocabularyMap[foundDataMatch].words.findIndex(
+        (word) => word.round === data
+      );
+    } catch(error){
+      console.log("error word found 337");
+    } 
+
     var preFoundRound = vocabularyMap[foundDataMatch].words.findIndex(
       (word) => word.round === data - 1
     );
@@ -418,6 +427,12 @@ io.on("connection", (socket) => {
   // end game
   socket.on("send-round-endgame", (data) => {
     console.log("end game");
+    var foundDataRoom = roomServer.findIndex(
+      (room) => room.roomID === roomIDToFind
+    );
+    // io.sockets
+    //   .in(roomIDToFind)
+    //   .emit("end-game-updatedata", roomServer[foundDataRoom].roomMember);
     // Xóa dữ liệu vừa chơi
     var foundDataMatch = vocabularyMap.findIndex(
       (match) => match.roomID === roomIDToFind
@@ -432,9 +447,6 @@ io.on("connection", (socket) => {
       roomToChange.roomStatus = true;
     }
     // đổi lại điểm người chơi về 0
-    var foundDataRoom = roomServer.findIndex(
-      (room) => room.roomID === roomIDToFind
-    );
     roomServer[foundDataRoom].roomMember.forEach((member) => {
       member.playerScore = 0;
     });
@@ -458,7 +470,7 @@ io.on("connection", (socket) => {
       roomServer[foundRoomIndex].roomMember = roomServer[
         foundRoomIndex
       ].roomMember.filter((member) => member.playerSocket !== socket.id);
-      console.log(roomServer);
+      console.log("đã chạy vào đây", roomServer);
       io.sockets
         .in(roomServer[foundRoomIndex].roomID)
         .emit("return-room", roomServer[foundRoomIndex]);
@@ -496,6 +508,7 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 // Routes
 app.use("/api/", playerRoute);
+app.use("/api/", vocabularyRoute);
 app.use("/api/ranking", rankingRoute);
 
 // Port

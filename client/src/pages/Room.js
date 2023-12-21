@@ -23,213 +23,20 @@ import winnerGameLeftImg from "../assets/images/formgame/winnerMatchLeft.png";
 import gameSound from "../assets/sounds/creepy-devil-dance-166764.mp3";
 import championRealSound from "../assets/sounds/championreal.mp3";
 import { useRef, useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { base_url } from "../utils/api_service";
 
 export default function Room({ socket }) {
-  // datamap
-  // Call dataMap form database here
+  const location = useLocation();
 
   // ------------------------------
-  const [dataMap, setDataMap] = useState([
-    {
-      word: "Sun",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Clouds",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Ocean",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Mountains",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Rose",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Piano",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Books",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Mobile",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Earth",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Hero",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Moon",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "City",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Family",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Park",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Street",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Artist",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "food",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Computer",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "lights",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Travel",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Adventure",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Coffee",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "worker",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-    {
-      word: "Rainbow",
-      wordSeparate: null,
-      round: null,
-      score: null,
-      winner: null,
-      location: null,
-    },
-  ]);
+  const [dataMap, setDataMap] = useState();
   const [resetMatchMap, setResetMatchMap] = useState(false);
   const [dataUsingMatch, setDataUsingMatch] = useState(null);
   const [dataRound, setDataRound] = useState(null);
   // ----
   const [dataRoom, setDataRoom] = useState(null);
-  const location = useLocation();
   //
   const [timeoutId, setTimeoutId] = useState(null);
   const [volume, setVolume] = useState(false);
@@ -237,9 +44,12 @@ export default function Room({ socket }) {
   const [championreal, setChampionreal] = useState(
     new Audio(championRealSound)
   );
+  const [dataRoomScore, setDataRoomScore] = useState(null);
   // championreal.volume = 0.2;
   const [hiddenInputAnswer, setHiddenInputAnswer] = useState(true);
+  // Ranking 
 
+  //  music
   useEffect(() => {
     if (volume === true) {
       audioElement.volume = 0.3; // Set volume to 10%
@@ -247,31 +57,40 @@ export default function Room({ socket }) {
       audioElement.addEventListener("ended", () => {
         if (volume) {
           audioElement.currentTime = 0; // Đặt thời gian về đầu để khi phát lại, nó sẽ bắt đầu từ đầu
-          audioElement.play();
+          try {
+            audioElement.play();
+          } catch (error) {}
         }
       });
-
       // Xử lý sự thay đổi volume để tắt hoặc bật âm thanh
-      if (volume) {
-        audioElement.play();
-      } else {
-        audioElement.pause();
+      if (volume === true) {
+        try {
+          audioElement.play();
+        } catch (error) {
+          console.log("error volume background 66: ", error);
+        }
+      } else if (volume === false) {
+        try {
+          audioElement.pause();
+        } catch (error) {
+          console.log("error volume bip clock 66: ", error);
+        }
         audioElement.currentTime = 0; // Đặt thời gian về đầu để khi phát lại, nó sẽ bắt đầu từ đầu
       }
-
-      // Cleanup sự kiện khi component unmount
       return () => {
         audioElement.removeEventListener("ended", () => {});
       };
     } else {
       audioElement.pause();
-      audioElement.currentTime = 0; // Đặt thời gian về đầu để khi phát lại, nó sẽ bắt đầu từ đầu
+      audioElement.currentTime = 0;
     }
-  }, [volume]); // Lắng nghe sự thay đổi của volume
+  }, [volume]);
 
   const handleChangeVolume = () => {
     setVolume(!volume);
   };
+
+  // -------------
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -337,19 +156,44 @@ export default function Room({ socket }) {
 
   console.log(messages);
 
-  // send start game
-  function handleRoomMatch() {
-    socket.emit("start-game-client", dataMap);
+  function callDataMatch() {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`${base_url}/getVocabulary`)
+        .then((response) => {
+          setDataMap(response.data);
+          resolve(response.data);
+        })
+        .catch((error) => {
+          console.error("Lỗi khi gọi dữ liệu từ server:", error);
+          reject(error);
+        });
+    });
   }
+
+  function handleRoomMatch() {
+    callDataMatch().then((dataMap) => {
+        socket.emit("start-game-client", dataMap);
+    }).catch((error) => {
+        console.error("Lỗi khi xử lý phòng match:", error);
+    });
+  }
+
+  // update data
+
+  // socket.on("end-game-updatedata", (data) => {
+  //   if (data !== null) {
+  //     console.log("data update here: ", data);
+  //   }
+  // });
 
   // về lại phòng
   socket.on("end-game-server", (data) => {
-    // gọi axios update data match had been played
-
-    // ============================================
     console.log("end game");
     setWinnerGame(true);
-    championreal.play();
+    try {
+      championreal.play();
+    } catch (error) {}
     setTimeout(() => {
       championreal.pause();
       if (volume) {
@@ -363,10 +207,11 @@ export default function Room({ socket }) {
       timeoutId && clearTimeout(timeoutId);
       setTimeoutId(null);
       setResetMatchMap(!resetMatchMap);
-      setDataRoomScore(null);
       setRoomMatch(!roomMatch);
     }, 10000);
   });
+
+  // Define a function that returns a Promise
 
   // bắt đầu game
   socket.on("start-game-server", (data) => {
@@ -402,10 +247,11 @@ export default function Room({ socket }) {
   // winner round
   const [winnerRound, setWinnerRound] = useState(null);
   const [winnerGame, setWinnerGame] = useState(false);
+
   socket.on("return-player-player", (data) => {
     setDataRoomScore(data);
   });
-  const [dataRoomScore, setDataRoomScore] = useState(null);
+
   const [modalWinnerRound, setModalWinnerRound] = useState(false);
   socket.on("receive-correct-answer", (data) => {
     setWinnerRound(data);
@@ -414,6 +260,66 @@ export default function Room({ socket }) {
   useEffect(() => {
     if (winnerGame !== null && winnerGame === true) {
       console.log("winner game:", dataRoomScore);
+      if (dataRoomScore !== null) {
+        if (
+          playerAuth.playerName === dataRoomScore.roomMember[0].playerName &&
+          dataRoomScore.roomMember[0].playerScore > 0
+        ) {
+          console.log("axios here");
+          try {
+            var id = playerAuth._id;
+            console.log(id);
+
+            const request = {
+              elo: 1,
+            };
+            axios
+              .put(`${base_url}/updateElo/${id}`, request, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+              .then((response) => {
+                console.log(
+                  "Dữ liệu nhận được sau khi gửi put request:",
+                  response.data
+                );
+              })
+              .catch((error) => {
+                console.error("Lỗi khi gửi put request:", error);
+              });
+          } catch (error) {
+            console.error("Lỗi trong quá trình xử lý:", error);
+          }
+        } else {
+          console.log("loser here");
+          try {
+            var id = playerAuth._id;
+            console.log(id);
+
+            const request = {
+              elo: -1,
+            };
+            axios
+              .put(`${base_url}/updateElo/${id}`, request, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+              .then((response) => {
+                console.log(
+                  "Dữ liệu nhận được sau khi gửi put request:",
+                  response.data
+                );
+              })
+              .catch((error) => {
+                console.error("Lỗi khi gửi put request:", error);
+              });
+          } catch (error) {
+            console.error("Lỗi trong quá trình xử lý:", error);
+          }
+        }
+      }
       const queryImgWin = document.querySelector(".winner__game--imgWin");
       var changeWin = 1;
       const flagSetTime = setInterval(() => {

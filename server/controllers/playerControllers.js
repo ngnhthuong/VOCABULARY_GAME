@@ -6,7 +6,7 @@ dotenv.config();
 module.exports = {
   login: async (req, res) => {
     try {
-      console.log( req.body.email);
+      console.log(req.body.email);
       const player = await playerModel.findOne({ email: req.body.email });
       console.log(player);
       if (!player) {
@@ -89,7 +89,6 @@ module.exports = {
     const { id } = req.params;
     validIdMogo(id);
     try {
-
       const playerName_check = await playerModel.findOne({
         playerName: req.body.playerName,
       });
@@ -111,6 +110,42 @@ module.exports = {
       if (!player) {
         return res.status(404).json({ message: "Player not found" });
       }
+      res
+        .status(200)
+        .json({ message: "Update player successfully", data: player });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: `Internal Server Error ${error}`, data: null });
+    }
+  },
+
+  updateEloPlayer: async (req, res) => {
+    try {
+      const { id } = req.params;
+      validIdMogo(id);
+
+      const currentPlayer = await playerModel.findById(id);
+      console.log(currentPlayer);
+      if (!currentPlayer) {
+        return res.status(404).json({ message: "Player not found" });
+      }
+
+      const newElo = currentPlayer.elo + req.body.elo;
+
+      const player = await playerModel.findByIdAndUpdate(
+        id,
+        {
+          elo: newElo,
+        },
+        { new: true }
+      );
+
+      console.log("Player update here!", player);
+
+      if (!player) {
+        return res.status(404).json({ message: "Player not found" });
+      }
 
       res
         .status(200)
@@ -121,6 +156,7 @@ module.exports = {
         .json({ message: `Internal Server Error ${error}`, data: null });
     }
   },
+
   getPlayer: async (req, res) => {
     const { id } = req.params;
     validIdMogo(id);
@@ -150,6 +186,15 @@ module.exports = {
         .json({ message: `Internal Server Error ${error}`, data: null });
     }
   },
+  getRankPlayer: async (req, res) => {
+    try {
+      const players = await playerModel.find().sort({ elo: -1 }).limit(50);
+      res.status(200).json({ message: "Lấy 50 người chơi thành công", data: players });
+    } catch (error) {
+      res.status(500).json({ message: `Lỗi Server Nội bộ ${error}`, data: null });
+    }
+  },
+  
   deleteAllPlayer: async (req, res) => {
     try {
       const player = await playerModel.deleteMany();

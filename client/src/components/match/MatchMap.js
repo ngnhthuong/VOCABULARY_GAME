@@ -24,6 +24,7 @@ export default function MatchMap({
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     21, 22, 23,
   ]);
+  const [bipClock, setBipClock] = useState(new Audio(bipAudio));
   var preElement = null;
   var intervalClear = 0;
 
@@ -86,7 +87,7 @@ export default function MatchMap({
               clearTimeout(newTimeoutId);
               console.log("timeoutId", newTimeoutId);
             }
-          }, 7000);
+          }, 15000);
           setTimeoutId(newTimeoutId);
         }
       });
@@ -137,12 +138,15 @@ export default function MatchMap({
       const queryTwo = document.querySelectorAll(".two");
       const queryOne = document.querySelectorAll(".one");
       const queryZero = document.querySelectorAll(".zero");
-      let bipClock = new Audio(bipAudio);
 
       var fistIntro = setInterval(() => {
         if (flag_first_intro === 1) {
           // 5
-          bipClock.play();
+          try {
+            bipClock.play();
+          } catch (error) {
+            console.error("Error while playing bip clock:", error);
+          }          
           queryFive.forEach((element) => {
             element.classList.add("match-element__active--intro");
           });
@@ -156,7 +160,11 @@ export default function MatchMap({
             element.classList.remove("match-element__active--intro");
           });
           //  add intro 4
-          bipClock.play();
+          try {
+            bipClock.play();
+          } catch (error) {
+            console.error("Error while playing bip clock:", error);
+          }          
           queryFour.forEach((element) => {
             element.classList.add("match-element__active--intro");
           });
@@ -168,7 +176,11 @@ export default function MatchMap({
           queryFour.forEach((element) => {
             element.classList.remove("match-element__active--intro");
           });
-          bipClock.play();
+          try {
+            bipClock.play();
+          } catch (error) {
+            console.error("Error while playing bip clock:", error);
+          }          
           queryThree.forEach((element) => {
             element.classList.add("match-element__active--intro");
           });
@@ -181,7 +193,11 @@ export default function MatchMap({
           queryThree.forEach((element) => {
             element.classList.remove("match-element__active--intro");
           });
-          bipClock.play();
+          try {
+            bipClock.play();
+          } catch (error) {
+            console.error("Error while playing bip clock:", error);
+          }          
           queryTwo.forEach((element) => {
             element.classList.add("match-element__active--intro");
           });
@@ -193,7 +209,11 @@ export default function MatchMap({
           queryTwo.forEach((element) => {
             element.classList.remove("match-element__active--intro");
           });
-          bipClock.play();
+          try {
+            bipClock.play();
+          } catch (error) {
+            console.log("error volume bip clock", error);
+          }
           queryOne.forEach((element) => {
             element.classList.add("match-element__active--intro");
           });
@@ -205,7 +225,11 @@ export default function MatchMap({
           queryOne.forEach((element) => {
             element.classList.remove("match-element__active--intro");
           });
-          bipClock.play();
+          try {
+            bipClock.play();
+          } catch (error) {
+            console.log("error volume bip clock", error);
+          }
           queryZero.forEach((element) => {
             element.classList.add("match-element__active--intro");
           });
@@ -262,9 +286,7 @@ export default function MatchMap({
             score: dataRound.score,
             round: { ...dataRound, winner: playerAuth.playerName },
           };
-
           socket.emit("send-correct-answer", correctAnswer);
-
           setAnswerValue("");
         }
         setAnswerValue("");
@@ -318,7 +340,6 @@ export default function MatchMap({
         }
         setWinnerRound(null);
       }, 3000);
-      console.log(winnerRound);
     }
   }, [winnerRound]);
 
@@ -418,8 +439,13 @@ export default function MatchMap({
           <>
             <div className="match-element block-element five four three two zero"></div>
             <div className="match-element five  one three two">
-              <p className="match-element__score--intro">?</p>
-              <p className="match-element__split--intro">??/??/??</p>
+              <p
+                className="match-element__score--intro"
+                style={{ fontSize: "2rem" }}
+              >
+                COWCOW
+              </p>
+              <p className="match-element__split--intro">XIN CHAO</p>
             </div>
             <div className="match-element block-element five four three two zero"></div>
           </>

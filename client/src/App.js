@@ -10,6 +10,8 @@ import io from "socket.io-client";
 
 const socket = io.connect("http://localhost:3005");
 
+
+
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
   { path: "/homepage", element: <HomePage socket={socket} /> },

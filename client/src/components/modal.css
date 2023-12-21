@@ -1,354 +1,556 @@
 .modal-message {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .modal-message__error {
-    position: relative;
-    width: 27em;
-    height: 10rem;
-    margin-top: 8%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 1rem;
-    border-radius: 1rem;
-    /* overflow: hidden; */
-    /* background-color: var(--modal-room-background-origin); */
-    background-color: white;
-    animation: pulse 1.5s infinite ease-in-out;
+  position: relative;
+  width: 27em;
+  height: 10rem;
+  margin-top: 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-radius: 1rem;
+  /* overflow: hidden; */
+  /* background-color: var(--modal-room-background-origin); */
+  background-color: white;
+  animation: pulse 1.5s infinite ease-in-out;
 }
 
-.modal-message__title{
-    border-radius: 1rem 1rem 0 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 25%;
-    background: url(../assets/images/formgame/background-frame.png);
-    color: white;
-    font-family: 'Press Start 2P', cursive;
+.modal-message__title {
+  border-radius: 1rem 1rem 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 25%;
+  background: url(../assets/images/formgame/background-frame.png);
+  color: white;
+  font-family: "Press Start 2P", cursive;
 }
 
-.message_effor_human{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    height: 140%;
-    /* background-color: aqua; */
-    position: absolute;
-    left:-22%;
-    top: -31%;
+.message_effor_human {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 140%;
+  /* background-color: aqua; */
+  position: absolute;
+  left: -22%;
+  top: -31%;
 }
 
-.message_effor_human img{
-    width: 90%;
-    height: auto;
+.message_effor_human img {
+  width: 90%;
+  height: auto;
 }
 
-.modal-message__close{
-    width: 98%;
-    height: 16%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
+.modal-message__close {
+  width: 98%;
+  height: 16%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
 }
 
-.modal-message__close--btn{
-    width: 7rem;
-    height: 2rem;
-    border-radius: 0.5rem;
-    border: none;
-    background-color: var(--red);
-    /* background: url(../assets/images/formgame/background-frame.png); */
-    color: white;
-    font-size: 0.6rem;
+.modal-message__close--btn {
+  width: 7rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--red);
+  /* background: url(../assets/images/formgame/background-frame.png); */
+  color: white;
+  font-size: 0.6rem;
 }
 
-.modal-message__text{
-    line-height: 1.5rem;
-    padding: 1rem;
-    font-size: 0.6rem;
-    font-family: 'Press Start 2P', cursive;
+.modal-message__text {
+  line-height: 1.5rem;
+  padding: 1rem;
+  font-size: 0.6rem;
+  font-family: "Press Start 2P", cursive;
 }
 
 /* modal setting */
 
-.modal__setting--frame{
-    width: 25%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: url('../assets/images/formgame/background-frame.png');
-    border-radius: 2rem;
-    padding: 0.5rem;
+.modal__setting--frame {
+  width: 25%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../assets/images/formgame/background-frame.png");
+  border-radius: 2rem;
+  padding: 0.5rem;
 }
 
-
-.modal__setting--headers{
-    width: 94%;
-    height: 5%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.modal__setting--headers {
+  width: 94%;
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.modal__setting--header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    background-color: var(--modal-room-background);
-    border-radius: 1rem 1rem 0 0;
+.modal__setting--header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  background-color: var(--modal-room-background);
+  border-radius: 1rem 1rem 0 0;
 }
 
-.modal__setting--header p{
-    font-size: 0.8rem;
-    color: rgb(0, 0, 0);
+.modal__setting--header p {
+  font-size: 0.8rem;
+  color: rgb(0, 0, 0);
 }
-.modal__setting--header-close{
-    position: absolute;
-    width: 10%;
-    height: 100%;
-    right: 0rem;
-    top: -0.25rem;
+.modal__setting--header-close {
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  right: 0rem;
+  top: -0.25rem;
 }
-.modal__setting--header-close button{
-    width: 100%;
-    height: 100%;
-    background-color: var(--red);
-    border-radius: 1rem;
-    border: none;
-    outline: none;
-}
-
-.modal__setting--body{
-    width: 97%;
-    height: 93%;
-    background-color: var(--modal-room-background);
-    border-radius: 1rem;
+.modal__setting--header-close button {
+  width: 100%;
+  height: 100%;
+  background-color: var(--red);
+  border-radius: 1rem;
+  border: none;
+  outline: none;
 }
 
-.logout__btn{
-    width: 40%;
-    height: fit-content;
-    padding: 0.5rem;
-    border: none;
-    outline: none;
-    border-radius: 1rem;
-    font-size: 0.7rem;
-    background-color: var(--red);
-    color: white;
-    
+.modal__setting--body {
+  width: 97%;
+  height: 93%;
+  background-color: var(--modal-room-background);
+  border-radius: 1rem;
 }
 
-.logout__btn:hover{
-    transform: scale(1.05);
+.logout__btn {
+  width: 40%;
+  height: fit-content;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  font-size: 0.7rem;
+  background-color: var(--red);
+  color: white;
 }
 
-.logout__btn:active{
-    transform: scale(1);
+.logout__btn:hover {
+  transform: scale(1.05);
 }
 
-.modal__setting--body{
-    display: flex;
-    flex-direction: column-reverse;
-    /* align-items: center; */
+.logout__btn:active {
+  transform: scale(1);
 }
 
-.modal__setting--bottom{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    width: 100%;
-    height: 10%;
-    padding-right: 5%;
-    /* background-color: aqua; */
+.modal__setting--body {
+  display: flex;
+  flex-direction: column-reverse;
+  /* align-items: center; */
+}
+
+.modal__setting--bottom {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  padding-right: 5%;
+  /* background-color: aqua; */
 }
 
 /* Create Room Modal */
 
-.modal__createroom--frame, .modal__findroom--frame{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-    height: 20%;
-    border-radius: 1rem;
-    background: url(../assets/images/formgame/background-frame.png);
+.modal__createroom--frame,
+.modal__findroom--frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 20%;
+  border-radius: 1rem;
+  background: url(../assets/images/formgame/background-frame.png);
 }
 
-.body__modal-createroom{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 92%;
-    height: 70%;
-    background-color: rgb(221, 221, 221);
-    border-radius: 1rem;
+.body__modal-createroom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 92%;
+  height: 70%;
+  background-color: rgb(221, 221, 221);
+  border-radius: 1rem;
 }
 
-.header__modal-createroom{
-    width: 90%;
-    height: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header__modal-createroom {
+  width: 90%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header__modal-createroom p {
-    color: white;
-    font-size: 0.8rem;
+  color: white;
+  font-size: 0.8rem;
 }
 
 .body__modal--fn {
-    display: flex;
-    width: 100%;
-    height: 38%;
+  display: flex;
+  width: 100%;
+  height: 38%;
 }
 
-.cancel__createroom-btn{
-    width: 100%;
-    height: 100%;
-    border-radius: 0 0 0 1rem;
-    outline: none;
-    border: none;
-    background-color: var(--red);
+.cancel__createroom-btn {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0 0 1rem;
+  outline: none;
+  border: none;
+  background-color: var(--red);
 }
 
-.cancel__createroom-btn:hover{
-    background-color: #fb0303;
+.cancel__createroom-btn:hover {
+  background-color: #fb0303;
 }
 
-.cancel__createroom-btn i{
-    color: white;
+.cancel__createroom-btn i {
+  color: white;
 }
 
-.create__room-btn{
-    width: 50%;
-    height: 100%;
-    border-radius: 0 0 1rem 0;
-    outline: none;
-    border: none;
-    background-color: var(--orange);
+.create__room-btn {
+  width: 50%;
+  height: 100%;
+  border-radius: 0 0 1rem 0;
+  outline: none;
+  border: none;
+  background-color: var(--orange);
 }
 
-.create__room-btn:hover{
-    background-color: #f5b40f;
+.create__room-btn:hover {
+  background-color: #f5b40f;
 }
 
 .create__room-btn i {
-    color: white;
+  color: white;
 }
 
 .box--shadow-btn {
-    box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, .5),
-      7px 7px 20px 0px rgba(0, 0, 0, .1),
-      4px 4px 5px 0px rgba(0, 0, 0, .1);
-  }
-
-.close__createroom--form{
-    width: 50%;
-    height: 100%;
+  box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
-.message--createroom{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60%;
-    width: 100% ;
+.close__createroom--form {
+  width: 50%;
+  height: 100%;
 }
 
-.message--createroom p{
-    font-size: 0.7rem;
-    color: #5e4301;
+.message--createroom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  width: 100%;
 }
 
+.message--createroom p {
+  font-size: 0.7rem;
+  color: #5e4301;
+}
 
 /* findroom */
-.modal__findroom--frame{
-    gap: 0.5rem;
+.modal__findroom--frame {
+  gap: 0.5rem;
+}
+
+.modal__findroom--body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 70%;
+  gap: 15%;
+  border-radius: 0.8rem;
+}
+
+.modal__findroom--input {
+  width: 75%;
+  border-radius: 0.5rem;
+  height: 35%;
+  border: none;
+  outline: none;
+  background-color: var(--modal-room-background);
+  padding: 0 0 0 0.8rem;
+}
+
+.modal__findroom--input:active {
+  border: none;
+  outline: none;
+}
+
+.modal__findroom--btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 75%;
+  height: 30%;
+}
+.findroom__dialog--btn {
+  height: 100%;
+  width: 45%;
+}
+
+.modal__findroom--btn button {
+  width: 45%;
+  height: 100%;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--orange);
+  color: white;
+}
+
+.findroom__dialog--btn button {
+  width: 100%;
+  height: 100%;
+  background-color: #fb0303;
+  font-size: 0.7rem;
+}
+
+.dont__exist--room {
+  height: 11%;
+  font-size: 0.6rem;
+}
+
+/* ranking */
+
+.modal__frame--ranking {
+  width: 40vw;
+  height: 89vh;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: url(../assets/images/formgame/background-frame.png);
+  background-size: cover;
+  padding: 0.5% 0 1% 0;
+}
+
+.modal__background-ranking--title {
+  width: 15rem;
+  height: 9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.modal__background-ranking--title p {
+  color: white;
+}
+
+.close__modal--ranking {
+  position: absolute;
+  right: 0.5rem;
+  width: 2.5rem;
+  height: 90%;
+  background-color: #ce0202;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.close__modal--ranking:hover {
+  transform: scale(1.05);
+}
+
+.close__modal--ranking:active {
+  transform: scale(1.05);
+}
+
+.close__modal--ranking button {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.modal--ranking {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 96%;
+  height: 94%;
+  background-color: var(--modal-background);
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.ranking__header--parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 8%;
+  background-color: #218b82;
+  border-radius: 2rem 2rem 0 0;
+}
+
+.ranking__headers {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100%;
+  width: 95%;
+}
+
+.ranking--header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.ranking-lists {
+  display: flex;
+  padding: 1% 0 3% 0;
+  /* justify-content: center; */
+  align-items: center;
+  overflow: auto;
+  width: 100%;
+  height: 92%;
+  list-style: none;
+  flex-direction: column;
+  gap: 0.3rem /* background-color: var(--modal-lobby-background); */
+    /* background-color: rgba(144, 205, 195, 0.9); */;
+}
+.ranking-lists::-webkit-scrollbar {
+    width: 3px;
+}
+
+.ranking-lists::-webkit-scrollbar-thumb {
+    background-color: #218b82;
+    border-radius: 4px;
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 95%;
+  height: 5rem;
+  background-color: #CAE5E8;
+  border-radius: 0.5rem;
+}
+
+.ranking--number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 15%;
+  font-weight: bold;
+}
+
+.color--top1 {
+  background-color: #fefb3f;
+}
+
+.color--top2 {
+  background-color: #FEF889;
+}
+
+.color--top3 {
+  background-color: #FFFBD1;
+}
+
+.color--another {
+  background-color: #C9E4D6  ;
+}
+
+.color--user {
+  background-color: #fffad0 !important;
+  animation: element-games 0.9s infinite ease-in;
+  animation-timing-function: ease-out;
+}
+
+@keyframes element-games {
+  0% {
+    box-shadow: 0 0 2px 2px var(--primary-color2);
+  }
+  50% {
+    box-shadow: 0 0 8px 8px var(--primary-color2);
+  }
+  100% {
+    box-shadow: 0 0 2px 2px var(--primary-color2);
+  }
+}
+
+.ranking--avatar {
+  width: 18%;
+  height: 90%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.ranking--avatar img {
+  height: 75%;
+  width: auto;
+}
+
+.ranking--name {
+  width: 44%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.ranking--elo {
+  width: 23%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 
-
-.modal__findroom--body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    height: 70%;
-    gap: 15%;
-    border-radius: 0.8rem;
-}
-
-.modal__findroom--input{
-    width: 75%;
-    border-radius: 0.5rem;
-    height: 35%;
-    border: none;
-    outline: none;
-    background-color: var(--modal-room-background);
-    padding: 0 0 0  0.8rem;
-}
-
-.modal__findroom--input:active{
-    border: none;
-    outline: none;
-}
-
-.modal__findroom--btn{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    width: 75%;
-    height: 30%;
-}
-.findroom__dialog--btn{
-    height: 100%;
-    width: 45%;
-}
-
-.modal__findroom--btn button{
-    width: 45%;
-    height: 100%;
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
-    background-color: var(--orange);
-    color: white;
-} 
-
-.findroom__dialog--btn button{
-    width: 100%;
-    height: 100%;
-    background-color: #fb0303;
-    font-size: 0.7rem;
-}
-
-.dont__exist--room{
-    height: 11%;
-    font-size: 0.6rem;
-}

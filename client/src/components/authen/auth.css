@@ -1,135 +1,137 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Handjet:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Handjet:wght@400;700&display=swap");
 
 #login {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background: radial-gradient(#186a5e, #053339); */
-    background: url(../../assets/images/formgame/background.png);
-    background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: radial-gradient(#186a5e, #053339); */
+  background: url(../../assets/images/formgame/background.png);
+  background-size: cover;
 }
 
-.login__form, .signup__form {
-    width: 50rem;
-    height: 75vh;
-    background: radial-gradient(#2b514b, #1b3e44);
-    border-radius: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.2rem 0 1.5rem 0;
+.login__form,
+.signup__form {
+  width: 50rem;
+  height: fit-content;
+  background: radial-gradient(#2b514b, #1b3e44);
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 0 3rem 0;
 }
 
 .login__title {
-    font-family: 'Handjet', monospace !important; 
-    align-items: center;
-    text-transform: uppercase;
-    font-size: 5rem;
-    text-shadow: 0 0 4px rgba(35, 34, 34, 0.4);
-    color: var(--login-color);
-
+  font-family: "Handjet", monospace !important;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 5rem;
+  text-shadow: 0 0 4px rgba(35, 34, 34, 0.4);
+  color: var(--login-color);
 }
 
 .slogan {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 0.9rem;
-    color: var(--login-color);
+  font-family: "Quicksand", sans-serif;
+  font-size: 0.9rem;
+  color: var(--login-color);
 }
 
 .login__title em {
-    font-family: 'Handjet', monospace !important; 
-    font-size: 5rem;
-    font-style: normal;
-    color: #00eeff;
+  font-family: "Handjet", monospace !important;
+  font-size: 5rem;
+  font-style: normal;
+  color: #00eeff;
 }
 
-.login__form label, .signup__form label {
-    font-size: 1.5rem;
-    color: var(--login-color);
-    font-family: 'Handjet', monospace !important; 
+.login__form label,
+.signup__form label {
+  font-size: 1.5rem;
+  color: var(--login-color);
+  font-family: "Handjet", monospace !important;
 }
 
 .login__email,
 .login__password,
-.login__phone  {
-    width: 28rem;
-    height: 6rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.login__phone {
+  width: 28rem;
+  height: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .login__email input,
 .login__password input,
-.login__phone input
-{
-    width: 100%;
-    height: 2.8rem;
-    font: inherit;
-    border: 1px solid #54a399;
-    background-color: #192f2b;
-    border-radius: 4px;
-    padding: 0.2rem;
-    color: #d1f0ec;
+.login__phone input {
+  width: 100%;
+  height: 2.8rem;
+  font: inherit;
+  border: 1px solid #54a399;
+  background-color: #192f2b;
+  border-radius: 4px;
+  padding: 0.2rem;
+  color: #d1f0ec;
 }
 
-.login__btn{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width:20rem;
+.login__btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20rem;
 }
 
-.login__signup, .login__signin{
-    border-radius: 0.5rem;
-    width: 8rem;
-    height: 2.5rem;
-    font-size: 0.7rem;
-    border: none;
-    background-color: var(--login-color);
-    color: #192f2b;
+.login__signup,
+.login__signin {
+  border-radius: 0.5rem;
+  width: 8rem;
+  height: 2.5rem;
+  font-size: 0.7rem;
+  border: none;
+  background-color: var(--login-color);
+  color: #192f2b;
 }
 
-.login__signup:hover, .login__signin:hover{
-    transform: scale(1.05);
+.login__signup:hover,
+.login__signin:hover {
+  transform: scale(1.05);
 }
 
-.login__signup:active, .login__signin:active{
-    transform: scale(1.1);
+.login__signup:active,
+.login__signin:active {
+  transform: scale(1.1);
 }
 
-.error-signup__message{
-    display: flex;
-    align-items: center;
-    height: 1.5rem;
+.error-signup__message {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
 }
 
-.error-signup__message p{
-    font-size: 0.6rem;
-    color: rgb(205, 45, 45);
-    text-transform: uppercase;
+.error-signup__message p {
+  font-size: 0.6rem;
+  color: rgb(205, 45, 45);
+  text-transform: uppercase;
 }
 
-.error_message--login{
-    display: flex;
-    align-items: center;
-    height: 1rem;
-    font-size: 0.7rem;
-    color: red;
-    width: 28rem;
+.error_message--login {
+  display: flex;
+  align-items: center;
+  height: 1rem;
+  font-size: 0.7rem;
+  color: red;
+  width: 28rem;
 }
 
-.error_message--login p{
-    font-size: 0.6rem;
-    text-transform: uppercase;
+.error_message--login p {
+  font-size: 0.6rem;
+  text-transform: uppercase;
 }
 
-input{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+input {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
-
