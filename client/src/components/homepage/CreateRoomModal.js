@@ -17,9 +17,9 @@ const CreateRoomModal = forwardRef(function CreateRoomModal({}, ref) {
     <dialog ref={createRoomModal} className="open_modal">
       <div className="modal__background close-modal">
         <div className="modal__createroom--frame box--shadow">
-          <div className="header__modal-createroom">
+          {/* <div className="header__modal-createroom">
             <p>CREATE ROOM</p>
-          </div>
+          </div> */}
           <div className="body__modal-createroom box--shadow">
             <div className="message--createroom">
               <p>Do you want create room?</p>

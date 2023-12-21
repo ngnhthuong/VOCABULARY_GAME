@@ -69,7 +69,7 @@ const LobbyModal = forwardRef(function LobbyModal({ socket, rooms }, ref) {
                 </button>
               </form>
             </div>
-            <div className="modal__lobby">
+            <div className="modal__lobby box--shadow">
               <div className="modal__lobby--listroom box--shadow">
                 <ul className="modal__listroom--header box--shadow">
                   <li className="modal__listroom--label">ID</li>

@@ -8,7 +8,7 @@ import userImg7 from "../../assets/images/player/user7.png";
 import inRoomGame from "../../assets/images/formgame/inroom.gif";
 import captainImg from "../../assets/images/formgame/captain.png";
 import { useState, useRef, useEffect } from "react";
-export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth }) {
+export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth, backToHomePage }) {
 
   if (dataRoom !== null) {
     console.log(dataRoom.roomMember.length);
@@ -57,7 +57,7 @@ export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth }) {
           <div className="player-game room-body__middle--player_1 box--shadow opacity__0">
             <img className="captain box-animation" src={captainImg} alt="" />
             <img className="player-game-avt" src="" alt="error" />
-            <p className="player-game-name">Cow Cow</p>
+            <p className="player-game-name"></p>
             <div className="room-body__middle--function">
               {/* <button className="room-body__middle--delete box--shadow">
                 <i className="fas fa-user-times"></i>
@@ -68,7 +68,7 @@ export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth }) {
         <div className="room-body__middle--player">
           <div className="player-game room-body__middle--player_2 box--shadow opacity__0">
             <img className="player-game-avt" src="" alt="error" />
-            <p className="player-game-name">Cow Cow</p>
+            <p className="player-game-name"></p>
             <div className="room-body__middle--function">
               {/* <button className="room-body__middle--delete box--shadow">
                 <i className="fas fa-user-times"></i>
@@ -80,7 +80,7 @@ export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth }) {
           </div>
           <div className=" player-game room-body__middle--player_3 box--shadow opacity__0">
             <img className="player-game-avt" src="" alt="error" />
-            <p className="player-game-name">Cow Cow</p>
+            <p className="player-game-name"></p>
             <div className="room-body__middle--function">
               {/* <button className="room-body__middle--delete box--shadow">
               <i className="fas fa-user-times"></i>
@@ -91,7 +91,7 @@ export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth }) {
         <div className="room-body__middle--player">
           <div className="player-game room-body__middle--player_4 box--shadow opacity__0">
             <img className="player-game-avt" src="" alt="error" />
-            <p className="player-game-name">Cow Cow</p>
+            <p className="player-game-name"></p>
             <div className="room-body__middle--function">
               {/* <button className="room-body__middle--delete box--shadow">
                 <i className="fas fa-user-times"></i>
@@ -103,7 +103,7 @@ export default function MiddleRoom({ handleRoomMatch, dataRoom, playerAuth }) {
       <div className="room-body__middle--functions">
         <div className="room-body__middle--function-game">
           <button className="invite-player box--shadow">Invite</button>
-          <button className="leave-room box--shadow">
+          <button className="leave-room box--shadow" onClick = {()=>backToHomePage()}>
             <i className="fas fa-sign-out-alt"></i>
           </button>
         </div>

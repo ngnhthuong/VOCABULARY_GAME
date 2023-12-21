@@ -14,7 +14,7 @@ export default function FriendList(){
                     <img src={userImg1} alt="error" />
                 </div>
                 <div className='room-body__friend--information'>
-                    <p className='room-body__friend--name'>CowCow</p>
+                    <p className='room-body__friend--name'>C G</p>
                     <p>Ranking: 1</p>
                     <p>Elo: 1000</p>
                     <button className='room-body__friend--invite box--shadow'>
@@ -27,7 +27,7 @@ export default function FriendList(){
                     <img src={userImg7} alt="error" />
                 </div>
                 <div className='room-body__friend--information'>
-                    <p className='room-body__friend--name'>CowCow</p>
+                    <p className='room-body__friend--name'>O A</p>
                     <p>Ranking: 1</p>
                     <p>Elo: 1000</p>
                     <button className='room-body__friend--invite box--shadow'>
@@ -40,7 +40,7 @@ export default function FriendList(){
                     <img src={userImg3} alt="error" />
                 </div>
                 <div className='room-body__friend--information'>
-                    <p className='room-body__friend--name'>CowCow</p>
+                    <p className='room-body__friend--name'>W M</p>
                     <p>Ranking: 1</p>
                     <p>Elo: 1000</p>
                     <button className='room-body__friend--invite box--shadow'>
@@ -53,7 +53,7 @@ export default function FriendList(){
                     <img src={userImg4} alt="error" />
                 </div>
                 <div className='room-body__friend--information'>
-                    <p className='room-body__friend--name'>CowCow</p>
+                    <p className='room-body__friend--name'>C E</p>
                     <p>Ranking: 1</p>
                     <p>Elo: 1000</p>
                     <button className='room-body__friend--invite box--shadow'>
@@ -66,7 +66,7 @@ export default function FriendList(){
                     <img src={userImg5} alt="error" />
                 </div>
                 <div className='room-body__friend--information'>
-                    <p className='room-body__friend--name'>CowCow</p>
+                    <p className='room-body__friend--name'>O !</p>
                     <p>Ranking: 1</p>
                     <p>Elo: 1000</p>
                     <button className='room-body__friend--invite box--shadow'>
@@ -79,7 +79,7 @@ export default function FriendList(){
                     <img src={userImg6} alt="error" />
                 </div>
                 <div className='room-body__friend--information'>
-                    <p className='room-body__friend--name'>CowCow</p>
+                    <p className='room-body__friend--name'>W !</p>
                     <p>Ranking: 1</p>
                     <p>Elo: 1000</p>
                     <button className='room-body__friend--invite box--shadow'>

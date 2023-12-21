@@ -376,11 +376,11 @@
     color: white;
 }
 
-.room-body__middle--start-btn:hover{
-    transform: scale(1.05);
+.room-body__middle--start-btn:hover, .leave-room:hover , .invite-player:hover {
+    transform: scale(1.02);
 }
 
-.room-body__middle--start-btn:active{
+.room-body__middle--start-btn:active, .leave-room:active, .invite-player:active{
     transform: scale(1);
 }
 

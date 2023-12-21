@@ -32,7 +32,8 @@ export default function InitPlayer() {
         "no-spaces",
         "Player Name cannot contain spaces!",
         (value) => String(value).indexOf(" ") === -1
-      ),
+      ).matches(/^[a-zA-Z0-9]+$/, "Names contain only letters and numbers")
+      .max(9, "Name must be at most 9 characters long"), 
     avatar: Yup.string(),
   });
 
@@ -85,7 +86,7 @@ export default function InitPlayer() {
         <form onSubmit={formik.handleSubmit} className="init-information">
           <label>PLAYER NAME</label>
           <input
-            maxLength={7}
+            maxLength={10}
             className="init-name box--shadow"
             type="text"
             name="playerName"

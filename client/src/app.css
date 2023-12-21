@@ -13,7 +13,9 @@
   --redBrown: rgb(209, 32, 32);
   --login-color: #c6f4f2;
   --modal-background: #dedede;
-  --modal-lobby-background: rgba(243, 203, 189);
+  /* --modal-lobby-background: rgba(243, 203, 189); */
+  --modal-lobby-background: #E6E6FA
+  ;
   --background-current-player: rgb(240, 237, 158);
   --modal-room-background: rgba(220, 216, 216, 0.9);
   --modal-room-background-origin: rgb(245, 245, 245);

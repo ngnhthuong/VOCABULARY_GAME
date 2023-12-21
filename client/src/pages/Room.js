@@ -367,6 +367,7 @@ export default function Room({ socket }) {
                 handleRoomMatch={handleRoomMatch}
                 dataRoom={dataRoom}
                 playerAuth={playerAuth}
+                backToHomePage = {backToHomePage}
               />
             </div>
             <div className="room-body__right box--shadow">

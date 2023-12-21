@@ -8,6 +8,7 @@ import { base_url } from "../../utils/api_service";
 import heroChartImg from "../../assets/images/docks/heroChart.png";
 import storeImg from "../../assets/images/docks/store.png";
 import backpackImg from "../../assets/images/docks/backpack.png";
+import settingImg from "../../assets/images/docks/setting.png"
 import "./docks.css";
 
 export default function Docks() {
@@ -77,6 +78,10 @@ export default function Docks() {
         >
           <img src={backpackImg} alt="dock error" />
           <p className="title-icon">Backpack</p>
+        </li>
+        <li onClick={() => handleOpenModal("setting")} className="dock flex--col">
+          <img src={settingImg} alt="dock error" />
+          <p className="title-icon">Setting</p>
         </li>
       </ul>
     </>
