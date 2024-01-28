@@ -10,3 +10,22 @@
 | Nguyễn Nhất Thưởng (leader)  | 20522000        | Trưởng nhóm     |
 | Phạm Thành Đạt                | 20521175        | Thành viên      |
 
+>Tech stacks:
+
+* Front-end: 
+  - ReactJS
+* Back-end: 
+  - Nodejs
+* Database: 
+  - MongoDB
+
+**1. Home Page Website**
+
+![alt text](./details_product/1.png)
+![alt text](./details_product/2.png)
+![alt text](./details_product/3.png)
+![alt text](./details_product/4.png)
+![alt text](./details_product/5.png)
+![alt text](./details_product/6.png)
+![alt text](./details_product/7.png)
+![alt text](./details_product/8.png)
