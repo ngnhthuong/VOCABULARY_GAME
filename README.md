@@ -1,14 +1,14 @@
 # GAME WEBSITE PROJECT - MSIS207.O12.CTTT
 
-**Đồ án:** Xây dựng trang Website về Game.  
-**Môn:** Phát triển ứng dụng web - **Mã lớp:** MSIS207.O12.CTTT
+**Project:** Building a Game Website.
+**Subject:** Web application development - **Class code:** MSIS207.O12.CTTT
 
-## Thành viên tham gia dự án:
+## Members participating in the project:
 
-| Họ và tên                    | Mã số sinh viên | Vai trò         |
+| Full Name                    | StudentID        | Role         |
 |-------------------------------|-----------------|-----------------|
-| Nguyễn Nhất Thưởng (leader)  | 20522000        | Trưởng nhóm     |
-| Phạm Thành Đạt                | 20521175        | Thành viên      |
+| Nguyễn Nhất Thưởng           | 20522000        |     Leader, Front-end, Back-end |
+| Phạm Thành Đạt                | 20521175        | Front-end, Back-end      |
 
 >Tech stacks:
 
